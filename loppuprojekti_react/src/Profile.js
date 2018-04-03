@@ -1,42 +1,82 @@
 import React, {Component} from 'react';
-import profiilikuva from './Resources/profiilikuva.png';
-import trophy from './Resources/trophy.png';
+import trophy from './trophy.png';
+import profiilikuva from './profiilikuva.png';
+import {Image, Col, Row, Carousel} from 'react-bootstrap';
+
+
 class Profile extends Component {
 
     render() {
         return (
             <div>
-                <div>
-                    <h1>Profile Name</h1>
-                </div>
+                <Row>
+                    <h1 align="middle">Profile Name</h1>
+                </Row>
                 <br/>
-                <div class="col-sm-3"></div>
+                <Row>
+                    <Col xs={1}/>
+                <Col xs={10} md={12}>
+                    <Image responsive="true" src={profiilikuva} circle/>
+                </Col>
+                    <Col xs={1}/>
+                </Row>
 
-                <div class="col-sm-6">
-                    <img src="/Resources/profiilikuva.png" alt="" class="img-responsive img-circle"></img>
-                </div>
-                <div class="col-sm-3"></div>
-                <br/>
-                <div class="col-sm-1"></div>
-                <div class="col-sm-2">
-                    <img alt="" src="/Resources/trophy.png"></img>
-                </div>
-                <div class="col-sm-2">
-                    <img alt="" src="/Resources/trophy.png"></img>
-                </div>
-                <div class="col-sm-2">
-                    <img alt="" src="/Resources/trophy.png"></img>
-                </div>
-                <div class="col-sm-2">
-                    <img alt="" src="/Resources/trophy.png"></img>
-                </div>
-                <div class="col-sm-2">
-                    <img alt="" src="/Resources/trophy.png"></img>
-                </div>
-                <div class="col-sm-1"></div>
 
+                <Carousel>
+                    <Carousel.Item>
+                        <Row>
+                            <Col xs={4} md={1}>
+                                <Image responsive="true" src={trophy} rounded/>
+                            </Col>
+                            <Col xs={4} md={1}>
+                                <Image responsive="true" src={trophy} rounded/>
+                            </Col>
+                            <Col xs={4} md={1}>
+                                <Image responsive="true" src={trophy} rounded/>
+                            </Col>
+                        </Row>
+
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <Row>
+                            <Col xs={4} md={1}>
+                                <Image responsive="true" src={trophy} rounded/>
+                            </Col>
+                            <Col xs={4} md={1}>
+                                <Image responsive="true" src={trophy} rounded/>
+                            </Col>
+                            <Col xs={4} md={1}>
+                                <Image responsive="true" src={trophy} rounded/>
+                            </Col>
+                        </Row>
+                        <Carousel.Caption>
+                            <h3>Trophies</h3>
+
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <Row>
+                            <Col xs={4} md={1}>
+                                <Image responsive="true" src={trophy} rounded/>
+                            </Col>
+                            <Col xs={4} md={1}>
+                                <Image responsive="true" src={trophy} rounded/>
+                            </Col>
+                            <Col xs={4} md={1}>
+                                <Image responsive="true" src={trophy} rounded/>
+                            </Col>
+                        </Row>
+                        <Carousel.Caption>
+                            <h3>Trophies</h3>
+
+                        </Carousel.Caption>
+                    </Carousel.Item>
+
+                </Carousel>;
 
             </div>
+
+
         );
     }
 }

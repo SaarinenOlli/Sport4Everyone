@@ -9,7 +9,7 @@ class Navi extends Component {
 
     handleSelect(selectedKey) {
         console.log(selectedKey);
-        return "/kirjaudu";
+        return "/login";
         // alert(`selected ${selectedKey}`);
     }
 
@@ -24,7 +24,7 @@ class Navi extends Component {
     </Navbar.Header>
     <Nav pullRight activeKey={3} onSelect={key => this.handleSelect(key)}>
         <NavDropdown title="Dropdown" eventKey={3} id="basic-nav-dropdown">
-            <MenuItem eventKey={3.1} href="/kirjaudu"><Glyphicon glyph="user"/> Log in</MenuItem>
+            <MenuItem eventKey={3.1} href="/login"><Glyphicon glyph="user"/> Log in</MenuItem>
             <MenuItem divider />
             <MenuItem eventKey={3.2}><Glyphicon glyph="user"/> Register</MenuItem>
         </NavDropdown>
