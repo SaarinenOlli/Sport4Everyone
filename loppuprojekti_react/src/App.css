@@ -7,3 +7,12 @@
   text-align: center;
 }
 
+.modal-container {
+  margin-top: 5%;
+  position: relative;
+}
+.modal-container .modal, .modal-container .modal-backdrop {
+  margin-top: 5%;
+  position: absolute;
+}
+
