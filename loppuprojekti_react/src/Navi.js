@@ -59,6 +59,7 @@ class Navi extends Component {
                     user,
                     showlogin: false
                 });
+                this.props.history.push('/profile');
             });
     }
 
