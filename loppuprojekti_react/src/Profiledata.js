@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import {Image} from 'react-bootstrap';
 import chart from './chart.png';
 
-import Navi from './Navi';
+import NaviWhenLoggedIn from "./NaviWhenLoggedIn";
 import { LineChart, PieChart, AreaChart, DoughnutChart } from 'react-chartkick';
 import Chart from 'chart.js'
 window.Chart = require('chart.js');
 
-import NaviWhenLoggedIn from "./NaviWhenLoggedIn";
+
 
 
 var data = [
