@@ -5,18 +5,19 @@ class Tieto extends Component {
     poista = (id) => {
 
         /* sana paino olettaen, että positetaan paino taulusta tietoa */
-        fetch('/paino'+this.props.tieto.id,
+        fetch('/painot/'+this.props.tieto.painoId,
             {method: 'DELETE'})
 
     }
 
-
+// pvm = vaaka-akseli
+// painoKiloina = pystyakseli
     render() {
         return (
             <li className={Tieto}>
-                {this.props.tieto.vaaka}<br/>
-                {this.props.tieto.pysty}<br/>
-                {this.props.tieto.id}
+                {this.props.tieto.pvm}<br/>
+                {this.props.tieto.painoKiloina}<br/>
+                {this.props.tieto.painoId}
                 <form>
                     <button onClick={this.poista}>Poista</button>
                 </form>
