@@ -4,7 +4,7 @@ import {Navbar} from 'react-bootstrap';
 import {NavDropdown} from 'react-bootstrap';
 import {MenuItem} from 'react-bootstrap';
 import {Glyphicon} from 'react-bootstrap';
-import {Modal, Button} from 'react-bootstrap';
+import {Modal, Button, FormGroup, ControlLabel, FormControl} from 'react-bootstrap';
 import {auth, googleProvider} from './FireBase';
 
 class Navi extends Component {
@@ -55,6 +55,7 @@ class Navi extends Component {
             });
     }
 
+
     componentDidMount() {
         auth.onAuthStateChanged((user) => {
             if (user) {
@@ -62,7 +63,6 @@ class Navi extends Component {
             }
         });
     }
-
 
 
     render() {
@@ -100,9 +100,11 @@ class Navi extends Component {
                     </Modal.Header>
                     <Modal.Body>
                     <div>
-                        <h2>Kirjaudu sisään! Nyt pääset vaan googlella!</h2>
-
+                        <h2>Kirjaudu sisään! Nyt pääset vaan googlella,
+                            vaikka nappi löytyy!
+                        </h2>
                     <Button onClick={this.loginGoogle}>Login with Google</Button>
+                        <Button onClick={this.loginWithEmail}>Login with email</Button>
                     </div>
                     </Modal.Body>
                     <Modal.Footer>
@@ -111,7 +113,7 @@ class Navi extends Component {
                     </Modal>
                     </div>
 
-                {/*Näytetään register modaaliboksi silloin kun on klikattu login*/}
+                {/*Näytetään register modaaliboksi silloin kun on klikattu register*/}
                     <div className="modal-container" style={{height: 10}}>
                     <Modal
                     show={this.state.showregister}
@@ -126,7 +128,28 @@ class Navi extends Component {
                     </Modal.Header>
                     <Modal.Body>
                     <div>
+                        <FormGroup
+                            controlId="formBasicText"
+                            // validationState={this.getValidationState()}
+                        >
+                            <ControlLabel>Register with your email</ControlLabel>
 
+                            <FormControl
+                                type="text"
+                                // value={this.state.value}
+                                placeholder="Enter email"
+                                // onChange={this.handleChange}
+                            />
+                            <FormControl
+                                type="text"
+                                // value={this.state.value}
+                                placeholder="Enter password"
+                                // onChange={this.handleChange}
+                            />
+                            <FormControl.Feedback />
+                            <Button>Register</Button>
+                        </FormGroup>
+                        {/*<Button onClick={this.registerWithEmail}>Login with email</Button>*/}
                     </div>
                     </Modal.Body>
                     <Modal.Footer>
@@ -136,8 +159,6 @@ class Navi extends Component {
                     </div>
 
             </div>
-
-
         );
 
     }
