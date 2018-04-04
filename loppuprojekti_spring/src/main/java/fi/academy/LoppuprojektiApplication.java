@@ -26,12 +26,12 @@ public class LoppuprojektiApplication {
 	@Bean
 	public CommandLineRunner koira() {
 		return (args) -> {
-			Paino eka = new Paino(1, LocalDate.now(), 75);
-			Paino toka = new Paino(2, LocalDate.now(), 80);
-			Paino kolmas = new Paino(1, LocalDate.now(), 72);
-			Paino neljas = new Paino(2, LocalDate.now(), 79);
-			Paino viides = new Paino(1, LocalDate.now(), 70);
-			Paino kuudes = new Paino(2, LocalDate.now(), 74);
+			Paino eka = new Paino(1, LocalDate.of(2018, 2, 2), 75);
+			Paino toka = new Paino(2, LocalDate.of(2018, 3, 15), 80);
+			Paino kolmas = new Paino(1, LocalDate.of(2018, 4, 1), 72);
+			Paino neljas = new Paino(2, LocalDate.of(2018, 4, 5), 79);
+			Paino viides = new Paino(1, LocalDate.of(2018, 3, 31), 70);
+			Paino kuudes = new Paino(2, LocalDate.of(2018, 3, 12), 74);
 
 			pr.save(eka);
 			pr.save(toka);

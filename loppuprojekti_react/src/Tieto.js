@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 
 class Tieto extends Component {
 
-    poista = (id) => {
-
+    poista = (event) => {
+        event.preventDefault();
         /* sana paino olettaen, että positetaan paino taulusta tietoa */
         fetch('/painot/'+this.props.tieto.painoId,
             {method: 'DELETE'})
@@ -14,7 +14,7 @@ class Tieto extends Component {
 // painoKiloina = pystyakseli
     render() {
         return (
-            <li className={Tieto}>
+            <li className="Tieto">
                 {this.props.tieto.pvm}<br/>
                 {this.props.tieto.painoKiloina}<br/>
                 {this.props.tieto.painoId}

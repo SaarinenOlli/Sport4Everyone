@@ -62,7 +62,7 @@ public class Paino {
         return painoKiloina;
     }
 
-    public void setPainoKiloina(int paino) {
+    public void setPainoKiloina(Integer paino) {
         this.painoKiloina = paino;
     }
 }

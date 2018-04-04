@@ -17,15 +17,17 @@ class PainoData extends Component {
                 return response.json();
             })
             .then(function (json) {
+                console.dir(json);
                 this.setState({data:json})
             }.bind(this));
     }
 
     tiedotSyotetty = (tiedot) => {
+        let paino = {painoKiloina: tiedot.pysty, pvm: tiedot.vaaka};
         fetch('/painot',{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(tiedot)
+            body: JSON.stringify(paino)
         })
             .then(function (response) {
                 this.haePainotJaPaivita();
