@@ -21,7 +21,6 @@ class Profiledata extends Component {
                     <div style={{display: 'flex', justifyContent: 'center'}}>
                         <LineChart width="40%" xtitle="Time" ytitle="Weight" min={90} max={100} data={data}  />
                     </div>
-                <hr/>
                         <div style={{display: 'flex', justifyContent: 'center'}}>
                         <PieChart donut={true} data={[["Steps", 8544], ["Steps from goal", 1456]]}  />
                     </div>
