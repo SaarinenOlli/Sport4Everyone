@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import trophy from './trophy.png';
 import profiilikuva from './profiilikuva.png';
+import kuvaaja from './kuvaaja.png'
 import {Image, Col, Row, Carousel} from 'react-bootstrap';
+import NaviWhenLoggedIn from "./NaviWhenLoggedIn";
 
 
 class Profile extends Component {
@@ -9,6 +11,9 @@ class Profile extends Component {
     render() {
         return (
             <div>
+                <div>
+                    <NaviWhenLoggedIn {...this.props}/>
+                </div>
                 <Row>
                     <h1 align="middle">Profile Name</h1>
                 </Row>
@@ -35,7 +40,9 @@ class Profile extends Component {
                                 <Image responsive="true" src={trophy} rounded/>
                             </Col>
                         </Row>
-
+                        <Carousel.Caption>
+                            <h3>Trophies</h3>
+                        </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
                         <Row>
@@ -73,6 +80,10 @@ class Profile extends Component {
                     </Carousel.Item>
 
                 </Carousel>;
+
+                <div>
+                    <Image responsive="true" src={kuvaaja} rounded/>
+                </div>
 
             </div>
 

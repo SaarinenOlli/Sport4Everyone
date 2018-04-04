@@ -5,23 +5,33 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.time.LocalDate;
 
-// Ensimmäinen versio (minimitoteutus pv.1) : Luodaan painolle taulu. By Heidi ja Elina
+// By Heidi ja Elina
+// Ensimmäinen versio (minimitoteutus pv.1) : Luodaan painolle taulu
 
 @Entity
-public class PainoTaulu {
+public class Paino {
     @Id @GeneratedValue
     private int painoId;
     private int kayttajaId;
     private LocalDate pvm;
-    private int paino;
+    private Integer painoKiloina;
 
-    public PainoTaulu() {
+    public Paino() {
     }
 
-    public PainoTaulu(int kayttajaId, LocalDate pvm, int paino) {
+    public Paino(int kayttajaId, LocalDate pvm, int paino) {
         this.kayttajaId = kayttajaId;
         this.pvm = pvm;
-        this.paino = paino;
+        this.painoKiloina = paino;
+    }
+
+    public void paivitaTiedot(Paino uusiPaino) {
+        if (uusiPaino.painoKiloina != null) {
+            this.painoKiloina = uusiPaino.painoKiloina;
+        }
+        if (uusiPaino.pvm != null) {
+            this.pvm = uusiPaino.pvm;
+        }
     }
 
     public int getPainoId() {
@@ -48,11 +58,11 @@ public class PainoTaulu {
         this.pvm = pvm;
     }
 
-    public int getPaino() {
-        return paino;
+    public int getPainoKiloina() {
+        return painoKiloina;
     }
 
-    public void setPaino(int paino) {
-        this.paino = paino;
+    public void setPainoKiloina(int paino) {
+        this.painoKiloina = paino;
     }
 }
