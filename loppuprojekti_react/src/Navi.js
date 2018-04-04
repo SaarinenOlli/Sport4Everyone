@@ -6,7 +6,6 @@ import {MenuItem} from 'react-bootstrap';
 import {Glyphicon} from 'react-bootstrap';
 import {Modal, Button} from 'react-bootstrap';
 import {auth, googleProvider} from './FireBase';
-import Profile from './Profile';
 
 class Navi extends Component {
 
@@ -42,15 +41,8 @@ class Navi extends Component {
 
     }
 
-    logout = () => {
-        auth.signOut()
-            .then(() => {
-                this.setState({
-                    user: null
-                });
-            });
-    }
-
+    //Kun kirjaudutaan sisälle, status muuttuu useriksi, modaaliboksi menee kiinni ja
+    //redirectataan profile-sivulle.
     loginGoogle = () => {
         auth.signInWithPopup(googleProvider)
             .then((result) => {
@@ -59,6 +51,7 @@ class Navi extends Component {
                     user,
                     showlogin: false
                 });
+                this.props.history.push('/profile');
             });
     }
 
@@ -107,12 +100,13 @@ class Navi extends Component {
                     </Modal.Header>
                     <Modal.Body>
                     <div>
-                    <button onClick={this.loginGoogle}>Login with Google</button>
+                        <h2>Kirjaudu sisään! Nyt pääset vaan googlella!</h2>
+
+                    <Button onClick={this.loginGoogle}>Login with Google</Button>
                     </div>
                     </Modal.Body>
                     <Modal.Footer>
                     <Button onClick={this.handleHide}>Close</Button>
-                    <button onClick={this.logout}>Logout</button>
                     </Modal.Footer>
                     </Modal>
                     </div>

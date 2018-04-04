@@ -3,6 +3,7 @@ import trophy from './trophy.png';
 import profiilikuva from './profiilikuva.png';
 import kuvaaja from './kuvaaja.png'
 import {Image, Col, Row, Carousel} from 'react-bootstrap';
+import NaviWhenLoggedIn from "./NaviWhenLoggedIn";
 
 
 class Profile extends Component {
@@ -10,6 +11,9 @@ class Profile extends Component {
     render() {
         return (
             <div>
+                <div>
+                    <NaviWhenLoggedIn {...this.props}/>
+                </div>
                 <Row>
                     <h1 align="middle">Profile Name</h1>
                 </Row>
