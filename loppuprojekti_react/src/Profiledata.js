@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Image} from 'react-bootstrap';
 import chart from './chart.png';
-import Navi from './Navi';
+import NaviWhenLoggedIn from "./NaviWhenLoggedIn";
 
 
 
@@ -10,7 +10,7 @@ class Profiledata extends Component {
         return (
             <div>
                 <nav className="Navi">
-                    <Navi/>
+                    <NaviWhenLoggedIn{...this.props}/>
                 </nav>
                 <div style={{display: 'flex', justifyContent: 'center'}}>
                     <Image responsive="true" src={chart} />
