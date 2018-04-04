@@ -1,7 +1,8 @@
 package fi.academy;
 
+import fi.academy.paino.Paino;
 import fi.academy.paino.PainoRepo;
-import fi.academy.paino.PainoTaulu;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -25,12 +26,12 @@ public class LoppuprojektiApplication {
 	@Bean
 	public CommandLineRunner koira() {
 		return (args) -> {
-			PainoTaulu eka = new PainoTaulu(1, LocalDate.now(), 75);
-			PainoTaulu toka = new PainoTaulu(2, LocalDate.now(), 80);
-			PainoTaulu kolmas = new PainoTaulu(1, LocalDate.now(), 72);
-			PainoTaulu neljas = new PainoTaulu(2, LocalDate.now(), 79);
-			PainoTaulu viides = new PainoTaulu(1, LocalDate.now(), 70);
-			PainoTaulu kuudes = new PainoTaulu(2, LocalDate.now(), 74);
+			Paino eka = new Paino(1, LocalDate.now(), 75);
+			Paino toka = new Paino(2, LocalDate.now(), 80);
+			Paino kolmas = new Paino(1, LocalDate.now(), 72);
+			Paino neljas = new Paino(2, LocalDate.now(), 79);
+			Paino viides = new Paino(1, LocalDate.now(), 70);
+			Paino kuudes = new Paino(2, LocalDate.now(), 74);
 
 			pr.save(eka);
 			pr.save(toka);
