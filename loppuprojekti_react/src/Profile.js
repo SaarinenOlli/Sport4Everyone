@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import trophy from './trophy.png';
 import profiilikuva from './profiilikuva.png';
+import kuvaaja from './kuvaaja.png'
 import {Image, Col, Row, Carousel} from 'react-bootstrap';
 
 
@@ -35,7 +36,9 @@ class Profile extends Component {
                                 <Image responsive="true" src={trophy} rounded/>
                             </Col>
                         </Row>
-
+                        <Carousel.Caption>
+                            <h3>Trophies</h3>
+                        </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
                         <Row>
@@ -73,6 +76,10 @@ class Profile extends Component {
                     </Carousel.Item>
 
                 </Carousel>;
+
+                <div>
+                    <Image responsive="true" src={kuvaaja} rounded/>
+                </div>
 
             </div>
 
