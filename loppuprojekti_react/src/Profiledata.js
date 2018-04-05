@@ -4,8 +4,8 @@ import chart from './chart.png';
 
 import NaviWhenLoggedIn from "./NaviWhenLoggedIn";
 import { LineChart, PieChart, AreaChart, DoughnutChart } from 'react-chartkick';
-import Chart from 'chart.js'
-window.Chart = require('chart.js');
+import Chart from '../node_modules/chart.js/src/chart'
+window.Chart = require('../node_modules/chart.js/src/chart');
 
 
 

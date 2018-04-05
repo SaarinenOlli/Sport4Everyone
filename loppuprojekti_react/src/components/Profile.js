@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import trophy from './trophy.png';
-import profiilikuva from './profiilikuva.png';
-import kuvaaja from './kuvaaja.png'
+import trophy from '../Resources/trophy.png';
+import profiilikuva from '../Resources/profiilikuva.png';
+import kuvaaja from '../Resources/kuvaaja.png'
 import {Image, Col, Row, Carousel} from 'react-bootstrap';
-import NaviWhenLoggedIn from "./NaviWhenLoggedIn";
+import NaviWhenLoggedIn from "../NaviWhenLoggedIn";
 
 
 class Profile extends Component {
