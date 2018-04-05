@@ -3,7 +3,7 @@ import './App.css';
 import Home from './Home';
 import Profile from './components/Profile';
 import Form from './components/Form';
-import Profiledata from './Profiledata';
+import Profiledata from './components/Profiledata';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import PainoData from "./components/PainoData";
 

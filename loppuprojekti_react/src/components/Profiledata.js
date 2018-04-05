@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {Image} from 'react-bootstrap';
-import chart from './chart.png';
+import chart from '../chart.png';
+import GrafiikkaTieto from './GrafiikkaTieto';
 
-import NaviWhenLoggedIn from "./NaviWhenLoggedIn";
+import NaviWhenLoggedIn from "../NaviWhenLoggedIn";
 import { LineChart, PieChart, AreaChart, DoughnutChart } from 'react-chartkick';
-import Chart from '../node_modules/chart.js/src/chart'
-window.Chart = require('../node_modules/chart.js/src/chart');
+import Chart from '../../node_modules/chart.js/src/chart'
+window.Chart = require('../../node_modules/chart.js/src/chart');
 
 
 
@@ -17,8 +18,19 @@ var data = [
 
 class Profiledata extends Component {
     render() {
+
+        var uusiLista = this.props.tiedot.map(function(tieto) {
+            return (<GrafiikkaTieto tieto={tieto} key={tieto.painoId}/>);
+        });
+
+
         return (
             <div>
+
+                <li>
+                    {uusiLista}
+                </li>
+
                 <nav className="Navi">
                     <NaviWhenLoggedIn{...this.props}/>
                 </nav>

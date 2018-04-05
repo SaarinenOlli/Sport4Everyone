@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import Form from "./Form";
 import TietoLista from "./TietoLista";
+import Profiledata from "./Profiledata";
 
 // Haetaan painodata tietokannasta by Heidi
 
@@ -41,6 +42,8 @@ class PainoData extends Component {
             <div>
                 <Form tiedotSyotetty = {this.tiedotSyotetty}/>
                 <TietoLista tiedot = {this.state.data}/>
+                <Profiledata tiedot = {this.state.data}/>
+
             </div>
         );
     }

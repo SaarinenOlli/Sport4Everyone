@@ -10,6 +10,7 @@ class TietoLista extends Component {
 
 
         return(
+
             <ul className="tietolista">
                 {tiedotListana}
             </ul>
