@@ -12,17 +12,17 @@ import org.springframework.context.annotation.Bean;
 import java.time.LocalDate;
 
 @SpringBootApplication
-public class LoppuprojektiApplication {
+public class Application {
 
 	@Autowired
 	PainoRepo pr;
 
 	public static void main(String[] args) {
-		SpringApplication.run(LoppuprojektiApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
-
-//	Väliaikesn tietokannan käyttöön luotua dataa ja CommandlineRunner by Heidi Ja Elina
+//  by Heidi Ja Elina
+//	Väliaikaisen tietokannan käyttöön luotua dataa ja CommandlineRunner
 	@Bean
 	public CommandLineRunner koira() {
 		return (args) -> {
