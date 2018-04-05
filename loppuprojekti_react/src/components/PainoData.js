@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import Form from "./Form";
 import TietoLista from "./TietoLista";
 import Profiledata from "./Profiledata";
+import ErrorButton from "./ErrorButton";
 
 // Haetaan painodata tietokannasta by Heidi
 
@@ -32,9 +33,17 @@ class PainoData extends Component {
             body: JSON.stringify(paino)
         })
             .then(function (response) {
+                if (response.status < 300)
                 this.haePainotJaPaivita();
+                else
+                    throw new Error(response.statusText);
 
-            }.bind(this));
+            }.bind(this))
+            .catch(function (err) {
+                // virheilmoitus, uusi sivu tai dialogi tai popup tms.
+                console.log(err.message)
+        });
+
     }
 
     render() {
@@ -43,7 +52,7 @@ class PainoData extends Component {
                 <Form tiedotSyotetty = {this.tiedotSyotetty}/>
                 <TietoLista tiedot = {this.state.data}/>
                 <Profiledata tiedot = {this.state.data}/>
-
+                <ErrorButton/>
             </div>
         );
     }
