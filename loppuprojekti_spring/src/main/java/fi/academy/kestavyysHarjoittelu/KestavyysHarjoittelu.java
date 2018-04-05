@@ -20,12 +20,12 @@ public class KestavyysHarjoittelu {
     private LocalDate pvm;
     private Integer kestoMin;
     private String laji;
-    private Integer matkaKm;
+    private Double matkaKm;
 
     public KestavyysHarjoittelu() {
     }
 
-    public KestavyysHarjoittelu(@NotNull int kayttajaId, LocalDate pvm, Integer kestoMin, String laji, Integer matkaKm) {
+    public KestavyysHarjoittelu(@NotNull int kayttajaId, LocalDate pvm, Integer kestoMin, String laji, Double matkaKm) {
         this.kayttajaId = kayttajaId;
         this.pvm = pvm;
         this.kestoMin = kestoMin;
@@ -73,11 +73,11 @@ public class KestavyysHarjoittelu {
         this.laji = laji;
     }
 
-    public Integer getMatkaKm() {
+    public Double getMatkaKm() {
         return matkaKm;
     }
 
-    public void setMatkaKm(Integer matkaKm) {
+    public void setMatkaKm(Double matkaKm) {
         this.matkaKm = matkaKm;
     }
 }

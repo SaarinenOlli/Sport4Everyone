@@ -18,11 +18,11 @@ public class Paino {
     private int kayttajaId;
     // ei ole aivan varmaa vielä, onko LocalDate sopiva formaatti
     private LocalDate pvm;
-    private Integer painoKiloina;
+    private Double painoKiloina;
 
     public Paino() { }
 
-    public Paino(int kayttajaId, LocalDate pvm, int paino) {
+    public Paino(int kayttajaId, LocalDate pvm, double paino) {
         this.kayttajaId = kayttajaId;
         this.pvm = pvm;
         this.painoKiloina = paino;
@@ -61,11 +61,11 @@ public class Paino {
         this.pvm = pvm;
     }
 
-    public Integer getPainoKiloina() {
+    public Double getPainoKiloina() {
         return painoKiloina;
     }
 
-    public void setPainoKiloina(Integer paino) {
+    public void setPainoKiloina(Double paino) {
         this.painoKiloina = paino;
     }
 }
