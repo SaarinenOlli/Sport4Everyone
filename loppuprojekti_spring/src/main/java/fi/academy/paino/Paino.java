@@ -3,21 +3,24 @@ package fi.academy.paino;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 // By Heidi ja Elina
-// Ensimmäinen versio (minimitoteutus pv.1) : Luodaan painolle taulu
+// Tietokannan painotaulua vastaava Entity-luokka
 
 @Entity
 public class Paino {
-    @Id @GeneratedValue
+    @Id @NotNull
+    @GeneratedValue
     private int painoId;
+    @NotNull
     private int kayttajaId;
+    // ei ole aivan varmaa vielä, onko LocalDate sopiva formaatti
     private LocalDate pvm;
     private Integer painoKiloina;
 
-    public Paino() {
-    }
+    public Paino() { }
 
     public Paino(int kayttajaId, LocalDate pvm, int paino) {
         this.kayttajaId = kayttajaId;
@@ -25,14 +28,14 @@ public class Paino {
         this.painoKiloina = paino;
     }
 
-    public void paivitaTiedot(Paino uusiPaino) {
-        if (uusiPaino.painoKiloina != null) {
-            this.painoKiloina = uusiPaino.painoKiloina;
-        }
-        if (uusiPaino.pvm != null) {
-            this.pvm = uusiPaino.pvm;
-        }
-    }
+    // Lomakkeelta saadut tiedot päivitetään samalle id:lle
+//    public void paivitaTiedot(Paino uusiPaino) {
+//        // Ylikirjoitetaan vanha painotieto uudella vain, jos molemmat kentät täytetty
+//        if (uusiPaino.painoKiloina != null && uusiPaino.pvm != null) {
+//            this.painoKiloina = uusiPaino.painoKiloina;
+//            this.pvm = uusiPaino.pvm;
+//        }
+//    }
 
     public int getPainoId() {
         return painoId;
@@ -58,7 +61,7 @@ public class Paino {
         this.pvm = pvm;
     }
 
-    public int getPainoKiloina() {
+    public Integer getPainoKiloina() {
         return painoKiloina;
     }
 
