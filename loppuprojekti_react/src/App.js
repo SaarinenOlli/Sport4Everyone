@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
 import Home from './Home';
-import Profile from './Profile';
-import Form from './Form';
+import Profile from './components/Profile';
+import Form from './components/Form';
 import Profiledata from './Profiledata';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import PainoData from "./PainoData";
+import PainoData from "./components/PainoData";
 
 const App = appProps => (
     <Router>
