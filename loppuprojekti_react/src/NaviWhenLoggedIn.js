@@ -1,11 +1,13 @@
 import React, {Component} from "react";
 import {Navbar} from 'react-bootstrap';
-import {Nav, Button} from 'react-bootstrap';
+import {Nav, Button, NavItem} from 'react-bootstrap';
 import {auth} from './FireBase';
 
 class NaviWhenLoggedIn extends Component {
 
     logout = () => {
+        const user = auth.CurrentUser;
+
         auth.signOut()
             .then(() => {
                 this.setState({
@@ -22,7 +24,7 @@ class NaviWhenLoggedIn extends Component {
                 <Navbar inverse>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <a href="#home">Sport4Everyone</a>
+                                <a href="#Home">Sport4Everyone</a>
                         </Navbar.Brand>
                     </Navbar.Header>
                     <Nav pullRight>

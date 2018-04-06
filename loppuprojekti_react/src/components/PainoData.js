@@ -1,21 +1,24 @@
-
 import React, {Component} from 'react';
 import Form from "./Form";
 import TietoLista from "./TietoLista";
 import Profiledata from "./Profiledata";
 import ErrorButton from "./ErrorButton";
+import NaviWhenLoggedIn from "../NaviWhenLoggedIn";
+import {auth} from '../FireBase';
+import ErrorPageIfNotLoggedIn from "./ErrorPageIfNotLoggedIn";
 
 // Haetaan painodata tietokannasta by Heidi
 
 class PainoData extends Component {
 
-    state = {data:[]}
-    componentDidMount(){
+    state = {data: []}
+
+    componentDidMount() {
         this.haePainotJaPaivita();
     }
 
     // Virhekäsittelyt bu Heidi ja Elina
-    haePainotJaPaivita(){
+    haePainotJaPaivita() {
         fetch('/painot')
             .then(function (response) {
                 if (response.status === 200 || response.status === 304)
@@ -30,13 +33,13 @@ class PainoData extends Component {
             })
             .then(function (json) {
                 console.dir(json);
-                this.setState({data:json})
+                this.setState({data: json})
             }.bind(this));
     }
 
     tiedotSyotetty = (tiedot) => {
         let paino = {painoKiloina: tiedot.pysty, pvm: tiedot.vaaka, painoid: tiedot.korvamerkattuuid};
-        fetch('/painot',{
+        fetch('/painot', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(paino)
@@ -51,12 +54,12 @@ class PainoData extends Component {
             .catch(function (err) {
                 // virheilmoitus, uusi sivu tai dialogi tai popup tms.
                 console.log(err.message)
-        });
+            });
     }
 
     poistaQuote = (poistettavanId) => {
         fetch('/painot/' + poistettavanId,
-                 {method: 'DELETE'})
+            {method: 'DELETE'})
             .then(function (response) {
                 if (response.status < 300) //MIKÄ TÄHÄN OIKEA??
                     this.haePainotJaPaivita();
@@ -69,14 +72,25 @@ class PainoData extends Component {
     }
 
     render() {
-        return (
-            <div>
-                <Form tiedotSyotetty = {this.tiedotSyotetty}/>
-                <TietoLista tiedot = {this.state.data} poista={this.poistaQuote}/>
-                <Profiledata data = {this.state.data}/>
-                <ErrorButton/>
-            </div>
-        );
+        const user = auth.currentUser;
+
+        if (user === null) {
+            return (
+                    <ErrorPageIfNotLoggedIn/>
+            )
+        } else {
+            return (
+                <div>
+                    <div>
+                        <NaviWhenLoggedIn {...this.props}/>
+                    </div>
+                    <Form tiedotSyotetty={this.tiedotSyotetty}/>
+                    <TietoLista tiedot={this.state.data} poista={this.poistaQuote}/>
+                    <Profiledata data={this.state.data}/>
+                    <ErrorButton/>
+                </div>
+            );
+        }
     }
 }
 
