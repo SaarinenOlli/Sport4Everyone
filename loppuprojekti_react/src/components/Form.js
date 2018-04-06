@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
+import Navi from "../Navi";
+
 
 class Form extends Component {
 
-    state = {vaaka: '', pysty: ''}
+    state = {vaaka: '', pysty: '', kayttajaId: Navi.korvamerkattuuid}
 
     syotaVaakaTieto = (event) => {
         this.setState({vaaka: event.target.value});
@@ -14,25 +16,19 @@ class Form extends Component {
     ready = (event) => {
         event.preventDefault();
         this.props.tiedotSyotetty(this.state);
-        this.setState({vaaka: '', pysty: ''});
+        this.setState({vaaka: '', pysty: '', kayttajaId: Navi.korvamerkattuuid});
     }
 
     render() {
         return (
             <form onSubmit={this.ready}>
-
-                Päivämäärä: <input value={this.state.vaaka} type="date" required="required"
-                                   placeholder="vvvv-kk-pp" onChange={this.syotaVaakaTieto}/>
+                Päivämäärä: <input value={this.state.vaaka} onChange={this.syotaVaakaTieto}/>
                 <br/>
-                Paino (kg): <input value={this.state.pysty} type="number" min={0} max={200}
-                                   required="required" onChange={this.syotaPystyTieto}/>
-                <br/>
-                <input type="submit"/>
-
-            </form>
-        );
+                Paino: <input value={this.state.pysty} onChange={this.syotaPystyTieto}/>
+                < br/>
+                < input type="submit"/>
+            </form>);
     }
 }
-
 
 export default Form;
