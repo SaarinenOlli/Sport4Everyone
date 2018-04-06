@@ -18,16 +18,16 @@ class Tieto extends Component {
 // painoKiloina = pystyakseli
     render() {
         return (
-            <li className="Tieto">
-                {this.props.tieto.pvm}<br/>
-                {this.props.tieto.painoKiloina}<br/>
-                {this.props.tieto.painoId}
+            <div className="Tieto">
+                päiväys: {this.props.tieto.pvm}<br/>
+                paino: {this.props.tieto.painoKiloina} kg<br/>
+                kirjauksen id: {this.props.tieto.painoId}
                 <form>
                     <button onClick={this.poista}>Poista</button>
                 </form>
 
 
-            </li>
+            </div>
         );
     }
 }

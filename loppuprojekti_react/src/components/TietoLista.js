@@ -12,9 +12,9 @@ class TietoLista extends Component {
 
         return(
 
-            <ul className="tietolista">
+            <div className="tietolista">
                 {tiedotListana}
-            </ul>
+            </div>
         );
     }
 }

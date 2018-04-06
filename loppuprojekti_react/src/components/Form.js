@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Navi from "../Navi";
-
+import './Form.css';
 
 class Form extends Component {
 
@@ -26,7 +26,7 @@ class Form extends Component {
                 Päivämäärä: <input value={this.state.vaaka} type="date" required="required"
                                    placeholder="vvvv-kk-pp" onChange={this.syotaVaakaTieto}/>
                 <br/>
-                Paino (kg): <input value={this.state.pysty} type="number" min={0} max={200}
+                Paino (kg): <input value={this.state.pysty} type="number" min={0} max={200} step={0.01}
                                    required="required" onChange={this.syotaPystyTieto}/>
 
                 <input type="submit"/>
