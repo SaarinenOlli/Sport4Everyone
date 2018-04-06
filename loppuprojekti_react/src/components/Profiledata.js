@@ -26,9 +26,6 @@ class Profiledata extends Component {
 
         return (
             <div>
-                <nav className="Navi">
-                    <NaviWhenLoggedIn{...this.props}/>
-                </nav>
                     {/*@Renne TÄssä luodaan Chart.js:n avulla kivoja graafeja!*/}
                     <div style={{display: 'flex', justifyContent: 'center'}}>
                         <LineChart width="60%" xtitle="Time" ytitle="Weight" data={graafidata}  />

@@ -1,20 +1,25 @@
-
 import React, {Component} from 'react';
 import Form from "./Form";
 import TietoLista from "./TietoLista";
 import Profiledata from "./Profiledata";
 import ErrorButton from "./ErrorButton";
+import NaviWhenLoggedIn from "../NaviWhenLoggedIn";
+import {auth} from '../FireBase';
+import ErrorPageIfNotLoggedIn from "./ErrorPageIfNotLoggedIn";
+import Dialog from 'react-bootstrap-dialog';
 
-// Haetaan painodata tietokannasta by Heidi
 
 class PainoData extends Component {
 
-    state = {data:[]}
-    componentDidMount(){
+    state = {data: []}
+
+    componentDidMount() {
         this.haePainotJaPaivita();
     }
 
-    // Virhekäsittelyt bu Heidi ja Elina
+    // Haetaan painodata tietokannasta by Heidi
+    // Virhekäsittelyt by Heidi ja Elina
+
     haePainotJaPaivita(){
         fetch('/painot')
             .then(function (response) {
@@ -30,13 +35,15 @@ class PainoData extends Component {
             })
             .then(function (json) {
                 console.dir(json);
-                this.setState({data:json})
+                this.setState({data: json})
             }.bind(this));
     }
 
+    // Käyttäjä syöttää painon ja päivämäärän
+
     tiedotSyotetty = (tiedot) => {
-        let paino = {painoKiloina: tiedot.pysty, pvm: tiedot.vaaka, painoid: tiedot.korvamerkattuuid};
-        fetch('/painot',{
+        let paino = {painoKiloina: tiedot.pysty, pvm: tiedot.vaaka, kayttajaId: auth.currentUser.uid};
+        fetch('/painot', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(paino)
@@ -51,10 +58,10 @@ class PainoData extends Component {
             .catch(function (err) {
                 // virheilmoitus, uusi sivu tai dialogi tai popup tms.
                 console.log(err.message)
-        });
+            });
     }
 
-    poistaQuote = (poistettavanId) => {
+    poistaPaino = (poistettavanId) => {
         fetch('/painot/' + poistettavanId,
                  {method: 'DELETE'})
             .then(function (response) {
@@ -69,14 +76,25 @@ class PainoData extends Component {
     }
 
     render() {
-        return (
-            <div>
-                <Form tiedotSyotetty = {this.tiedotSyotetty}/>
-                <TietoLista tiedot = {this.state.data} poista={this.poistaQuote}/>
-                <Profiledata data = {this.state.data}/>
-                <ErrorButton/>
-            </div>
-        );
+        const user = auth.currentUser;
+
+        if (user === null) {
+            return (
+                    <ErrorPageIfNotLoggedIn/>
+            )
+        } else {
+            return (
+                <div>
+                    <div>
+                        <NaviWhenLoggedIn {...this.props}/>
+                    </div>
+                    <Form tiedotSyotetty={this.tiedotSyotetty}/>
+                    <TietoLista tiedot={this.state.data} poista={this.poistaQuote}/>
+                    <Profiledata data={this.state.data}/>
+                    <ErrorButton/>
+                </div>
+            );
+        }
     }
 }
 
