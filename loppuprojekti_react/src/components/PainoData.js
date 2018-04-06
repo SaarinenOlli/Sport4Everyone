@@ -38,7 +38,7 @@ class PainoData extends Component {
     }
 
     tiedotSyotetty = (tiedot) => {
-        let paino = {painoKiloina: tiedot.pysty, pvm: tiedot.vaaka, painoid: tiedot.korvamerkattuuid};
+        let paino = {painoKiloina: tiedot.pysty, pvm: tiedot.vaaka, kayttajaId: auth.currentUser.uid};
         fetch('/painot', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
