@@ -42,8 +42,7 @@ class PainoData extends Component {
             <div>
                 <Form tiedotSyotetty = {this.tiedotSyotetty}/>
                 <TietoLista tiedot = {this.state.data}/>
-                <Profiledata tiedot = {this.state.data}/>
-
+                <Profiledata data = {this.state.data}/>
             </div>
         );
     }

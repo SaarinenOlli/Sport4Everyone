@@ -4,9 +4,8 @@ class GrafiikkaTieto extends Component {
 
     render() {
         return (
-            <li className="Tieto">
-                "{this.props.tieto.pvm}":{this.props.tieto.painoKiloina}
-            </li>
+                <p>"{this.props.tieto.pvm}":{this.props.tieto.painoKiloina},</p>
+
         );
     }
 }
