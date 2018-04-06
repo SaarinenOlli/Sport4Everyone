@@ -6,8 +6,8 @@ import ErrorButton from "./ErrorButton";
 import NaviWhenLoggedIn from "../NaviWhenLoggedIn";
 import {auth} from '../FireBase';
 import ErrorPageIfNotLoggedIn from "./ErrorPageIfNotLoggedIn";
+import Dialog from 'react-bootstrap-dialog';
 
-// Haetaan painodata tietokannasta by Heidi
 
 class PainoData extends Component {
 
@@ -17,8 +17,10 @@ class PainoData extends Component {
         this.haePainotJaPaivita();
     }
 
-    // Virhekäsittelyt bu Heidi ja Elina
-    haePainotJaPaivita() {
+    // Haetaan painodata tietokannasta by Heidi
+    // Virhekäsittelyt by Heidi ja Elina
+
+    haePainotJaPaivita(){
         fetch('/painot')
             .then(function (response) {
                 if (response.status === 200 || response.status === 304)
@@ -37,8 +39,10 @@ class PainoData extends Component {
             }.bind(this));
     }
 
+    // Käyttäjä syöttää painon ja päivämäärän
+
     tiedotSyotetty = (tiedot) => {
-        let paino = {painoKiloina: tiedot.pysty, pvm: tiedot.vaaka, painoid: tiedot.korvamerkattuuid};
+        let paino = {painoKiloina: tiedot.pysty, pvm: tiedot.vaaka, kayttajaId: auth.currentUser.uid};
         fetch('/painot', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -57,9 +61,9 @@ class PainoData extends Component {
             });
     }
 
-    poistaQuote = (poistettavanId) => {
+    poistaPaino = (poistettavanId) => {
         fetch('/painot/' + poistettavanId,
-            {method: 'DELETE'})
+                 {method: 'DELETE'})
             .then(function (response) {
                 if (response.status < 300) //MIKÄ TÄHÄN OIKEA??
                     this.haePainotJaPaivita();
