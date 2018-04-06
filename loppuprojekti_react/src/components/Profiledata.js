@@ -17,8 +17,12 @@ window.Chart = require('../../node_modules/chart.js/src/chart');
 
 class Profiledata extends Component {
     render() {
-        //Otetaan tietokannan data ja puretaan JSON sellaiseen muotoon, että chart.js osaa siitä piirtää kivan taulukon. @Renne @Olli
         const graafidata = this.props.data.reduce((acc, datum) => { acc[datum.pvm] = datum.painoKiloina; return acc; }, {});
+/*        var uusiLista = this.props.tiedot.map(function(tieto) {
+            return (<GrafiikkaTieto tieto={tieto} key={tieto.painoId}/>);
+        });*/
+
+
 
         return (
             <div>
@@ -27,7 +31,7 @@ class Profiledata extends Component {
                 </nav>
                     {/*@Renne TÄssä luodaan Chart.js:n avulla kivoja graafeja!*/}
                     <div style={{display: 'flex', justifyContent: 'center'}}>
-                        <LineChart width="40%" xtitle="Time" ytitle="Weight" label="Paino" min={50} max={100} data={graafidata}  />
+                        <LineChart width="40%" xtitle="Time" ytitle="Weight" min={50} max={100} data={graafidata}  />
                     </div>
                         <div style={{display: 'flex', justifyContent: 'center'}}>
                         <PieChart donut={true} max={100} data={[["Steps", 8544], ["Steps from goal", 1456]]}  />

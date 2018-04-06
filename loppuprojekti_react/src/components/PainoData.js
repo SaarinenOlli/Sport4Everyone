@@ -73,7 +73,7 @@ class PainoData extends Component {
             <div>
                 <Form tiedotSyotetty = {this.tiedotSyotetty}/>
                 <TietoLista tiedot = {this.state.data} poista={this.poistaQuote}/>
-                {/*<Profiledata tiedot = {this.state.data}/>*/}
+                <Profiledata data = {this.state.data}/>
                 <ErrorButton/>
             </div>
         );
