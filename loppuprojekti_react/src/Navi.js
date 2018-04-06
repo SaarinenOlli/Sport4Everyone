@@ -4,6 +4,7 @@ import {Navbar} from 'react-bootstrap';
 import {NavDropdown} from 'react-bootstrap';
 import {MenuItem} from 'react-bootstrap';
 import {Glyphicon} from 'react-bootstrap';
+import Dialog from 'react-bootstrap-dialog';
 import {Modal, Button, FormGroup, ControlLabel, FormControl} from 'react-bootstrap';
 import {auth, googleProvider} from './FireBase';
 
@@ -11,19 +12,24 @@ class Navi extends Component {
 
     constructor(props, context) {
         super(props, context);
+        super();
 
         this.handleHide = this.handleHide.bind(this);
+        this.handleForgottenPassword = this.handleForgottenPassword.bind(this);
+
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
 
         this.state = {
             showlogin: false,
             showregister: false,
+            showForgottenPassword: false,
             username: '',
             user: null,
             email: '',
             password: '',
-            value: ''
+            value: '',
+            errorMessage: '',
         };
     }
 
@@ -36,10 +42,16 @@ class Navi extends Component {
         this.setState({password: event.target.value});
     }
 
+    //Näytetään modaaliboksi, jossa voi lähettää salasanan reset linkin käyttäjän sähköpostiin.
+    handleForgottenPassword(){
+        this.setState({showForgottenPassword: true});
+    }
+
     //Modaaliboksien piilotus @Tiina
     handleHide() {
         this.setState({showlogin: false});
         this.setState({showregister: false});
+        this.setState({showForgottenPassword: false});
     }
 
     //Modaaliboksien näyttö sen mukaan onko klikattu log in vai register @Tiina
@@ -64,6 +76,10 @@ class Navi extends Component {
                     showlogin: false
                 });
                 this.props.history.push('/profile');
+            })
+            .catch(error => {
+                this.dialog.showAlert(error.message);
+                console.log(error.message);
             });
     }
 
@@ -82,11 +98,15 @@ class Navi extends Component {
                     showlogin: false
                 });
                 this.props.history.push('/profile');
+            })
+            .catch(error => {
+                this.dialog.showAlert(error.message);
+                console.log(error.message);
             });
+
     }
 
     //Käyttäjä kirjautuu sisälle omilla olemassa olevilla sähköpostitunnuksilla. @Tiina
-    //Tähän tarvitaan virhekäsittely, esim. jos tunnusta ei ole olemassa.
     loginWithEmail = () => {
         const email = this.state.email;
         const password = this.state.password;
@@ -99,6 +119,23 @@ class Navi extends Component {
                     showlogin: false
                 });
                 this.props.history.push('/profile');
+            })
+            .catch(error => {
+                this.dialog.showAlert(error.message);
+                console.log(error.message);
+            });
+    }
+
+    //Resetoidaan käyttäjän salasana @Tiina
+    resetPassword = () => {
+        const emailAddress = this.state.email;
+
+        auth.sendPasswordResetEmail(emailAddress)
+            .then(() => {
+                this.dialog.showAlert("Email has been sent!")
+            })
+            .catch(error => {
+                this.dialog.showAlert(error.message);
             });
     }
 
@@ -107,6 +144,7 @@ class Navi extends Component {
         auth.onAuthStateChanged((user) => {
             if (user) {
                 this.setState({user});
+
             }
         });
     }
@@ -149,28 +187,33 @@ class Navi extends Component {
                         <Modal.Body>
                             <div>
                                 <FormGroup
-                                    controlId="formBasicText"
+                                    controlId="form"
                                 >
                                     <ControlLabel>Log in with your email</ControlLabel>
                                     <FormControl
                                         type="text"
                                         value={this.state.email}
+                                        id="email"
                                         placeholder="Enter email"
                                         onChange={this.handleEmailChange}
                                     />
                                     <FormControl
                                         type="password"
                                         value={this.state.password}
+                                        id="password"
                                         placeholder="Enter password"
                                         onChange={this.handlePasswordChange}
                                     />
                                     <FormControl.Feedback/>
                                     <Button onClick={this.loginWithEmail}>Log in</Button>
+                                    <Dialog ref={(el) => { this.dialog = el }} />
                                 </FormGroup>
                                 <Button onClick={this.loginGoogle}>Login with Google</Button>
+                                <Dialog ref={(el) => { this.dialog = el }} />
                             </div>
                         </Modal.Body>
                         <Modal.Footer>
+                            <Button onClick={this.handleForgottenPassword}>Forgot your password?</Button>
                             <Button onClick={this.handleHide}>Close</Button>
                         </Modal.Footer>
                     </Modal>
@@ -192,7 +235,7 @@ class Navi extends Component {
                         <Modal.Body>
                             <div>
                                 <FormGroup
-                                    controlId="formBasicText"
+                                    controlId="formi"
                                 >
                                     <ControlLabel>Register with your email</ControlLabel>
                                     <FormControl
@@ -209,6 +252,49 @@ class Navi extends Component {
                                     />
                                     <FormControl.Feedback/>
                                     <Button onClick={this.registerWithEmail}>Register</Button>
+                                    <Dialog ref={(el) => { this.dialog = el }} />
+                                </FormGroup>
+                            </div>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button onClick={this.handleHide}>Close</Button>
+                        </Modal.Footer>
+                    </Modal>
+                </div>
+
+
+                {/*Näytetään forgotten password modaaliboksi silloin kun on klikattu log in-ikkunasta forgotten password.*/}
+                <div className="modal-container" style={{height: 10}}>
+                    <Modal
+                        show={this.state.showForgottenPassword}
+                        onHide={this.handleHide}
+                        container={this}
+                        aria-labelledby="contained-modal-title"
+                    >
+                        <Modal.Header closeButton>
+                            <Modal.Title id="contained-modal-title">
+                                Forgot your password?
+                            </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <div>
+                                <FormGroup
+                                    controlId="formBasicText"
+                                >
+                                    <ControlLabel>
+                                        Please enter your email, and we’ll help you create a new password.<br/>
+                                        You'll receive an email for resetting your password.
+                                    </ControlLabel>
+                                    <p></p>
+                                    <FormControl
+                                        type="text"
+                                        value={this.state.email}
+                                        placeholder="Enter email"
+                                        onChange={this.handleEmailChange}
+                                    />
+                                    <FormControl.Feedback/>
+                                    <Button onClick={this.resetPassword}>Send email</Button>
+                                    <Dialog ref={(el) => { this.dialog = el }} />
                                 </FormGroup>
                             </div>
                         </Modal.Body>
