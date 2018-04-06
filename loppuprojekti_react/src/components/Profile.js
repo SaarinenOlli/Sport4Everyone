@@ -17,7 +17,6 @@ class Profile extends Component {
                 <ErrorPageIfNotLoggedIn/>
             )
         } else {
-
             return (
                 <div>
                     <nav className="Navi">

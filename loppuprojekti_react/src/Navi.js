@@ -187,7 +187,7 @@ class Navi extends Component {
                         <Modal.Body>
                             <div>
                                 <FormGroup
-                                    controlId="formBasicText"
+                                    controlId="form"
                                 >
                                     <ControlLabel>Log in with your email</ControlLabel>
                                     <FormControl
@@ -235,7 +235,7 @@ class Navi extends Component {
                         <Modal.Body>
                             <div>
                                 <FormGroup
-                                    controlId="formBasicText"
+                                    controlId="formi"
                                 >
                                     <ControlLabel>Register with your email</ControlLabel>
                                     <FormControl

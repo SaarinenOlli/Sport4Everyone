@@ -1,5 +1,6 @@
-import {Jumbotron, Navbar} from 'react-bootstrap';
+import {Jumbotron, Navbar, NavItem} from 'react-bootstrap';
 import React, {Component} from "react";
+import '../App.css';
 
 class ErrorPageIfNotLoggedIn extends Component {
     //Tämä on error-sivu, joka tulee näkyviin jos joku yrittää päästä muulle sivulle kuin kotisivulle,
