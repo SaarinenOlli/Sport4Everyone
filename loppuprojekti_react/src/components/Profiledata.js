@@ -27,7 +27,7 @@ class Profiledata extends Component {
                 </nav>
                     {/*@Renne TÄssä luodaan Chart.js:n avulla kivoja graafeja!*/}
                     <div style={{display: 'flex', justifyContent: 'center'}}>
-                        <LineChart width="40%" xtitle="Time" ytitle="Weight" min={50} max={100} data={graafidata}  />
+                        <LineChart width="40%" xtitle="Time" ytitle="Weight" label="Paino" min={50} max={100} data={graafidata}  />
                     </div>
                         <div style={{display: 'flex', justifyContent: 'center'}}>
                         <PieChart donut={true} max={100} data={[["Steps", 8544], ["Steps from goal", 1456]]}  />
