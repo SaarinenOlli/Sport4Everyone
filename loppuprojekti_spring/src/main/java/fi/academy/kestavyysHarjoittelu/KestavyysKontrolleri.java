@@ -1,8 +1,5 @@
 package fi.academy.kestavyysHarjoittelu;
 
-// By Heidi ja Elina
-// RestKontrolleri, jossa metodit kestavyysharjoitteludatan hakemiseen, poistamiseen ja lisäämiseen
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +9,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Optional;
+
+// By Heidi ja Elina
+// RestKontrolleri, jossa metodit kestavyysharjoitteludatan hakemiseen, poistamiseen ja lisäämiseen
 
 public class KestavyysKontrolleri {
 
@@ -54,7 +54,7 @@ public class KestavyysKontrolleri {
     // Uuden kestävyysharjoituksen lisääminen tietokantaan (lomake)
     @PostMapping("/kestavyys")
     public ResponseEntity<?> uusiHarjoitus(@RequestBody KestavyysHarjoittelu kest) throws URISyntaxException {
-        // Tarkistetaan, että lomakkelta saadulla harjoituksella on tarvittavat arvot
+        // Tarkistetaan, että lomakkeelta saadulla harjoituksella on tarvittavat arvot
         if (kest.getLaji() == null || kest.getPvm() == null || kest.getKestoMin() == null || kest.getMatkaKm() == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }

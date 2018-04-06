@@ -1,3 +1,4 @@
+
 package fi.academy.paino;
 
 import javax.persistence.Entity;
@@ -14,21 +15,21 @@ public class Paino {
     @Id @NotNull
     @GeneratedValue
     private int painoId;
-    @NotNull
-    private int kayttajaId;
+    // @NotNull // Otetaan käyttöön myöhemmin, kun käyttäjäid:n tallettaminen lomakkeella onnistuu
+    private String kayttajaId;
     // ei ole aivan varmaa vielä, onko LocalDate sopiva formaatti
     private LocalDate pvm;
     private Integer painoKiloina;
 
     public Paino() { }
 
-    public Paino(int kayttajaId, LocalDate pvm, int paino) {
+    public Paino(String kayttajaId, LocalDate pvm, int paino) {
         this.kayttajaId = kayttajaId;
         this.pvm = pvm;
         this.painoKiloina = paino;
     }
 
-    // Lomakkeelta saadut tiedot päivitetään samalle id:lle
+// Lomakkeelta saadut tiedot päivitetään samalle id:lle
 //    public void paivitaTiedot(Paino uusiPaino) {
 //        // Ylikirjoitetaan vanha painotieto uudella vain, jos molemmat kentät täytetty
 //        if (uusiPaino.painoKiloina != null && uusiPaino.pvm != null) {
@@ -45,11 +46,11 @@ public class Paino {
         this.painoId = painoId;
     }
 
-    public int getKayttajaId() {
+    public String getKayttajaId() {
         return kayttajaId;
     }
 
-    public void setKayttajaId(int kayttajaId) {
+    public void setKayttajaId(String kayttajaId) {
         this.kayttajaId = kayttajaId;
     }
 

@@ -3,13 +3,15 @@ import Tieto from './Tieto';
 
 class TietoLista extends Component {
     render() {
-        var tiedotListana = this.props.tiedot.map(function(tieto) {
-                return (<Tieto tieto={tieto} key={tieto.painoId}/>);
-        });
-
-
+        var tiedotListana = this.props.tiedot
+            .map(function(tieto) {
+                return (
+                    <Tieto tieto={tieto} poista={this.props.poista}
+                           key={tieto.painoId}/>);
+        }.bind(this));
 
         return(
+
             <ul className="tietolista">
                 {tiedotListana}
             </ul>
