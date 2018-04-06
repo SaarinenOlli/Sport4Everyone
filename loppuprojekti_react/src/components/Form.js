@@ -4,7 +4,7 @@ import Navi from "../Navi";
 
 class Form extends Component {
 
-    state = {vaaka: '', pysty: '', kayttajaId: Navi.korvamerkattuuid}
+    state = {vaaka: '', pysty: ''}
 
     syotaVaakaTieto = (event) => {
         this.setState({vaaka: event.target.value});
@@ -16,7 +16,7 @@ class Form extends Component {
     ready = (event) => {
         event.preventDefault();
         this.props.tiedotSyotetty(this.state);
-        this.setState({vaaka: '', pysty: '', kayttajaId: Navi.korvamerkattuuid});
+        this.setState({vaaka: '', pysty: ''});
     }
 
     /* Tässä versiossa on placeholderit ja päivämääräpalikat paikallaan*/
