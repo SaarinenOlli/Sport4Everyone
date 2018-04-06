@@ -73,6 +73,7 @@ class PainoData extends Component {
                     throw new Error(response.statusText);
             }.bind(this))
             .catch(function (err) {
+                // virheilmoitus, uusi sivu tai dialogi tai popup tms.
                 console.log(err.message)
             });
     }
