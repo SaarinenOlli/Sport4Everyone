@@ -15,7 +15,7 @@ public class Paino {
     @Id @NotNull
     @GeneratedValue
     private int painoId;
-    @NotNull
+    // @NotNull // Otetaan käyttöön myöhemmin, kun käyttäjäid:n tallettaminen lomakkeella onnistuu
     private String kayttajaId;
     // ei ole aivan varmaa vielä, onko LocalDate sopiva formaatti
     private LocalDate pvm;
@@ -69,6 +69,4 @@ public class Paino {
     public void setPainoKiloina(Integer paino) {
         this.painoKiloina = paino;
     }
-
-    
 }
