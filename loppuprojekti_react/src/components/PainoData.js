@@ -14,10 +14,19 @@ class PainoData extends Component {
         this.haePainotJaPaivita();
     }
 
+    // Virhekäsittelyt bu Heidi ja Elina
     haePainotJaPaivita(){
         fetch('/painot')
             .then(function (response) {
-                return response.json();
+                if (response.status === 200 || response.status === 304)
+                    return response.json();
+                else
+                    throw new Error(response.statusText);
+
+            }.bind(this)) // Mahdollisesti yksi .bind(this) haePainotJaPaivita lopussa saattaa riittää
+            .catch(function (err) {
+                // virheilmoitus, uusi sivu tai dialogi tai popup tms.
+                console.log(err.message)
             })
             .then(function (json) {
                 console.dir(json);
@@ -34,7 +43,7 @@ class PainoData extends Component {
         })
             .then(function (response) {
                 if (response.status < 300)
-                this.haePainotJaPaivita();
+                    this.haePainotJaPaivita();
                 else
                     throw new Error(response.statusText);
 
@@ -51,7 +60,7 @@ class PainoData extends Component {
             <div>
                 <Form tiedotSyotetty = {this.tiedotSyotetty}/>
                 <TietoLista tiedot = {this.state.data}/>
-                <Profiledata tiedot = {this.state.data}/>
+                {/*<Profiledata tiedot = {this.state.data}/>*/}
                 <ErrorButton/>
             </div>
         );
