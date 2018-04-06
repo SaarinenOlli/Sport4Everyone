@@ -68,4 +68,6 @@ public class Paino {
     public void setPainoKiloina(Double paino) {
         this.painoKiloina = paino;
     }
+
+    
 }

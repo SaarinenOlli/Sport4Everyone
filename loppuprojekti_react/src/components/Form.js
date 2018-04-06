@@ -17,6 +17,7 @@ class Form extends Component {
         this.setState({vaaka: '', pysty: ''});
     }
 
+    /* Tässä versiossa on placeholderit ja päivämääräpalikat paikallaan*/
     render() {
         return (
             <form onSubmit={this.ready}>
@@ -28,6 +29,7 @@ class Form extends Component {
                                    required="required" onChange={this.syotaPystyTieto}/>
                 <br/>
                 <input type="submit"/>
+
 
             </form>
         );
