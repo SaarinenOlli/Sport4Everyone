@@ -8,6 +8,7 @@ import {auth} from '../FireBase';
 import ErrorPageIfNotLoggedIn from "./ErrorPageIfNotLoggedIn";
 import Dialog from 'react-bootstrap-dialog';
 
+let delffiini;
 
 class PainoData extends Component {
 
@@ -21,7 +22,7 @@ class PainoData extends Component {
     // Virhekäsittelyt by Heidi ja Elina
 
     haePainotJaPaivita(){
-        fetch('/painot')
+        fetch('/painot/'+delffiini)
             .then(function (response) {
                 if (response.status === 200 || response.status === 304)
                     return response.json();
@@ -42,6 +43,7 @@ class PainoData extends Component {
     // Käyttäjä syöttää painon ja päivämäärän
 
     tiedotSyotetty = (tiedot) => {
+        delffiini = auth.currentUser.uid;
         let paino = {painoKiloina: tiedot.pysty, pvm: tiedot.vaaka, kayttajaId: auth.currentUser.uid};
         fetch('/painot', {
             method: 'POST',
