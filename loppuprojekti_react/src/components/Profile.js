@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import trophy from '../Resources/trophy.png';
-import profiilikuva from '../Resources/profiilikuva.png';
+import pelihahmo from '../Resources/pelihahmo.png';
 import kuvaaja from '../Resources/kuvaaja.png'
 import {Image, Col, Row, Carousel} from 'react-bootstrap';
 import NaviWhenLoggedIn from "../NaviWhenLoggedIn";
@@ -21,7 +21,7 @@ class Profile extends Component {
                 <Row>
                     <Col xs={1}/>
                 <Col xs={10} md={12}>
-                    <Image responsive="true" src={profiilikuva} circle/>
+                    <Image responsive="true" src={pelihahmo} circle/>
                 </Col>
                     <Col xs={1}/>
                 </Row>
