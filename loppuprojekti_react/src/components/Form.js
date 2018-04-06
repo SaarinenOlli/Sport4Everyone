@@ -19,16 +19,21 @@ class Form extends Component {
         this.setState({vaaka: '', pysty: '', kayttajaId: Navi.korvamerkattuuid});
     }
 
+    /* Tässä versiossa on placeholderit ja päivämääräpalikat paikallaan*/
     render() {
         return (
             <form onSubmit={this.ready}>
-                Päivämäärä: <input value={this.state.vaaka} onChange={this.syotaVaakaTieto}/>
+                Päivämäärä: <input value={this.state.vaaka} type="date" required="required"
+                                   placeholder="vvvv-kk-pp" onChange={this.syotaVaakaTieto}/>
                 <br/>
-                Paino: <input value={this.state.pysty} onChange={this.syotaPystyTieto}/>
-                < br/>
-                < input type="submit"/>
-            </form>);
+                Paino (kg): <input value={this.state.pysty} type="number" min={0} max={200}
+                                   required="required" onChange={this.syotaPystyTieto}/>
+
+                <input type="submit"/>
+
+
+            </form>
+        )
     }
 }
-
 export default Form;
