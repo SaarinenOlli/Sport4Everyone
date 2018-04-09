@@ -13,7 +13,7 @@ class Tieto extends Component {
         this.props.poista(this.props.tieto.painoId);
     }
 
-
+    // yksittäisen painotiedon esittävä elementti, jossa nappi itsensä poistamista varten -Olli
 // pvm = vaaka-akseli
 // painoKiloina = pystyakseli
     render() {

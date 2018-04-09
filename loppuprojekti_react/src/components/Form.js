@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Navi from "../Navi";
 import './Form.css';
 
+
+//Formi painotietojen syöttämistä varten -Olli
 class Form extends Component {
 
     state = {vaaka: '', pysty: ''}

@@ -31,14 +31,14 @@ public class PainoKontrolleri {
     }
 
     // Hakee yhden painotiedon painoid:n perusteella
-    @GetMapping("/painot/{id}")
-    public ResponseEntity<Paino> etsiTiettyPaino(@PathVariable(name="id") int id) {
-        Optional<Paino> optpaino = pr.findById(id);
-        if (!optpaino.isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(optpaino.get());
-    }
+//    @GetMapping("/painot/{id}")
+//    public ResponseEntity<Paino> etsiTiettyPaino(@PathVariable(name="id") int id) {
+//        Optional<Paino> optpaino = pr.findById(id);
+//        if (!optpaino.isPresent()) {
+//            return ResponseEntity.notFound().build();
+//        }
+//        return ResponseEntity.ok(optpaino.get());
+//    }
 
     // Yhden painotiedon poistaminen painoid:n perusteella
     @DeleteMapping("/painot/{id}")
@@ -87,8 +87,8 @@ public class PainoKontrolleri {
 //    }
 
     // Hakee yhden käyttäjän painotiedot käyttäjäid:n perusteella
-//    @GetMapping ("/painot/{id}")
-//    public Iterable<PainoTaulu> yhdenKayttajanPainot(@PathVariable(name = "id") int id){
-//       return pr.findAllBykayttajaId(id);
-//    }
+    @GetMapping ("/painot/{id}")
+   public Iterable<Paino> yhdenKayttajanPainot(@PathVariable(name = "id") String id){
+      return pr.findAllBykayttajaId(id);
+   }
 }
