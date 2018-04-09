@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import Form from "./Form";
 import TietoLista from "./TietoLista";
-import ProfileNavi from "../ProfileNavi";
-import NaviWhenLoggedIn from "../NaviWhenLoggedIn";
+import ProfileNavi from "../../ProfileNavi";
 import Profiledata from "../Profiledata";
 import ErrorButton from "../error/ErrorButton";
 import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
