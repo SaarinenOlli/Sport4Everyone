@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Navi from "../Navi";
+import Navi from "../../Navi";
 import './Form.css';
 
 

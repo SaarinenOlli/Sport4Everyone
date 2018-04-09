@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './Form.css';
+import '../paino/Form.css';
 
 class UintiForm extends Component {
     state = {pvm: '', kesto: '', matka: ''}

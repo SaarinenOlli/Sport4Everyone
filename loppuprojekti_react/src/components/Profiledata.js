@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Image} from 'react-bootstrap';
 import chart from '../chart.png';
 import GrafiikkaTieto from './GrafiikkaTieto';
-import PainoData from './PainoData';
+import PainoData from './paino/PainoData';
 
 import NaviWhenLoggedIn from "../NaviWhenLoggedIn";
 import { LineChart, PieChart, AreaChart, DoughnutChart } from 'react-chartkick';
