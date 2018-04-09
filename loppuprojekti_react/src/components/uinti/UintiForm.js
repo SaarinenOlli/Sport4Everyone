@@ -18,7 +18,7 @@ class UintiForm extends Component {
 
     ready = (event) => {
         event.preventDefault();
-        this.props.tiedotSyotetty(this.state);
+        this.props.uintiTiedotSyotetty(this.state);
         this.setState({pvm: '', kesto: '', matka: ''});
     }
 
@@ -28,11 +28,12 @@ class UintiForm extends Component {
                 Päivämäärä: <input value={this.state.pvm} type="date" required="required"
                                    onChange={this.syotaPvm}/>
                 <br/>
-                Kesto (min): <input value={this.state.kesto} type="number" min={0} step={0.01}
+                Kesto (min): <input value={this.state.kesto} type="number"
                                     required="required" onChange={this.syotaKesto}/>
                 <br/>
-                Matka (km): <input value={this.state.matka} type="number" min={0} step={0.01}
+                Matka (km): <input value={this.state.matka} type="number"
                                    required="required" onChange={this.syotaMatka}/>
+                <input type="submit"/>
             </form>
         )
     }
