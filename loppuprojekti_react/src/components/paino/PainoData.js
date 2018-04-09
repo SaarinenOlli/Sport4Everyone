@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import Form from "./Form";
 import TietoLista from "./TietoLista";
+import ProfileNavi from "../ProfileNavi";
+import NaviWhenLoggedIn from "../NaviWhenLoggedIn";
 import Profiledata from "../Profiledata";
 import ErrorButton from "../error/ErrorButton";
 import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
@@ -113,6 +115,7 @@ class PainoData extends Component {
                     </div>
                     <Form tiedotSyotetty={this.tiedotSyotetty}/>
                     <TietoLista tiedot={this.state.data} poista={this.poistaPaino}/>
+                    <ProfileNavi/>
                     <Profiledata data={this.state.data}/>
                     <ErrorButton/>
                 </div>
