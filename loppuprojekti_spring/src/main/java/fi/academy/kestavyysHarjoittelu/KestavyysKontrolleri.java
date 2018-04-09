@@ -8,40 +8,40 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Optional;
 
 // By Heidi ja Elina
 // RestKontrolleri, jossa metodit kestavyysharjoitteludatan hakemiseen, poistamiseen ja lisäämiseen
 
+@RestController
+@RequestMapping("/laji")
 public class KestavyysKontrolleri {
 
-    @Autowired KestavyysRepo kr;
+    @Autowired
+    KestavyysRepo kr;
 
-    // Hakee kaikki kestavyysharjoitukset
-    @GetMapping("/kestavyys")
-    public Iterable<KestavyysHarjoittelu> harjoitukset() {
-        Iterable<KestavyysHarjoittelu> kaikki = kr.findAll();
+    // UINTI:
+
+    // Hakee kaikki uintiharjoitukset
+    @GetMapping("/uinti")
+    public Iterable<KestavyysHarjoittelu> uinnit() {
+        Iterable<KestavyysHarjoittelu> kaikki = kr.findAllByLaji("uinti");
 
         if (kaikki.equals(null)) {
-            throw new RuntimeException("Kestävyysharjoitustietojen hakeminen epäonnistui! Palauttaa NULL");
+            throw new RuntimeException("Uintitietojen hakeminen epäonnistui! Palauttaa NULL");
             // Poikkeuksen käsittely! Mutta missä?
         }
         return kaikki;
     }
 
-    // Hakee yhden kestavyysharjoittelun tiedot id:n perusteella
-    @GetMapping("/kestavyys/{id}")
-    public ResponseEntity<KestavyysHarjoittelu> etsiTiettyHarjoitus(@PathVariable(name="id") int id) {
-        Optional<KestavyysHarjoittelu> optkest = kr.findById(id);
-        if (!optkest.isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(optkest.get());
+    // Hakee yhden käyttäjän uinnit
+    @GetMapping ("/uinti/{id}")
+    public Iterable<KestavyysHarjoittelu> yhdenKayttajanUinnit(@PathVariable(name = "id") String id){
+       return kr.findAllByLajiAndKayttajaId("uinti", id);
     }
 
-    // Yhden kestävyysharjoittelun poistaminen id:n perusteella
-    @DeleteMapping("/kestavyys/{id}")
-    public ResponseEntity<String> poistaHarjoitus(@PathVariable(name="id") int id) {
+    // Yhden uintiharjoituksen poistaminen id:n perusteella
+    @DeleteMapping("/uinti/{id}")
+    public ResponseEntity<String> poistaUinti(@PathVariable(name="id") int id) {
         // jos annettua id:tä ei löydy, palautetaan virheilmoitus
         if (!kr.findById(id).isPresent()) {
             return ResponseEntity.notFound().build();
@@ -51,11 +51,11 @@ public class KestavyysKontrolleri {
         return ResponseEntity.noContent().build();
     }
 
-    // Uuden kestävyysharjoituksen lisääminen tietokantaan (lomake)
-    @PostMapping("/kestavyys")
-    public ResponseEntity<?> uusiHarjoitus(@RequestBody KestavyysHarjoittelu kest) throws URISyntaxException {
+    // Uuden uintiharjoituksen lisääminen tietokantaan (lomake)
+    @PostMapping("/uinti")
+    public ResponseEntity<?> uusiUinti(@RequestBody KestavyysHarjoittelu kest) throws URISyntaxException {
         // Tarkistetaan, että lomakkeelta saadulla harjoituksella on tarvittavat arvot
-        if (kest.getLaji() == null || kest.getPvm() == null || kest.getKestoMin() == null || kest.getMatkaKm() == null) {
+        if (kest.getPvm() == null || kest.getKestoMin() == null || kest.getMatkaKm() == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         kr.save(kest);
@@ -64,9 +64,121 @@ public class KestavyysKontrolleri {
                 .scheme("http")
                 .host("localhost")
                 .port(8080)
-                .path("/kestavyys/{id}")
+                .path("/uinti/{id}")
                 .buildAndExpand(kest.getKestavyysHarjoitusId())
                 .toUri();
         return ResponseEntity.created(location).build();
     }
+
+    // PYÖRÄILY:
+
+    // Hakee kaikki pyöräilyharjoitukset
+    @GetMapping("/pyoraily")
+    public Iterable<KestavyysHarjoittelu> pyorailyt() {
+        Iterable<KestavyysHarjoittelu> kaikki = kr.findAllByLaji("pyöräily");
+
+        if (kaikki.equals(null)) {
+            throw new RuntimeException("Pyöräilytietojen hakeminen epäonnistui! Palauttaa NULL");
+            // Poikkeuksen käsittely!
+        }
+        return kaikki;
+    }
+
+    // Hakee yhden käyttäjän pyöräilyt
+    @GetMapping ("/pyoraily/{id}")
+    public Iterable<KestavyysHarjoittelu> yhdenKayttajanPyorailyt(@PathVariable(name = "id") String id){
+        return kr.findAllByLajiAndKayttajaId("pyöräily", id);
+    }
+
+    // Yhden pyöräilyharjoituksen poistaminen id:n perusteella
+    @DeleteMapping("/pyoraily/{id}")
+    public ResponseEntity<String> poistaPyoraily(@PathVariable(name="id") int id) {
+        // jos annettua id:tä ei löydy, palautetaan virheilmoitus
+        if (!kr.findById(id).isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        // jos annettu id löytyy, sitä vastaava harjoitus poistetaan
+        kr.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    // Uuden pyöräilyharjoituksen lisääminen tietokantaan (lomake)
+    @PostMapping("/pyoraily")
+    public ResponseEntity<?> uusiPyoraily(@RequestBody KestavyysHarjoittelu kest) throws URISyntaxException {
+        // Tarkistetaan, että lomakkeelta saadulla harjoituksella on tarvittavat arvot
+        if (kest.getPvm() == null || kest.getKestoMin() == null || kest.getMatkaKm() == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        kr.save(kest);
+        // URI:n rakentaminen:
+        URI location = UriComponentsBuilder.newInstance()
+                .scheme("http")
+                .host("localhost")
+                .port(8080)
+                .path("/pyoraily/{id}")
+                .buildAndExpand(kest.getKestavyysHarjoitusId())
+                .toUri();
+        return ResponseEntity.created(location).build();
+    }
+
+    // JUOKSU:
+
+    // Hakee kaikki juoksuharjoitukset
+    @GetMapping("/juoksu")
+    public Iterable<KestavyysHarjoittelu> juoksut() {
+        Iterable<KestavyysHarjoittelu> kaikki = kr.findAllByLaji("juoksu");
+
+        if (kaikki.equals(null)) {
+            throw new RuntimeException("Juoksutietojen hakeminen epäonnistui! Palauttaa NULL");
+            // Poikkeuksen käsittely!
+        }
+        return kaikki;
+    }
+
+    // Hakee yhden käyttäjän juoksut
+    @GetMapping ("/juoksu/{id}")
+    public Iterable<KestavyysHarjoittelu> yhdenKayttajanJuoksut(@PathVariable(name = "id") String id){
+        return kr.findAllByLajiAndKayttajaId("juoksu", id);
+    }
+
+    // Yhden juoksuharjoituksen poistaminen id:n perusteella
+    @DeleteMapping("/juoksu/{id}")
+    public ResponseEntity<String> poistaJuoksu(@PathVariable(name="id") int id) {
+        // jos annettua id:tä ei löydy, palautetaan virheilmoitus
+        if (!kr.findById(id).isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        // jos annettu id löytyy, sitä vastaava harjoitus poistetaan
+        kr.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    // Uuden juoksuharjoituksen lisääminen tietokantaan (lomake)
+    @PostMapping("/juoksu")
+    public ResponseEntity<?> uusiJuoksu(@RequestBody KestavyysHarjoittelu kest) throws URISyntaxException {
+        // Tarkistetaan, että lomakkeelta saadulla harjoituksella on tarvittavat arvot
+        if (kest.getPvm() == null || kest.getKestoMin() == null || kest.getMatkaKm() == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        kr.save(kest);
+        // URI:n rakentaminen:
+        URI location = UriComponentsBuilder.newInstance()
+                .scheme("http")
+                .host("localhost")
+                .port(8080)
+                .path("/juoksu/{id}")
+                .buildAndExpand(kest.getKestavyysHarjoitusId())
+                .toUri();
+        return ResponseEntity.created(location).build();
+    }
+
+    // Hakee yhden kestavyysharjoittelun tiedot id:n perusteella
+//    @GetMapping("/kestavyys/{id}")
+//    public ResponseEntity<KestavyysHarjoittelu> etsiTiettyHarjoitus(@PathVariable(name="id") int id) {
+//        Optional<KestavyysHarjoittelu> optkest = kr.findById(id);
+//        if (!optkest.isPresent()) {
+//            return ResponseEntity.notFound().build();
+//        }
+//        return ResponseEntity.ok(optkest.get());
+//    }
 }

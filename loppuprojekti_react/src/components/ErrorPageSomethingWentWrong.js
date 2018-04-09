@@ -1,10 +1,9 @@
-import {Jumbotron, Navbar, NavItem} from 'react-bootstrap';
-import React, {Component} from "react";
-import '../App.css';
+import React, {Component} from 'react';
+import {Jumbotron, Navbar} from 'react-bootstrap';
 
-class ErrorPageIfNotLoggedIn extends Component {
-    //Tämä on error-sivu, joka tulee näkyviin jos joku yrittää päästä muulle sivulle kuin kotisivulle,
-    //silloin kun ei ole kirjautunut.
+class ErrorPageSomethingWentWrong extends Component {
+    //Tämä on error-sivu, joka tulee näkyviin, jos ohjelma meinaa kaatua.
+    //App.js:ssa kaikki elementit on wrapatty ErrorBoundary-elementillä, joka palauttaa tämän sivun
 
     render() {
         return (
@@ -18,15 +17,16 @@ class ErrorPageIfNotLoggedIn extends Component {
                 </Navbar>
                 <Jumbotron>
                     <p className="text-center">
-                        You tried to go to a page which is only for registered members.<br/>
-                        Please go to the home page and log in to continue:<br/>
+                        We are sorry. Something went wrong.<br/>
+                        Please go to the home page and try again or something else:<br/>
                         <a href="/">Sport4Everyone</a>
                     </p>
                 </Jumbotron>
             </div>
         )
-
     }
 }
 
-export default ErrorPageIfNotLoggedIn;
+export default ErrorPageSomethingWentWrong;
+
+

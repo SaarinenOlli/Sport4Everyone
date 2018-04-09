@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import Tieto from './Tieto';
 
+
+//listaa jsonista painotiedot tietoelementeiksi -Olli
 class TietoLista extends Component {
     render() {
         var tiedotListana = this.props.tiedot

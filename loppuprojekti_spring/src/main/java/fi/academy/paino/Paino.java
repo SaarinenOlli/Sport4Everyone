@@ -15,7 +15,7 @@ public class Paino {
     @Id @NotNull
     @GeneratedValue
     private int painoId;
-    // @NotNull // Otetaan käyttöön myöhemmin, kun käyttäjäid:n tallettaminen lomakkeella onnistuu
+    @NotNull // Otetaan käyttöön myöhemmin, kun käyttäjäid:n tallettaminen lomakkeella onnistuu
     private String kayttajaId;
     // ei ole aivan varmaa vielä, onko LocalDate sopiva formaatti
     private LocalDate pvm;

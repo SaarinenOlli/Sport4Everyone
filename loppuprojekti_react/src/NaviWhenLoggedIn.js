@@ -2,11 +2,11 @@ import React, {Component} from "react";
 import {Navbar} from 'react-bootstrap';
 import {Nav, Button, NavItem} from 'react-bootstrap';
 import {auth} from './FireBase';
+import './App.css';
 
 class NaviWhenLoggedIn extends Component {
 
     logout = () => {
-        const user = auth.CurrentUser;
 
         auth.signOut()
             .then(() => {
@@ -21,10 +21,10 @@ class NaviWhenLoggedIn extends Component {
 
         return (
             <div>
-                <Navbar inverse>
+                <Navbar inverse className="nav-bar">
                     <Navbar.Header>
                         <Navbar.Brand>
-                                <a href="#Home">Sport4Everyone</a>
+                            Sport4Everyone
                         </Navbar.Brand>
                     </Navbar.Header>
                     <Nav pullRight>
