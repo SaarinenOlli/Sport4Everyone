@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+// Yksittäisen tiedon tulostusmuoto ja poistonappula. Haetaan UintiTietoListasta @Heidi
 
 class UintiTieto extends Component {
 

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import KestavyysTieto from './UintiTieto';
 
+// Uintitiedot listalle, joka voidaan tulostaa käyttäjälle @Heidi
 
 class UintiTietoLista extends Component {
     render() {
