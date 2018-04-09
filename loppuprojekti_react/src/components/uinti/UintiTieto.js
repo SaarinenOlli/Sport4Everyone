@@ -13,8 +13,8 @@ class UintiTieto extends Component {
             <div className="Tieto">
                 päiväys: {this.props.uintiTieto.pvm}<br/>
                 kesto: {this.props.uintiTieto.kestoMin} min<br/>
-                matka: {this.props.tieto.matkaKm} km<br/>
-                kirjauksen id: {this.props.tieto.kestavyysHarjoitusId}
+                matka: {this.props.uintiTieto.matkaKm} km<br/>
+                kirjauksen id: {this.props.uintiTieto.kestavyysHarjoitusId}
                 <form>
                     <button onClick={this.poistaUinti}>Poista</button>
                 </form>

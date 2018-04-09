@@ -169,7 +169,7 @@ class Navi extends Component {
                         <FormGroup></FormGroup>{' '}
                         <Button onClick={this.handleRegister}>
                             <Glyphicon glyph="user"/>
-                            
+
                             Register</Button>
                     </Navbar.Form>
                 </Navbar>
