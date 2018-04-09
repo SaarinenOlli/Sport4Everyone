@@ -35,6 +35,7 @@ class UintiData extends Component {
     //Otetaan talteen käyttäjän syöttämä uintidata @Heidi
 
     tiedotSyötetty = (tiedot) => {
+        //MATKAN, KESTON, PVM:n JA KAYTTAJAID:n TIEDOT TULEVAT FORMISTA JA NIMETTÄVÄ SEN MUKAAN
         let uinti = {uituMatka: matkan.tiedot.tahan, uinninKesto: keston.tiedot.tahan,
             pvm: tiedot.paivamaarasta.tahan, kayttajaId: auth.currentUser.uid};
         fetch('/laji/uinti', {
