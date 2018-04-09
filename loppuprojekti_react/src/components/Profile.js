@@ -12,93 +12,46 @@ class Profile extends Component {
     render() {
         const user = auth.currentUser;
 
-        if (user === null) {
+/*        if (user === null) {
             return (
                 <ErrorPageIfNotLoggedIn/>
             )
-        } else {
+        } else {*/
             return (
                 <div>
                     <nav className="Navi">
                         <NaviWhenLoggedIn {...this.props}/>
                     </nav>
                     <Row>
-                        <h1 align="middle">Profile Name</h1>
+                        <Col xs={0} md={4}/>
+                        <Col xs={12} md={4}>
+                            <h1 align="middle">Profile Name</h1>
+                        </Col>
+                        <Col xs={0} md={4}/>
+
                     </Row>
                     <br/>
                     <Row>
-                        <Col xs={1}/>
-                        <Col xs={10} md={12}>
-                            <Image src={pelihahmo} circle/>
+                        <Col xs={0} md={2}/>
+                        <Col xs={12} md={4}>
+                            <Image src={pelihahmo} circle className={"pull-right"}/>
                         </Col>
-                        <Col xs={1}/>
+                        <Col xs={0} md={4}>
+                        <div>
+                            <Image responsive="true" src={kuvaaja} rounded/>
+                        </div>
+
+                        </Col>
+                        <Col xs={0} md={2}/>
                     </Row>
 
-
-                    <Carousel>
-                        <Carousel.Item>
-                            <Row>
-                                <Col xs={4} md={1}>
-                                    <Image responsive="true" src={trophy} rounded/>
-                                </Col>
-                                <Col xs={4} md={1}>
-                                    <Image responsive="true" src={trophy} rounded/>
-                                </Col>
-                                <Col xs={4} md={1}>
-                                    <Image responsive="true" src={trophy} rounded/>
-                                </Col>
-                            </Row>
-                            <Carousel.Caption>
-                                <h3>Trophies</h3>
-                            </Carousel.Caption>
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <Row>
-                                <Col xs={4} md={1}>
-                                    <Image responsive="true" src={trophy} rounded/>
-                                </Col>
-                                <Col xs={4} md={1}>
-                                    <Image responsive="true" src={trophy} rounded/>
-                                </Col>
-                                <Col xs={4} md={1}>
-                                    <Image responsive="true" src={trophy} rounded/>
-                                </Col>
-                            </Row>
-                            <Carousel.Caption>
-                                <h3>Trophies</h3>
-
-                            </Carousel.Caption>
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <Row>
-                                <Col xs={4} md={1}>
-                                    <Image responsive="true" src={trophy} rounded/>
-                                </Col>
-                                <Col xs={4} md={1}>
-                                    <Image responsive="true" src={trophy} rounded/>
-                                </Col>
-                                <Col xs={4} md={1}>
-                                    <Image responsive="true" src={trophy} rounded/>
-                                </Col>
-                            </Row>
-                            <Carousel.Caption>
-                                <h3>Trophies</h3>
-
-                            </Carousel.Caption>
-                        </Carousel.Item>
-
-                    </Carousel>;
-
-                    <div>
-                        <Image responsive="true" src={kuvaaja} rounded/>
-                    </div>
 
                 </div>
 
 
             );
         }
-    }
+  //  }
 }
 
 export default Profile;

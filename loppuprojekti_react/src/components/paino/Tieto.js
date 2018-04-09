@@ -21,7 +21,8 @@ class Tieto extends Component {
             <div className="Tieto">
                 päiväys: {this.props.tieto.pvm}<br/>
                 paino: {this.props.tieto.painoKiloina} kg<br/>
-                kirjauksen id: {this.props.tieto.painoId}
+                {/*Ao. kommentoitu pois, jotta ei tule näkyviin käyttäjälle!*/}
+                {/*kirjauksen id: {this.props.tieto.painoId}*/}
                 <form>
                     <button onClick={this.poista}>Poista</button>
                 </form>
