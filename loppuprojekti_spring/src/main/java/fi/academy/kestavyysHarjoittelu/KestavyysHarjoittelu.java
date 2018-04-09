@@ -15,7 +15,7 @@ public class KestavyysHarjoittelu {
     @GeneratedValue
     private int kestavyysHarjoitusId;
     @NotNull
-    private int kayttajaId;
+    private String kayttajaId;
     // ei ole aivan varmaa vielä, onko LocalDate sopiva formaatti
     private LocalDate pvm;
     private Integer kestoMin;
@@ -25,7 +25,7 @@ public class KestavyysHarjoittelu {
     public KestavyysHarjoittelu() {
     }
 
-    public KestavyysHarjoittelu(@NotNull int kayttajaId, LocalDate pvm, Integer kestoMin, String laji, Double matkaKm) {
+    public KestavyysHarjoittelu(@NotNull String kayttajaId, LocalDate pvm, Integer kestoMin, String laji, Double matkaKm) {
         this.kayttajaId = kayttajaId;
         this.pvm = pvm;
         this.kestoMin = kestoMin;
@@ -41,11 +41,11 @@ public class KestavyysHarjoittelu {
         this.kestavyysHarjoitusId = kestavyysHarjoitusId;
     }
 
-    public int getKayttajaId() {
+    public String getKayttajaId() {
         return kayttajaId;
     }
 
-    public void setKayttajaId(int kayttajaId) {
+    public void setKayttajaId(String kayttajaId) {
         this.kayttajaId = kayttajaId;
     }
 
