@@ -15,10 +15,9 @@ public class Paino {
     @Id @NotNull
     @GeneratedValue
     private int painoId;
-    @NotNull // Otetaan käyttöön myöhemmin, kun käyttäjäid:n tallettaminen lomakkeella onnistuu
+    @NotNull
     private String kayttajaId;
-    // ei ole aivan varmaa vielä, onko LocalDate sopiva formaatti
-    private LocalDate pvm;
+    private LocalDate pvm; // halutaanko kellonaika?
     private Double painoKiloina;
 
     public Paino() { }
@@ -28,15 +27,6 @@ public class Paino {
         this.pvm = pvm;
         this.painoKiloina = paino;
     }
-
-// Lomakkeelta saadut tiedot päivitetään samalle id:lle
-//    public void paivitaTiedot(Paino uusiPaino) {
-//        // Ylikirjoitetaan vanha painotieto uudella vain, jos molemmat kentät täytetty
-//        if (uusiPaino.painoKiloina != null && uusiPaino.pvm != null) {
-//            this.painoKiloina = uusiPaino.painoKiloina;
-//            this.pvm = uusiPaino.pvm;
-//        }
-//    }
 
     public int getPainoId() {
         return painoId;

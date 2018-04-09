@@ -8,7 +8,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Optional;
 
 // by Heidi ja Elina
 // RestKontrolleri, jossa metodit painotiedon hakemiseen, poistamiseen, lisäämiseen ja muokkaamiseen
@@ -18,27 +17,17 @@ public class PainoKontrolleri {
 
     @Autowired PainoRepo pr;
 
-    // Hakee kaikki painotiedot
-    @GetMapping("/painot")
-    public Iterable<Paino> painot() {
-        Iterable<Paino> kaikki = pr.findAll();
+    // Hakee yhden käyttäjän painotiedot käyttäjäid:n perusteella
+    @GetMapping ("/painot/{id}")
+    public Iterable<Paino> yhdenKayttajanPainot(@PathVariable(name = "id") String id){
+        Iterable<Paino> painot = pr.findAllBykayttajaId(id);
 
-        if (kaikki.equals(null)) {
+        if (painot.equals(null)) {
             throw new RuntimeException("Painotietojen hakeminen epäonnistui! Palauttaa NULL");
-            // Poikkeuksen käsittely! Mutta missä?
+            // Poikkeuksen käsittely!
         }
-        return kaikki;
+        return painot;
     }
-
-    // Hakee yhden painotiedon painoid:n perusteella
-//    @GetMapping("/painot/{id}")
-//    public ResponseEntity<Paino> etsiTiettyPaino(@PathVariable(name="id") int id) {
-//        Optional<Paino> optpaino = pr.findById(id);
-//        if (!optpaino.isPresent()) {
-//            return ResponseEntity.notFound().build();
-//        }
-//        return ResponseEntity.ok(optpaino.get());
-//    }
 
     // Yhden painotiedon poistaminen painoid:n perusteella
     @DeleteMapping("/painot/{id}")
@@ -56,7 +45,7 @@ public class PainoKontrolleri {
     @PostMapping("/painot")
     public ResponseEntity<?> uusiPainoTieto(@RequestBody Paino paino) throws URISyntaxException {
         // Tarkistetaan, että lomakkelta saadulla painotiedolla on tarvittavat arvot
-        if (paino.getPvm() == null || paino.getPainoKiloina() == null) {
+        if (paino.getPvm() == null || paino.getPainoKiloina() == null || paino.getKayttajaId() == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         pr.save(paino);
@@ -69,6 +58,18 @@ public class PainoKontrolleri {
                 .buildAndExpand(paino.getPainoId())
                 .toUri();
         return ResponseEntity.created(location).build();
+    }
+
+    // Hakee kaikki painotiedot
+    @GetMapping("/painot")
+    public Iterable<Paino> painot() {
+        Iterable<Paino> kaikki = pr.findAll();
+
+        if (kaikki.equals(null)) {
+            throw new RuntimeException("Painotietojen hakeminen epäonnistui! Palauttaa NULL");
+            // Poikkeuksen käsittely! Mutta missä?
+        }
+        return kaikki;
     }
 
     // Tietokannassa jo olevan painotiedon muokkaaminen painoid:n perusteella (lomake)
@@ -85,10 +86,4 @@ public class PainoKontrolleri {
 //        pr.save(paivitettava);
 //        return ResponseEntity.ok(paivitettava);
 //    }
-
-    // Hakee yhden käyttäjän painotiedot käyttäjäid:n perusteella
-    @GetMapping ("/painot/{id}")
-   public Iterable<Paino> yhdenKayttajanPainot(@PathVariable(name = "id") String id){
-      return pr.findAllBykayttajaId(id);
-   }
 }
