@@ -2,12 +2,12 @@ import React from 'react';
 import './App.css';
 import Home from './Home';
 import Profile from './components/Profile';
-import Form from './components/Form';
+import Form from './components/paino/Form';
 import Profiledata from './components/Profiledata';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import PainoData from "./components/PainoData";
-import ErrorBoundary from "./components/ErrorBoundary";
-import ErrorPageSomethingWentWrong from "./components/ErrorPageSomethingWentWrong";
+import PainoData from "./components/paino/PainoData";
+import ErrorBoundary from "./components/error/ErrorBoundary";
+import ErrorPageSomethingWentWrong from "./components/error/ErrorPageSomethingWentWrong";
 
 const App = appProps => (
     <ErrorBoundary>

@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import Form from "./Form";
 import TietoLista from "./TietoLista";
-import Profiledata from "./Profiledata";
-import ErrorButton from "./ErrorButton";
-import NaviWhenLoggedIn from "../NaviWhenLoggedIn";
+import ProfileNavi from "../../ProfileNavi";
+import Profiledata from "../Profiledata";
+import ErrorButton from "../error/ErrorButton";
+import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
 //import {auth} from '../FireBase';
 import firebase from 'firebase';
-import ErrorPageIfNotLoggedIn from "./ErrorPageIfNotLoggedIn";
+import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
 import Dialog from 'react-bootstrap-dialog';
 
 let kayttajanTunnus;
@@ -113,6 +114,7 @@ class PainoData extends Component {
                     </div>
                     <Form tiedotSyotetty={this.tiedotSyotetty}/>
                     <TietoLista tiedot={this.state.data} poista={this.poistaPaino}/>
+                    <ProfileNavi/>
                     <Profiledata data={this.state.data}/>
                     <ErrorButton/>
                 </div>

@@ -16,27 +16,20 @@ import java.net.URISyntaxException;
 @RequestMapping("/laji")
 public class KestavyysKontrolleri {
 
-    @Autowired
-    KestavyysRepo kr;
+    @Autowired KestavyysRepo kr;
 
     // UINTI:
 
-    // Hakee kaikki uintiharjoitukset
-    @GetMapping("/uinti")
-    public Iterable<KestavyysHarjoittelu> uinnit() {
-        Iterable<KestavyysHarjoittelu> kaikki = kr.findAllByLaji("uinti");
-
-        if (kaikki.equals(null)) {
-            throw new RuntimeException("Uintitietojen hakeminen epäonnistui! Palauttaa NULL");
-            // Poikkeuksen käsittely! Mutta missä?
-        }
-        return kaikki;
-    }
-
     // Hakee yhden käyttäjän uinnit
     @GetMapping ("/uinti/{id}")
-    public Iterable<KestavyysHarjoittelu> yhdenKayttajanUinnit(@PathVariable(name = "id") String id){
-       return kr.findAllByLajiAndKayttajaId("uinti", id);
+    public Iterable<KestavyysHarjoittelu> yhdenKayttajanUinnit(@PathVariable(name = "id") String id) {
+        Iterable<KestavyysHarjoittelu> uinnit = kr.findAllByLajiAndKayttajaId("uinti", id);
+
+        if (uinnit.equals(null)) {
+            throw new RuntimeException("Uintitietojen hakeminen epäonnistui! Palauttaa NULL");
+            // Poikkeuksen käsittely!
+        }
+       return uinnit;
     }
 
     // Yhden uintiharjoituksen poistaminen id:n perusteella
@@ -55,7 +48,7 @@ public class KestavyysKontrolleri {
     @PostMapping("/uinti")
     public ResponseEntity<?> uusiUinti(@RequestBody KestavyysHarjoittelu kest) throws URISyntaxException {
         // Tarkistetaan, että lomakkeelta saadulla harjoituksella on tarvittavat arvot
-        if (kest.getPvm() == null || kest.getKestoMin() == null || kest.getMatkaKm() == null) {
+        if (kest.getKayttajaId() == null || kest.getPvm() == null || kest.getKestoMin() == null || kest.getMatkaKm() == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         kr.save(kest);
@@ -72,22 +65,16 @@ public class KestavyysKontrolleri {
 
     // PYÖRÄILY:
 
-    // Hakee kaikki pyöräilyharjoitukset
-    @GetMapping("/pyoraily")
-    public Iterable<KestavyysHarjoittelu> pyorailyt() {
-        Iterable<KestavyysHarjoittelu> kaikki = kr.findAllByLaji("pyöräily");
-
-        if (kaikki.equals(null)) {
-            throw new RuntimeException("Pyöräilytietojen hakeminen epäonnistui! Palauttaa NULL");
-            // Poikkeuksen käsittely!
-        }
-        return kaikki;
-    }
-
     // Hakee yhden käyttäjän pyöräilyt
     @GetMapping ("/pyoraily/{id}")
     public Iterable<KestavyysHarjoittelu> yhdenKayttajanPyorailyt(@PathVariable(name = "id") String id){
-        return kr.findAllByLajiAndKayttajaId("pyöräily", id);
+        Iterable<KestavyysHarjoittelu> pyorailyt =  kr.findAllByLajiAndKayttajaId("pyöräily", id);
+
+        if (pyorailyt.equals(null)) {
+            throw new RuntimeException("Pyöräilytietojen hakeminen epäonnistui! Palauttaa NULL");
+            // Poikkeuksen käsittely!
+        }
+        return pyorailyt;
     }
 
     // Yhden pyöräilyharjoituksen poistaminen id:n perusteella
@@ -123,22 +110,16 @@ public class KestavyysKontrolleri {
 
     // JUOKSU:
 
-    // Hakee kaikki juoksuharjoitukset
-    @GetMapping("/juoksu")
-    public Iterable<KestavyysHarjoittelu> juoksut() {
-        Iterable<KestavyysHarjoittelu> kaikki = kr.findAllByLaji("juoksu");
-
-        if (kaikki.equals(null)) {
-            throw new RuntimeException("Juoksutietojen hakeminen epäonnistui! Palauttaa NULL");
-            // Poikkeuksen käsittely!
-        }
-        return kaikki;
-    }
-
     // Hakee yhden käyttäjän juoksut
     @GetMapping ("/juoksu/{id}")
     public Iterable<KestavyysHarjoittelu> yhdenKayttajanJuoksut(@PathVariable(name = "id") String id){
-        return kr.findAllByLajiAndKayttajaId("juoksu", id);
+        Iterable<KestavyysHarjoittelu> juoksut =  kr.findAllByLajiAndKayttajaId("juoksu", id);
+
+        if (juoksut.equals(null)) {
+            throw new RuntimeException("Juoksutietojen hakeminen epäonnistui! Palauttaa NULL");
+            // Poikkeuksen käsittely!
+        }
+        return juoksut;
     }
 
     // Yhden juoksuharjoituksen poistaminen id:n perusteella
@@ -171,6 +152,42 @@ public class KestavyysKontrolleri {
                 .toUri();
         return ResponseEntity.created(location).build();
     }
+
+    // Hakee kaikki uintiharjoitukset
+//    @GetMapping("/uinti")
+//    public Iterable<KestavyysHarjoittelu> uinnit() {
+//        Iterable<KestavyysHarjoittelu> kaikki = kr.findAllByLaji("uinti");
+//
+//        if (kaikki.equals(null)) {
+//            throw new RuntimeException("Uintitietojen hakeminen epäonnistui! Palauttaa NULL");
+//            // Poikkeuksen käsittely! Mutta missä?
+//        }
+//        return kaikki;
+//    }
+
+    // Hakee kaikki pyöräilyharjoitukset
+//    @GetMapping("/pyoraily")
+//    public Iterable<KestavyysHarjoittelu> pyorailyt() {
+//        Iterable<KestavyysHarjoittelu> kaikki = kr.findAllByLaji("pyöräily");
+//
+//        if (kaikki.equals(null)) {
+//            throw new RuntimeException("Pyöräilytietojen hakeminen epäonnistui! Palauttaa NULL");
+//            // Poikkeuksen käsittely!
+//        }
+//        return kaikki;
+//    }
+
+    // Hakee kaikki juoksuharjoitukset
+//    @GetMapping("/juoksu")
+//    public Iterable<KestavyysHarjoittelu> juoksut() {
+//        Iterable<KestavyysHarjoittelu> kaikki = kr.findAllByLaji("juoksu");
+//
+//        if (kaikki.equals(null)) {
+//            throw new RuntimeException("Juoksutietojen hakeminen epäonnistui! Palauttaa NULL");
+//            // Poikkeuksen käsittely!
+//        }
+//        return kaikki;
+//    }
 
     // Hakee yhden kestavyysharjoittelun tiedot id:n perusteella
 //    @GetMapping("/kestavyys/{id}")
