@@ -62,7 +62,7 @@ class UintiData extends Component {
         fetch('/laji/uinti' + poistettavanId,
             {method: 'DELETE'})
             .then(function (response) {
-                if (response.status < 300) //Onko 300 poistossakin oikea statuskoodi, kun kaikki on ok??
+                if (response.status === 204)
                     this.haePainotJaPaivita();
                 else
                     throw new Error(response.statusText);

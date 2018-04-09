@@ -65,7 +65,7 @@ class PainoData extends Component {
         fetch('/painot/' + poistettavanId,
                  {method: 'DELETE'})
             .then(function (response) {
-                if (response.status < 300) //MIKÄ TÄHÄN OIKEA??
+                if (response.status === 204)
                     this.haePainotJaPaivita();
                 else
                     throw new Error(response.statusText);
