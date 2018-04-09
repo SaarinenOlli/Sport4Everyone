@@ -28,6 +28,11 @@ class NaviWhenLoggedIn extends Component {
         return (
             <div>
                 <Navbar inverse className="nav-bar" width="25%">
+                    <Navbar.Header>
+                        <Navbar.Text>
+                            Sport4Everyone
+                        </Navbar.Text>
+                    </Navbar.Header>
                     <ul class="nav navbar-nav">
                     <li><a href="#"><Image src={paino} width={"25%"}/></a></li>
                     <li><a href="#"><Image src={uinti} width={"25%"}/></a></li>

@@ -12,11 +12,11 @@ class Profile extends Component {
     render() {
         const user = auth.currentUser;
 
-/*        if (user === null) {
+        if (user === null) {
             return (
                 <ErrorPageIfNotLoggedIn/>
             )
-        } else {*/
+        } else {
             return (
                 <div>
                     <nav className="Navi">
@@ -37,9 +37,9 @@ class Profile extends Component {
                             <Image src={pelihahmo} circle className={"pull-right"}/>
                         </Col>
                         <Col xs={0} md={4}>
-                        <div>
-                            <Image responsive="true" src={kuvaaja} rounded/>
-                        </div>
+                            <div>
+                                <Image responsive="true" src={kuvaaja} rounded/>
+                            </div>
 
                         </Col>
                         <Col xs={0} md={2}/>
@@ -51,7 +51,7 @@ class Profile extends Component {
 
             );
         }
-  //  }
+    }
 }
 
 export default Profile;
