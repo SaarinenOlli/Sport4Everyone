@@ -88,7 +88,7 @@ class PainoData extends Component {
         fetch('/painot/' + poistettavanId,
                  {method: 'DELETE'})
             .then(function (response) {
-                if (response.status < 300) //MIKÄ TÄHÄN OIKEA??
+                if (response.status === 204)
                     this.haePainotJaPaivita();
                 else
                     throw new Error(response.statusText);
@@ -112,7 +112,7 @@ class PainoData extends Component {
                         <NaviWhenLoggedIn {...this.props}/>
                     </div>
                     <Form tiedotSyotetty={this.tiedotSyotetty}/>
-                    <TietoLista tiedot={this.state.data} poista={this.poistaQuote}/>
+                    <TietoLista tiedot={this.state.data} poista={this.poistaPaino}/>
                     <Profiledata data={this.state.data}/>
                     <ErrorButton/>
                 </div>
@@ -120,5 +120,7 @@ class PainoData extends Component {
         }
     }
 }
+
+//Renderiin korjattu poistaPaino (ennen poistQuote) maanantai ap @Heidi
 
 export default PainoData;
