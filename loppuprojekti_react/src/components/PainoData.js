@@ -90,7 +90,7 @@ class PainoData extends Component {
                         <NaviWhenLoggedIn {...this.props}/>
                     </div>
                     <Form tiedotSyotetty={this.tiedotSyotetty}/>
-                    <TietoLista tiedot={this.state.data} poista={this.poistaQuote}/>
+                    <TietoLista tiedot={this.state.data} poista={this.poistaPaino}/>
                     <Profiledata data={this.state.data}/>
                     <ErrorButton/>
                 </div>
@@ -98,5 +98,7 @@ class PainoData extends Component {
         }
     }
 }
+
+//Renderiin korjattu poistaPaino (ennen poistQuote) maanantai ap @Heidi
 
 export default PainoData;
