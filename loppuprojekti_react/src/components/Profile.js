@@ -12,11 +12,11 @@ class Profile extends Component {
     render() {
         const user = auth.currentUser;
 
-        if (user === null) {
-            return (
-                <ErrorPageIfNotLoggedIn/>
-            )
-        } else {
+        // if (user === null) {
+        //     return (
+        //         <ErrorPageIfNotLoggedIn/>
+        //     )
+        // } else {
             return (
                 <div>
                     <nav className="Navi">
@@ -98,7 +98,7 @@ class Profile extends Component {
 
             );
         }
-    }
+    // }
 }
 
 export default Profile;

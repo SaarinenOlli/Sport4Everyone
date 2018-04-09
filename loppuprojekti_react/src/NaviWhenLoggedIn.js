@@ -23,13 +23,16 @@ class NaviWhenLoggedIn extends Component {
             <div>
                 <Navbar inverse className="nav-bar">
                     <Navbar.Header>
-                        <Navbar.Brand>
+                        <Navbar.Text>
                             Sport4Everyone
-                        </Navbar.Brand>
+                        </Navbar.Text>
                     </Navbar.Header>
-                    <Nav pullRight>
+                    {/*<Nav pullRight>*/}
+                        {/*<Button onClick={this.logout}>Logout</Button>*/}
+                    {/*</Nav>*/}
+                    <Navbar.Form pullRight>
                         <Button onClick={this.logout}>Logout</Button>
-                    </Nav>
+                    </Navbar.Form>
                 </Navbar>
             </div>
 
