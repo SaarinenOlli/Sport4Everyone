@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Navbar} from 'react-bootstrap';
-import {Nav, Button, NavItem} from 'react-bootstrap';
+import {Nav, Button} from 'react-bootstrap';
 import {auth} from './FireBase';
 import './App.css';
 import paino from './Resources/scale.png';

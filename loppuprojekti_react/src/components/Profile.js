@@ -5,7 +5,7 @@ import kuvaaja from '../Resources/kuvaaja.png'
 import {Image, Col, Row, Carousel} from 'react-bootstrap';
 import NaviWhenLoggedIn from "../NaviWhenLoggedIn";
 import {auth} from '../FireBase';
-import ErrorPageIfNotLoggedIn from "./ErrorPageIfNotLoggedIn";
+import ErrorPageIfNotLoggedIn from "./error/ErrorPageIfNotLoggedIn";
 
 class Profile extends Component {
 

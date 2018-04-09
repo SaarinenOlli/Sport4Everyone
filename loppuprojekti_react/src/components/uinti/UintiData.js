@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import KestavyysTietoLista from "./UintiTietoLista";
-import ErrorPageIfNotLoggedIn from "./ErrorPageIfNotLoggedIn";
+import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
 
 
 class UintiData extends Component {

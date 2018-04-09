@@ -5,7 +5,7 @@ import {NavDropdown} from 'react-bootstrap';
 import {MenuItem} from 'react-bootstrap';
 import {Glyphicon} from 'react-bootstrap';
 import Dialog from 'react-bootstrap-dialog';
-import {Modal, Button, FormGroup, ControlLabel, FormControl} from 'react-bootstrap';
+import {Modal, Button, FormGroup, FormControl, ButtonToolbar} from 'react-bootstrap';
 import {auth, googleProvider} from './FireBase';
 
 class Navi extends Component {
@@ -43,7 +43,7 @@ class Navi extends Component {
     }
 
     //Näytetään modaaliboksi, jossa voi lähettää salasanan reset linkin käyttäjän sähköpostiin.
-    handleForgottenPassword(){
+    handleForgottenPassword() {
         this.setState({showForgottenPassword: true});
     }
 
@@ -52,6 +52,8 @@ class Navi extends Component {
         this.setState({showlogin: false});
         this.setState({showregister: false});
         this.setState({showForgottenPassword: false});
+        this.setState({email: ''});
+        this.setState({password: ''});
     }
 
     //Modaaliboksien näyttö sen mukaan onko klikattu log in vai register @Tiina
@@ -158,7 +160,8 @@ class Navi extends Component {
                 <Navbar inverse collapseOnSelect>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <a href="#home">Sport4Everyone</a>
+                            Sport4Everyone
+
                         </Navbar.Brand>
                     </Navbar.Header>
                     <Nav pullRight activeKey={3} onSelect={key => this.handleSelect(key)}>
@@ -182,6 +185,7 @@ class Navi extends Component {
                     >
                         <Modal.Header closeButton>
                             <Modal.Title id="contained-modal-title">
+                                Log in
                             </Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
@@ -189,31 +193,36 @@ class Navi extends Component {
                                 <FormGroup
                                     controlId="form"
                                 >
-                                    <ControlLabel>Log in with your email</ControlLabel>
                                     <FormControl
                                         type="text"
+                                        label="Email"
                                         value={this.state.email}
-                                        id="email"
                                         placeholder="Enter email"
                                         onChange={this.handleEmailChange}
                                     />
+                                    <br/>
                                     <FormControl
                                         type="password"
+                                        label="Password"
                                         value={this.state.password}
-                                        id="password"
                                         placeholder="Enter password"
                                         onChange={this.handlePasswordChange}
                                     />
-                                    <FormControl.Feedback/>
-                                    <Button onClick={this.loginWithEmail}>Log in</Button>
-                                    <Dialog ref={(el) => { this.dialog = el }} />
                                 </FormGroup>
-                                <Button onClick={this.loginGoogle}>Login with Google</Button>
-                                <Dialog ref={(el) => { this.dialog = el }} />
+                                <ButtonToolbar>
+                                    <Button bsStyle="primary" onClick={this.loginWithEmail}>Log in with email</Button>
+                                    <Dialog ref={(el) => {
+                                        this.dialog = el
+                                    }}/>
+                                    <Button bsStyle="danger" onClick={this.loginGoogle}>Login with Google</Button>
+                                    <Dialog ref={(el) => {
+                                        this.dialog = el
+                                    }}/>
+                                </ButtonToolbar>
                             </div>
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button onClick={this.handleForgottenPassword}>Forgot your password?</Button>
+                            <Button bsStyle="link" onClick={this.handleForgottenPassword}>Forgot your password?</Button>
                             <Button onClick={this.handleHide}>Close</Button>
                         </Modal.Footer>
                     </Modal>
@@ -235,25 +244,30 @@ class Navi extends Component {
                         <Modal.Body>
                             <div>
                                 <FormGroup
-                                    controlId="formi"
+                                    controlId="form"
                                 >
-                                    <ControlLabel>Register with your email</ControlLabel>
                                     <FormControl
                                         type="text"
+                                        label="Email"
                                         value={this.state.email}
                                         placeholder="Enter email"
                                         onChange={this.handleEmailChange}
                                     />
+                                    <br/>
                                     <FormControl
                                         type="password"
+                                        label="Password"
                                         value={this.state.password}
                                         placeholder="Enter password"
                                         onChange={this.handlePasswordChange}
                                     />
-                                    <FormControl.Feedback/>
-                                    <Button onClick={this.registerWithEmail}>Register</Button>
-                                    <Dialog ref={(el) => { this.dialog = el }} />
                                 </FormGroup>
+                                <ButtonToolbar>
+                                    <Button bsStyle="primary" onClick={this.registerWithEmail}>Register with email</Button>
+                                    <Dialog ref={(el) => {
+                                        this.dialog = el
+                                    }}/>
+                                </ButtonToolbar>
                             </div>
                         </Modal.Body>
                         <Modal.Footer>
@@ -281,21 +295,21 @@ class Navi extends Component {
                                 <FormGroup
                                     controlId="formBasicText"
                                 >
-                                    <ControlLabel>
-                                        Please enter your email, and we’ll help you create a new password.<br/>
-                                        You'll receive an email for resetting your password.
-                                    </ControlLabel>
-                                    <p></p>
+                                    <p>Please enter your email, and we’ll send you a link
+                                        for resetting your password.</p>
                                     <FormControl
                                         type="text"
                                         value={this.state.email}
                                         placeholder="Enter email"
                                         onChange={this.handleEmailChange}
                                     />
-                                    <FormControl.Feedback/>
-                                    <Button onClick={this.resetPassword}>Send email</Button>
-                                    <Dialog ref={(el) => { this.dialog = el }} />
                                 </FormGroup>
+                                <ButtonToolbar>
+                                    <Button bsStyle="primary" onClick={this.resetPassword}>Send email</Button>
+                                    <Dialog ref={(el) => {
+                                        this.dialog = el
+                                    }}/>
+                                </ButtonToolbar>
                             </div>
                         </Modal.Body>
                         <Modal.Footer>
