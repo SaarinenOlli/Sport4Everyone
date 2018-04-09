@@ -3,6 +3,8 @@ import Form from "./Form";
 import TietoLista from "./TietoLista";
 import Profiledata from "./Profiledata";
 import ErrorButton from "./ErrorButton";
+import ProfileNavi from "../ProfileNavi";
+
 import NaviWhenLoggedIn from "../NaviWhenLoggedIn";
 import {auth} from '../FireBase';
 import ErrorPageIfNotLoggedIn from "./ErrorPageIfNotLoggedIn";
@@ -90,7 +92,9 @@ class PainoData extends Component {
                     </div>
                     <Form tiedotSyotetty={this.tiedotSyotetty}/>
                     <TietoLista tiedot={this.state.data} poista={this.poistaQuote}/>
+                    <ProfileNavi/>
                     <Profiledata data={this.state.data}/>
+
                     <ErrorButton/>
                 </div>
             );
