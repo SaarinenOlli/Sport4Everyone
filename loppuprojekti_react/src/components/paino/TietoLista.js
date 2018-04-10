@@ -7,6 +7,7 @@ import {Panel} from 'react-bootstrap';
 class TietoLista extends Component {
     render() {
         var tiedotListana = this.props.tiedot
+            .sort((a, b) => a.pvm > b.pvm)
             .map(function(tieto) {
                 return (
                     <Tieto tieto={tieto} poista={this.props.poista}
