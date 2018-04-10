@@ -20,7 +20,7 @@ class KestavyysGraafi extends Component {
             <div>
                 {/*@Renne TÄssä luodaan Chart.js:n avulla kivoja graafeja!*/}
                 <div style={{display: 'flex', justifyContent: 'center'}}>
-                    <BarChart width="60%" xtitle="Time" ytitle="Excercise duration" data={graafiKestavyysAika} />
+                    <LineChart width="60%" xtitle="Time" ytitle="Excercise duration" data={graafiKestavyysAika}  />
                 </div>
                 {/*<div style={{display: 'flex', justifyContent: 'center'}}>*/}
                     {/*<PieChart donut={true} max={100} data={[["Steps", 8544], ["Steps from goal", 1456]]}  />*/}
