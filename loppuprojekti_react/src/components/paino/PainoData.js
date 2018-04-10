@@ -6,7 +6,7 @@ import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
 import firebase from 'firebase';
 import pelihahmo from '../../Resources/pelihahmo.png';
 import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
-import {Col, Row, Image, Panel} from 'react-bootstrap';
+import {Col, Row, Image, Panel, Well} from 'react-bootstrap';
 
 let kayttajanTunnus;
 
@@ -117,13 +117,19 @@ class PainoData extends Component {
                         <Col xs={0} md={4}/>
                     </Row>
                     <Row>
-                        <Col xs={0} md={2}/>
-                        <Col xs={12} md={4}>
+                        <Col xs={5} md={5}>
                             <Image src={pelihahmo} circle className={"pull-right"}/>
                         </Col>
-                        <Col xs={0} md={4}>
+                        <Col xs={0} md={2}/>
+                        <Panel>
+                            <Panel.Body>
+                                {/*ao. on nopea tee-se-itse ratkaisu, korjataan nätimmäksi jos ehtii @Tiina*/}
+                                <br/> <br/> <br/> <br/>
+                        <Col xs={5} md={5}>
                             <PainoGraafi data={this.state.data}/>
                         </Col>
+                            </Panel.Body>
+                        </Panel>
                     </Row>
                     <br/>
                     <Panel>
@@ -136,7 +142,6 @@ class PainoData extends Component {
                                 <Col xs={5} md={5}>
                                     <TietoLista tiedot={this.state.data} poista={this.poistaPaino}/>
                                 </Col>
-                                <Col xs={0} md={1}/>
                             </Row>
                         </Panel.Body>
                     </Panel>
