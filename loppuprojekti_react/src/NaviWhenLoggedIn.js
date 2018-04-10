@@ -60,7 +60,7 @@ class NaviWhenLoggedIn extends Component {
                     </FormGroup>
 
                     <FormGroup>
-                    <NavItem href="/cyckling"><Image src={pyora}width={"35%"}/></NavItem>
+                    <NavItem href="/cycling"><Image src={pyora}width={"35%"}/></NavItem>
                     </FormGroup>
 
                     <FormGroup>
