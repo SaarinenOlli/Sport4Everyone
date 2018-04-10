@@ -41,6 +41,7 @@ class NaviWhenLoggedIn extends Component {
 
 
                 </Navbar.Form>
+
                 </Navbar>
 
             </div>

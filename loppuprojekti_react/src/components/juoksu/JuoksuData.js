@@ -1,42 +1,44 @@
 import React, {Component} from 'react';
-import UintiForm from './UintiForm';
-import UintiTietoLista from "./UintiTietoLista";
+import JuoksuForm from './JuoksuForm';
+import JuoksuTietoLista from "./JuoksuTietoLista";
 import ProfileNavi from "../../ProfileNavi";
 import Profiledata from "../Profiledata";
 import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
 import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
 import firebase from 'firebase';
 
+// Juoksudatan käsittely, metodit poistamiseen ja lomakkeen käsittelyyn @Elina
+
 let kayttajanTunnus;
 
-class UintiData extends Component {
+class JuoksuData extends Component {
 
     constructor(props) {
         super(props);
-        this.user = firebase.auth().currentUser;//auth.currentUser;
+        this.user = firebase.auth().currentUser;
     }
 
-    state = {data: []}
+    state = {juoksudata: []}
 
     componentDidMount() {
         if (!this.user)
             firebase.auth().onAuthStateChanged(function (user) {
                 if(user) {
                     this.user = user;
-                    this.haeUinnitJaPaivita();
+                    this.haeJuoksutJaPaivita();
                 } else {
                     console.log("EI USERIA")
                 }
             }.bind(this));
     }
 
-    //Haetaan uintidata tietokannasta @Heidi
+    //Haetaan juoksudata tietokannasta
 
-    haeUinnitJaPaivita() {
+    haeJuoksutJaPaivita() {
         let kayttajanTunnus =  this.user.uid;
         console.dir(kayttajanTunnus);
 
-        fetch('/laji/uinti/' + kayttajanTunnus)
+        fetch('/laji/juoksu/' + kayttajanTunnus)
             .then(function (response) {
                 if (response.status === 200 || response.status === 304)
                     return response.json();
@@ -49,27 +51,27 @@ class UintiData extends Component {
             })
             .then(function (json) {
                 console.dir(json);
-                this.setState({data: json})
+                this.setState({juoksudata: json})
 
             }.bind(this));
     }
 
-    //Otetaan talteen käyttäjän syöttämä uintidata @Heidi
+    //Otetaan talteen käyttäjän syöttämä juoksudata
 
     tiedotSyotetty = (tiedot) => {
         kayttajanTunnus = this.user.uid;
 
-        let uinti = {matkaKm: tiedot.matka, kestoMin: tiedot.kesto,
-            pvm: tiedot.pvm, laji: 'uinti', kayttajaId: this.user.uid};
+        let juoksu = {matkaKm: tiedot.matka, kestoMin: tiedot.kesto,
+            pvm: tiedot.pvm, laji: 'juoksu', kayttajaId: this.user.uid};
 
-        fetch('/laji/uinti', {
+        fetch('/laji/juoksu', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(uinti)
+            body: JSON.stringify(juoksu)
         })
             .then(function (response) {
                 if (response.status < 300)
-                    this.haeUinnitJaPaivita();
+                    this.haeJuoksutJaPaivita();
                 else
                     throw new Error(response.statusText);
 
@@ -80,14 +82,14 @@ class UintiData extends Component {
             });
     }
 
-    //Uintitiedon poistaminen poista-nappulasta @Heidi
+    // Juoksutiedon poistaminen poista-nappulasta
 
-    poistaUinti = (poistettavanId) => {
-        fetch('/laji/uinti/' + poistettavanId,
+    poistaJuoksu = (poistettavanId) => {
+        fetch('/laji/juoksu/' + poistettavanId,
             {method: 'DELETE'})
             .then(function (response) {
                 if (response.status === 204)
-                    this.haeUinnitJaPaivita();
+                    this.haeJuoksutJaPaivita();
                 else
                     throw new Error(response.statusText);
             }.bind(this))
@@ -109,10 +111,10 @@ class UintiData extends Component {
                     <div>
                         <NaviWhenLoggedIn {...this.props}/>
                     </div>
-                    <UintiForm uintiTiedotSyotetty={this.tiedotSyotetty}/>
-                    <UintiTietoLista uintiTiedot={this.state.data} poista={this.poistaUinti}/>
+                    <JuoksuForm juoksuTiedotSyotetty={this.tiedotSyotetty}/>
+                    <JuoksuTietoLista juoksuTiedot={this.state.juoksudata} poista={this.poistaJuoksu}/>
                     <ProfileNavi/>
-                    <Profiledata uintiData={this.state.data}/>
+                    <Profiledata juoksuData={this.state.juoksudata}/>
                 </div>
             );
         }
@@ -120,4 +122,4 @@ class UintiData extends Component {
 
 }
 
-export default UintiData;
+export default JuoksuData;

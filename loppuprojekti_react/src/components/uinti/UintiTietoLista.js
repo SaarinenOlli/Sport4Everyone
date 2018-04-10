@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
-import KestavyysTieto from './UintiTieto';
+import UintiTieto from './UintiTieto';
 
 // Uintitiedot listalle, joka voidaan tulostaa käyttäjälle @Heidi
 
 class UintiTietoLista extends Component {
     render() {
         var uintiTiedotListana = this.props.uintiTiedot
+            .sort((a, b) => a.pvm > b.pvm)
             .map(function(tieto) {
                 return (
-                    <UintiTieto uintiTieto={tieto} poistaUintiTieto={this.props.poistaUinti}
+                    <UintiTieto uintiTieto={tieto} poistaUinti={this.props.poista}
                                 key={tieto.kestavyysHarjoitusId}/>);
         }.bind(this));
 

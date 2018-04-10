@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import '../paino/Form.css';
 
-class UintiForm extends Component {
+// Lomake uuden juoksusuorituksen kirjaamiseen @Elina
+
+class JuoksuForm extends Component {
     state = {pvm: '', kesto: '', matka: ''}
 
     syotaPvm = (event) => {
@@ -18,7 +20,7 @@ class UintiForm extends Component {
 
     ready = (event) => {
         event.preventDefault();
-        this.props.uintiTiedotSyotetty(this.state);
+        this.props.juoksuTiedotSyotetty(this.state);
         this.setState({pvm: '', kesto: '', matka: ''});
     }
 
@@ -39,4 +41,4 @@ class UintiForm extends Component {
     }
 }
 
-export default UintiForm;
+export default JuoksuForm;
