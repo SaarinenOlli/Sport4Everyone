@@ -9,7 +9,6 @@ import juoksu from './Resources/run.png';
 import pyora from './Resources/bicycle.png';
 import {Image, Col, Row, Carousel} from 'react-bootstrap';
 
-
 class NaviWhenLoggedIn extends Component {
 
     logout = () => {
@@ -35,10 +34,10 @@ class NaviWhenLoggedIn extends Component {
 
                     </Navbar.Header>
                     <ul class="nav navbar-nav">
-                    <li><a href="#"><Image src={paino} width={"25%"}/></a></li>
-                    <li><a href="#"><Image src={uinti} width={"25%"}/></a></li>
-                    <li><a href="#"><Image src={juoksu}width={"25%"}/></a></li>
-                    <li><a href="#"><Image src={pyora}width={"25%"}/></a></li>
+                    <li><a href="/PainoData"><Image src={paino} width={"25%"}/></a></li>
+                    <li><a href="/UintiData"><Image src={uinti} width={"25%"}/></a></li>
+                    <li><a href="/JuoksuData"><Image src={juoksu}width={"25%"}/></a></li>
+                    <li><a href="/PyorailyData"><Image src={pyora}width={"25%"}/></a></li>
                     </ul>
                     <Navbar.Form pullRight>
                         <Button onClick={this.logout}>Logout</Button>
