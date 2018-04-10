@@ -20,21 +20,36 @@ var uintilevelup
 
 class PainoGraafi extends Component {
     render() {
-       // const graafidata = this.props.data.reduce((acc, datum) => { acc[datum.pvm] = datum.painoKiloina; return acc; }, {});
+       const graafidata = this.props.data.reduce((acc, datum) => { acc[datum.pvm] = datum.painoKiloina; return acc; }, {});
 
-        /*        var uusiLista = this.props.tiedot.map(function(tieto) {
-            return (<GrafiikkaTieto tieto={tieto} key={tieto.painoId}/>);
-        });*/
+       // Otetaan data talteen KA:n käsittelyä varten
+        const data = this.props.data;
+        const unparsedMovingAverages = data.map((datum, index, array) => {
+            // Määritellään keskiarvon pituus
+            const length = 2;
+            const lowerBound = Math.max(index - length + 1, 0);
+            // Palautetaan taulukko painodataa, jota käytetään keskiarvon laskemiseen
+            const sliced = array.slice(lowerBound, index + 1).map(d => d.painoKiloina);
+            // Otetaan irti liikkuva keskiarvo
+            const averaged = sliced.reduce((a, b) => a + b, 0) / sliced.length;
 
-
-
-
+            return {
+                pvm: datum.pvm,
+                movingAverage: averaged
+            };
+        });
+        // Muutetaan taulukon data chart.js:n syötävään muotoon!
+        const graafidatakax = unparsedMovingAverages.reduce((acc, datum) => {
+            acc[datum.pvm] = datum.movingAverage;
+            return acc;
+        }, {});
+        const graafidatax = [ {"name":"Paino", "data": graafidata}, {"name":"PainoKA", "data":graafidatakax}];
 
         return (
             <div>
                     {/*@Renne TÄssä luodaan Chart.js:n avulla kivoja graafeja!*/}
                     <div style={{display: 'flex', justifyContent: 'center'}}>
-                        <LineChart width="60%" xtitle="Time" ytitle="Weight" /*data={graafidata} */ />
+                        <LineChart width="60%" xtitle="Time" ytitle="Weight" data={graafidatax} />
                     </div>
                         <div style={{display: 'flex', justifyContent: 'center'}}>
                         <PieChart donut={true} max={100} data={[["Exercises", 9], ["Level Up", 1]]}  />
@@ -43,6 +58,7 @@ class PainoGraafi extends Component {
 
         );
     }
+
 }
 
 export default PainoGraafi;

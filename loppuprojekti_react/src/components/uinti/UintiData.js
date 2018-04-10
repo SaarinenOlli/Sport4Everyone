@@ -15,7 +15,7 @@ class UintiData extends Component {
         this.user = firebase.auth().currentUser;//auth.currentUser;
     }
 
-    state = {uintidata: []}
+    state = {data: []}
 
     componentDidMount() {
         if (!this.user)
@@ -110,7 +110,7 @@ class UintiData extends Component {
                     </div>
                     <UintiForm uintiTiedotSyotetty={this.tiedotSyotetty}/>
                     <UintiTietoLista uintiTiedot={this.state.uintidata} poista={this.poistaUinti}/>
-                    <KestavyysGraafi uintiData={this.state.uintidata}/>
+                    <KestavyysGraafi data={this.state.data}/>
 
                 </div>
             );
