@@ -4,8 +4,9 @@ import {Navbar} from 'react-bootstrap';
 import {NavItem} from 'react-bootstrap';
 import {Glyphicon} from 'react-bootstrap';
 import Dialog from 'react-bootstrap-dialog';
-import {Modal, Button, FormGroup, ControlLabel, FormControl, ButtonToolbar} from 'react-bootstrap';
+import {Modal, Button, FormGroup, ControlLabel, FormControl, ButtonToolbar, Col} from 'react-bootstrap';
 import {auth, googleProvider} from './FireBase';
+import {bootstrapUtils} from "react-bootstrap/lib/utils/index";
 
 class Navi extends Component {
 
@@ -151,27 +152,41 @@ class Navi extends Component {
 
 
     render() {
+        bootstrapUtils.addStyle(Navbar, 'custom');
+
+        var styles={
+            "backgroundColor" : "black",
+            "color"           : "white",
+            "padding-top"     : "5px",
+            "padding-bottom"  : "-20px"
+        };
 
         return (
             //Näytetään navbar.
             <div>
-                <Navbar inverse collapseOnSelect>
+                <Navbar style={styles}>
                     <Navbar.Header>
-                        <Navbar.Brand>
-                            Sport4Everyone
-                        </Navbar.Brand>
+                            <FormGroup>
+                                <h4>Thriathlon4Everyone</h4>
+                            </FormGroup>
                     </Navbar.Header>
-                    <Navbar.Form pullRight>
-                        <Button onClick={this.handleLogIn}>
+                    <Navbar.Collapse>
+                    <Navbar.Form justified className="nav-bar nav" pullRight>
+                        <FormGroup>
+                        <ButtonToolbar>
+                        <Button bsStyle="primary" onClick={this.handleLogIn}>
                             <Glyphicon glyph="user"/>
-
+                            {' '}
                             Login</Button>
-                        <FormGroup></FormGroup>{' '}
-                        <Button onClick={this.handleRegister}>
+                        {' '}
+                        <Button bsStyle="danger" onClick={this.handleRegister}>
                             <Glyphicon glyph="user"/>
-
+                            {' '}
                             Register</Button>
+                        </ButtonToolbar>
+                        </FormGroup>
                     </Navbar.Form>
+                    </Navbar.Collapse>
                 </Navbar>
 
 
