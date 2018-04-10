@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Panel, Button, ButtonToolbar, ButtonGroup} from 'react-bootstrap';
 
 class Tieto extends Component {
 
@@ -18,17 +19,22 @@ class Tieto extends Component {
 // painoKiloina = pystyakseli
     render() {
         return (
-            <div className="Tieto">
-                päiväys: {this.props.tieto.pvm}<br/>
-                paino: {this.props.tieto.painoKiloina} kg<br/>
+
+            <Panel bsStyle="primary">
+            <Panel.Body>
+                Date: {this.props.tieto.pvm}<br/>
+                Weight: {this.props.tieto.painoKiloina} kg
+            </Panel.Body>
                 {/*Ao. kommentoitu pois, jotta ei tule näkyviin käyttäjälle!*/}
                 {/*kirjauksen id: {this.props.tieto.painoId}*/}
-                <form>
-                    <button onClick={this.poista}>Poista</button>
-                </form>
-
-
-            </div>
+                <Panel.Body>
+                <ButtonToolbar>
+                    <ButtonGroup>
+                    <Button active onClick={this.poista}>Delete</Button>
+                    </ButtonGroup>
+                </ButtonToolbar>
+                </Panel.Body>
+            </Panel>
         );
     }
 }

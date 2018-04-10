@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
 import Form from "./Form";
 import TietoLista from "./TietoLista";
-import ProfileNavi from "../../ProfileNavi";
 import Profiledata from "../Profiledata";
-import ErrorButton from "../error/ErrorButton";
 import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
-//import {auth} from '../FireBase';
 import firebase from 'firebase';
+import pelihahmo from '../../Resources/pelihahmo.png';
 import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
-import Dialog from 'react-bootstrap-dialog';
+import {Col, Row, Image} from 'react-bootstrap';
 
 let kayttajanTunnus;
 
@@ -109,14 +107,36 @@ class PainoData extends Component {
         } else {
             return (
                 <div>
-                    <div>
+                    <nav>
                         <NaviWhenLoggedIn {...this.props}/>
-                    </div>
-                    <Form tiedotSyotetty={this.tiedotSyotetty}/>
-                    <TietoLista tiedot={this.state.data} poista={this.poistaPaino}/>
+                    </nav>
+                    <Row>
+                        <Col xs={0} md={4}/>
+                        <Col xs={12} md={4}>
+                            <h1 align="middle"></h1>
+                        </Col>
+                        <Col xs={0} md={4}/>
 
-                    <Profiledata data={this.state.data}/>
-                    <ErrorButton/>
+                    </Row>
+                    <Row>
+                        <Col xs={0} md={2}/>
+                        <Col xs={12} md={4}>
+                            <Image src={pelihahmo} circle className={"pull-right"}/>
+                        </Col>
+                        <Col xs={0} md={4}>
+                            <Profiledata data={this.state.data}/>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={0} md={4}/>
+                        <Col xs={12} md={4}>
+                            <Form tiedotSyotetty={this.tiedotSyotetty}/>
+                            <TietoLista tiedot={this.state.data} poista={this.poistaPaino}/>
+                        </Col>
+                        <Col xs={0} md={4}/>
+
+                    </Row>
+
                 </div>
             );
         }

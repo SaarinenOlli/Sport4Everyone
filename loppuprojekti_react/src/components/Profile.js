@@ -25,7 +25,7 @@ class Profile extends Component {
                     <Row>
                         <Col xs={0} md={4}/>
                         <Col xs={12} md={4}>
-                            <h1 align="middle">Profile Name</h1>
+                            <h1 align="middle">Welcome!</h1>
                         </Col>
                         <Col xs={0} md={4}/>
 

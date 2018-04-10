@@ -25,10 +25,10 @@ class Form extends Component {
     render() {
         return (
             <form onSubmit={this.ready}>
-                Päivämäärä: <input value={this.state.vaaka} type="date" required="required"
+                Date: <input value={this.state.vaaka} type="date" required="required"
                                    placeholder="vvvv-kk-pp" onChange={this.syotaVaakaTieto}/>
                 <br/>
-                Paino (kg): <input value={this.state.pysty} type="number" min={0} max={200} step={0.01}
+                Weight (kg): <input value={this.state.pysty} type="number" min={0} max={200} step={0.01}
                                    required="required" onChange={this.syotaPystyTieto}/>
 
                 <input type="submit"/>

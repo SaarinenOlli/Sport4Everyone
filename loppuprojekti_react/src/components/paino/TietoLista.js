@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Tieto from './Tieto';
+import {Panel} from 'react-bootstrap';
 
 
 //listaa jsonista painotiedot tietoelementeiksi -Olli
@@ -13,10 +14,14 @@ class TietoLista extends Component {
         }.bind(this));
 
         return(
-
-            <div className="tietolista">
+            <Panel bsStyle="primary">
+                <Panel.Heading>
+                    <Panel.Title componentClass="h3">Weight data</Panel.Title>
+                </Panel.Heading>
+                <Panel.Body>
                 {tiedotListana}
-            </div>
+                </Panel.Body>
+            </Panel>
         );
     }
 }
