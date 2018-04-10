@@ -5,13 +5,20 @@ import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
 import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
 import firebase from 'firebase';
 import KestavyysGraafi from "../KestavyysGraafi";
+import { LineChart, PieChart, AreaChart, DoughnutChart } from 'react-chartkick';
 
 let kayttajanTunnus;
 let uintiLaskuri;
+var uintilevelup;
+var uintilevel;
+
 
 class UintiData extends Component {
 
-    constructor(props) {
+
+
+
+constructor(props) {
         super(props);
         this.user = firebase.auth().currentUser;//auth.currentUser;
     }
@@ -100,6 +107,14 @@ class UintiData extends Component {
 
     render() {
 
+        if (uintiLaskuri < 3) {
+            uintilevelup = (3-uintiLaskuri);
+            uintilevel = 1;} else if (uintiLaskuri >2 && uintiLaskuri <10) {
+            uintilevelup = (10-uintiLaskuri);
+            uintilevel = 2; } else {
+            uintilevelup = (20-uintiLaskuri);
+            uintilevel = 3;}
+
         if (this.user === null) {
             return (
                 <ErrorPageIfNotLoggedIn/>
@@ -113,7 +128,9 @@ class UintiData extends Component {
                     <UintiForm uintiTiedotSyotetty={this.tiedotSyotetty}/>
                     <UintiTietoLista uintiTiedot={this.state.uintidata} poista={this.poistaUinti}/>
                     <KestavyysGraafi uintiData={this.state.uintidata}/>
-
+                    <div style={{display: 'flex', justifyContent: 'center'}}>
+                        <PieChart donut={true} max={100} data={[["Exercises", uintiLaskuri], ["Level Up", uintilevelup]]}  />
+                    </div>
                 </div>
             );
         }
