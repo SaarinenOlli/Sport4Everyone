@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
 import { LineChart, PieChart, AreaChart, DoughnutChart } from 'react-chartkick';
 
+// Komponentti käyttäjän tämän hetkisen levelin näyttämiseen donitsina
+// Toimii kaikkien lajien kanssa
+// @Olli @Elina
 
 var levelup;
 var laskuri;
 
-class levelGraafi extends Component{
+class LevelGraafi extends Component{
 
     render () {
-
         levelup = this.props.levelup;
         laskuri = this.props.laskuri;
 
@@ -25,4 +27,4 @@ class levelGraafi extends Component{
 
     }
 
-} export default levelGraafi;
+} export default LevelGraafi;
