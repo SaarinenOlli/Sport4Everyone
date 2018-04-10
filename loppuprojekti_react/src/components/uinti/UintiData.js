@@ -5,14 +5,23 @@ import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
 import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
 import firebase from 'firebase';
 import KestavyysGraafi from "../KestavyysGraafi";
+import Kuva from '../Kuva';
+import LevelGraafi from '../LevelGraafi';
+
+// Uintidatan käsittely, poistaminen, listaaminen @Heidi @Elina @Olli
 
 let kayttajanTunnus;
+let laskuri = 0; // Kirjautuneen käyttäjän uintikertojen määrä
+
+// Apumuuttujat käyttäjän levelien träkkäämiseen
+var levelup;
+var level;
 
 class UintiData extends Component {
 
     constructor(props) {
         super(props);
-        this.user = firebase.auth().currentUser;//auth.currentUser;
+        this.user = firebase.auth().currentUser;
     }
 
     state = {data: []}
@@ -48,6 +57,8 @@ class UintiData extends Component {
             })
             .then(function (json) {
                 console.dir(json);
+                // Haetaan JSON-datan pituuden perusteella käyttäjän uintikertojen lukumäärä
+                laskuri = Object.keys(json).length;
                 this.setState({uintidata: json})
 
             }.bind(this));
@@ -98,6 +109,21 @@ class UintiData extends Component {
 
     render() {
 
+        // Määritetään käyttäjän nykyinen level sekä askeleet seuraavalle levelille
+        // laskurin arvon perusteella
+
+        if (laskuri < 3) {
+            levelup = (3 - laskuri);
+            level = 1;
+        } else if (laskuri > 2 && laskuri < 10) {
+            levelup = (10 - laskuri);
+            level = 2;
+        } else {
+            levelup = (20 - laskuri);
+            level = 3;
+        }
+
+        // Sivulle pääsee ainoastaan kirjautuneena
         if (this.user === null) {
             return (
                 <ErrorPageIfNotLoggedIn/>
@@ -110,12 +136,13 @@ class UintiData extends Component {
                     </div>
                     <UintiForm uintiTiedotSyotetty={this.tiedotSyotetty}/>
                     <UintiTietoLista uintiTiedot={this.state.uintidata} poista={this.poistaUinti}/>
-                    <KestavyysGraafi data={this.state.data}/>
+                    <KestavyysGraafi data={this.state.uintidata}/>
+                    <Kuva laji={'uinti'} level={level}/>
+                    <LevelGraafi laskuri={laskuri} levelup={levelup} level={level} />
 
                 </div>
             );
         }
     }
 }
-
 export default UintiData;

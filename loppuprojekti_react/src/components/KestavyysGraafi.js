@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { LineChart, PieChart, AreaChart, DoughnutChart } from 'react-chartkick';
+import { LineChart, PieChart, AreaChart, DoughnutChart, BarChart } from 'react-chartkick';
 window.Chart = require('../../node_modules/chart.js/src/chart');
 // import {Chart} from 'chart';
 
@@ -11,9 +11,11 @@ window.Chart = require('../../node_modules/chart.js/src/chart');
 
 class KestavyysGraafi extends Component {
     render() {
-         const graafiKestavyysMatka = this.props.data.reduce((acc, datum) => { acc[datum.pvm] = datum.matkaKm; return acc; }, {});
-        //
-         const graafiKestavyysAika = this.props.data.reduce((acc, datum) => { acc[datum.pvm] = datum.kestoMin; return acc; }, {});
+
+        const graafiKestavyysMatka = this.props.data.reduce((acc, datum) => { acc[datum.pvm] = datum.matkaKm; return acc; }, {});
+
+        const graafiKestavyysAika = this.props.data.reduce((acc, datum) => { acc[datum.pvm] = datum.kestoMin; return acc; }, {});
+
 
 
         return (
@@ -21,12 +23,19 @@ class KestavyysGraafi extends Component {
 
                 {/*@Renne TÄssä luodaan Chart.js:n avulla kivoja graafeja!*/}
                 <div style={{display: 'flex', justifyContent: 'center'}}>
-                    <LineChart width="60%" xtitle="Time" ytitle="Excercise duration" data={graafiKestavyysAika}/>
+
+                    <LineChart width="60%" xtitle="Time" ytitle="Excercise duration" data={graafiKestavyysAika}  />
                 </div>
+                {/*<div style={{display: 'flex', justifyContent: 'center'}}>*/}
+                    {/*<PieChart donut={true} max={100} data={[["Steps", 8544], ["Steps from goal", 1456]]}  />*/}
+                {/*</div>*/}
+
                 <div style={{display: 'flex', justifyContent: 'center'}}>
                     <LineChart width="60%" xtitle="Time" ytitle="Excercise distance" data={graafiKestavyysMatka} />
                 </div>
-
+                {/*<div style={{display: 'flex', justifyContent: 'center'}}>*/}
+                    {/*<PieChart donut={true} max={100} data={[["Steps", 8544], ["Steps from goal", 1456]]}  />*/}
+                {/*</div>*/}
             </div>
 
         );

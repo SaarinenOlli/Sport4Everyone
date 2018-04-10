@@ -19,7 +19,7 @@ const App = appProps => (
                 <Route exact name="index" path="/" component={Home}/>
                 <Route exact path="/profile" component={PainoData}/>
                 <Route exact path="/swimming" component={UintiData}/>
-                {/*<Route exact path="/pyoradata" component={PyoraData}/>*/}
+                <Route exact path="/cycling" component={PyoraData}/>
                 <Route exact path="/running" component={JuoksuData}/>
                 <Route exact path="/error" component={ErrorPageSomethingWentWrong}/>
             </Switch>

@@ -5,10 +5,17 @@ import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
 import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
 import firebase from 'firebase';
 import KestavyysGraafi from "../KestavyysGraafi";
+import LevelGraafi from '../LevelGraafi';
+import Kuva from '../Kuva';
 
 // Juoksudatan käsittely, metodit poistamiseen ja lomakkeen käsittelyyn @Elina
 
 let kayttajanTunnus;
+let juoksuLaskuri = 0; // Kuinka monta juoksukertaa kirjautuneella käyttäjällä on
+
+// Apumuuttujat käyttäjän levelien träkkäämiseen
+var levelup;
+var level;
 
 class JuoksuData extends Component {
 
@@ -50,6 +57,8 @@ class JuoksuData extends Component {
             })
             .then(function (json) {
                 console.dir(json);
+                // Haetaan JSON-datan pituuden perusteella käyttäjän juoksukertojen määrä
+                juoksuLaskuri = Object.keys(json).length;
                 this.setState({juoksudata: json})
 
             }.bind(this));
@@ -100,6 +109,21 @@ class JuoksuData extends Component {
 
     render() {
 
+        // Määritetään käyttäjän nykyinen level sekä askeleet seuraavalle levelille
+        // juoksulaskurin arvon perusteella
+
+        if (juoksuLaskuri < 3) {
+            levelup = (3 - juoksuLaskuri);
+            level = 1;
+        } else if (juoksuLaskuri > 2 && juoksuLaskuri < 10) {
+            levelup = (10 - juoksuLaskuri);
+            level = 2;
+        } else {
+            levelup = (20 - juoksuLaskuri);
+            level = 3;
+        }
+
+        // Sivulle pääsee ainoastaan kirjautuneena
         if (this.user === null) {
             return (
                 <ErrorPageIfNotLoggedIn/>
@@ -110,14 +134,16 @@ class JuoksuData extends Component {
                     <div>
                         <NaviWhenLoggedIn {...this.props}/>
                     </div>
+
                     <JuoksuForm juoksuTiedotSyotetty={this.tiedotSyotetty}/>
                     <JuoksuTietoLista juoksuTiedot={this.state.juoksudata} poista={this.poistaJuoksu}/>
-                    <KestavyysGraafi juoksuData={this.state.juoksudata}/>
+                    <KestavyysGraafi data={this.state.juoksudata}/>
+                    <Kuva laji={'juoksu'} level={level}/>
+                    <LevelGraafi laskuri={juoksuLaskuri} levelup={levelup} level={level}/>
                 </div>
             );
         }
     }
-
 }
 
 export default JuoksuData;

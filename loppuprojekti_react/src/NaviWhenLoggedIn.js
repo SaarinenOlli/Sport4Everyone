@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Navbar} from 'react-bootstrap';
-import {Nav, Button} from 'react-bootstrap';
+import {Nav, NavItem, FormGroup, BreadcrumbItem} from 'react-bootstrap';
 import {auth} from './FireBase';
 import './App.css';
 import paino from './Resources/scale.png';
@@ -9,6 +9,8 @@ import juoksu from './Resources/run.png';
 import pyora from './Resources/bicycle.png';
 import logout from './Resources/logout.png';
 import {Image, Col, Row, Carousel} from 'react-bootstrap';
+import { bootstrapUtils } from 'react-bootstrap/lib/utils';
+
 
 class NaviWhenLoggedIn extends Component {
 
@@ -24,31 +26,57 @@ class NaviWhenLoggedIn extends Component {
     }
 
     render() {
+        bootstrapUtils.addStyle(Navbar, 'custom');
+
+        var styles={
+            "backgroundColor" : "black",
+            "color"           : "white",
+            "padding-top"     : "5px",
+            "padding-bottom"  : "-20px"
+        };
 
         return (
-            <div>
+                <Navbar style={styles}>
+                    <Navbar.Header>
+                        <Col xs={6} md={4}>
+                            <FormGroup>
+                            <h3>Thriathlon4Everyone</h3>
+                            </FormGroup>
+                        </Col>
+                    </Navbar.Header>
+                    <Navbar.Collapse>
+                <Navbar.Form className="nav-bar nav">
+                    <Col md={8} mdPush={1}>
+                    <FormGroup>
+                    <BreadcrumbItem href="/profile"><Image src={paino} width={"35%"}/></BreadcrumbItem>
+                    </FormGroup>
 
+                    <FormGroup>
+                    <NavItem href="/swimming"><Image src={uinti} width={"35%"}/></NavItem>
+                    </FormGroup>
 
-                <Navbar inverse>
-                <Navbar.Form className="nav-bar nav" width="25%" pullLeft>
+                    <FormGroup>
+                    <NavItem href="/running"><Image src={juoksu}width={"35%"}/></NavItem>
+                    </FormGroup>
 
-                    <a href="/profile"><Image src={paino} width={"15%"}/></a>
-                    <a href="/swimming"><Image src={uinti} width={"15%"}/></a>
-                    <a href="/running"><Image src={juoksu}width={"15%"}/></a>
-                    <a href="/cyckling"><Image src={pyora}width={"15%"}/></a>
+                    <FormGroup>
+                    <NavItem href="/cycling"><Image src={pyora}width={"35%"}/></NavItem>
+                    </FormGroup>
 
-
-                    <a href="#" onClick={this.logout}><Image src={logout}width={"15%"}/></a>
+                    <FormGroup>
+                    <NavItem onClick={this.logout}><Image src={logout}width={"35%"}/></NavItem>
+                    </FormGroup>
+                    </Col>
 
                 </Navbar.Form>
+                    </Navbar.Collapse>
 
                 </Navbar>
-
-            </div>
 
         );
 
     }
+
 }
 
 export default NaviWhenLoggedIn;

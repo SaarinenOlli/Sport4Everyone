@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image} from 'react-bootstrap';
+import {Row, Col} from 'react-bootstrap';
 import chart from '../../chart.png';
 import GrafiikkaTieto from '../GrafiikkaTieto';
 import PainoData from './PainoData';
@@ -47,13 +47,17 @@ class PainoGraafi extends Component {
 
         return (
             <div>
+                <Row>
                     {/*@Renne TÄssä luodaan Chart.js:n avulla kivoja graafeja!*/}
+
                     <div style={{display: 'flex', justifyContent: 'center'}}>
                         <LineChart width="60%" xtitle="Time" ytitle="Weight" data={graafidatax} />
                     </div>
                         <div style={{display: 'flex', justifyContent: 'center'}}>
                         <PieChart donut={true} max={100} data={[["Exercises", 9], ["Level Up", 1]]}  />
+
                     </div>
+                </Row>
             </div>
 
         );
