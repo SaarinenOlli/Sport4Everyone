@@ -26,6 +26,16 @@ class NaviWhenLoggedIn extends Component {
                         <Navbar.Brand>
                             Sport4Everyone
                         </Navbar.Brand>
+                        <Navbar.Brand>
+                            Running
+                        </Navbar.Brand>
+                        <Navbar.Brand>
+                            Cyckling
+                        </Navbar.Brand>
+                        <Navbar.Brand>
+                            Swimming
+                        </Navbar.Brand>
+
                     </Navbar.Header>
                     <Nav pullRight>
                         <Button onClick={this.logout}>Logout</Button>
