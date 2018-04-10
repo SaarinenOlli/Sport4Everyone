@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import JuoksuForm from './JuoksuForm';
 import JuoksuTietoLista from "./JuoksuTietoLista";
 import ProfileNavi from "../../ProfileNavi";
-import Profiledata from "../Profiledata";
 import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
 import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
 import firebase from 'firebase';
+import KestavyysGraafi from "../KestavyysGraafi";
 
 // Juoksudatan käsittely, metodit poistamiseen ja lomakkeen käsittelyyn @Elina
 
@@ -114,7 +114,7 @@ class JuoksuData extends Component {
                     <JuoksuForm juoksuTiedotSyotetty={this.tiedotSyotetty}/>
                     <JuoksuTietoLista juoksuTiedot={this.state.juoksudata} poista={this.poistaJuoksu}/>
                     <ProfileNavi/>
-                    <Profiledata juoksuData={this.state.juoksudata}/>
+                    <KestavyysGraafi juoksuData={this.state.juoksudata}/>
                 </div>
             );
         }

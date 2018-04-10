@@ -22,11 +22,6 @@ class PainoGraafi extends Component {
     render() {
        // const graafidata = this.props.data.reduce((acc, datum) => { acc[datum.pvm] = datum.painoKiloina; return acc; }, {});
 
-        // KOMMENTIT POISTETTAVA, KUN UINTIDATAA HALUTAAN GRAAFIIN
-        //uintiDataa kuvaava graafi alustetaan tässä. Ei vielä valmis, mutta muuttujien nimet täsmäävät nyt
-        //uintiData.js kanssa @Heidi
-        //const graafiUintiData = this.props.uintidata.reduce(/*varsinainen metodi tulee tänne*/);
-
         /*        var uusiLista = this.props.tiedot.map(function(tieto) {
             return (<GrafiikkaTieto tieto={tieto} key={tieto.painoId}/>);
         });*/

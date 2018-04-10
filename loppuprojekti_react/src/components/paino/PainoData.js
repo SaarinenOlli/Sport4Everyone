@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Form from "./Form";
 import TietoLista from "./TietoLista";
 import ProfileNavi from "../../ProfileNavi";
-import Profiledata from "./PainoGraafi";
+import PainoGraafi from "./PainoGraafi";
 import ErrorButton from "../error/ErrorButton";
 import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
 //import {auth} from '../FireBase';
@@ -115,7 +115,7 @@ class PainoData extends Component {
                     <Form tiedotSyotetty={this.tiedotSyotetty}/>
                     <TietoLista tiedot={this.state.data} poista={this.poistaPaino}/>
 
-                    <Profiledata data={this.state.data}/>
+                    <PainoGraafi data={this.state.data}/>
                     <ErrorButton/>
                 </div>
             );
