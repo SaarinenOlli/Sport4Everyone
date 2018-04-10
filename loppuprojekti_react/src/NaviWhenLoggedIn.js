@@ -10,7 +10,6 @@ import pyora from './Resources/bicycle.png';
 import logout from './Resources/logout.png';
 import {Image, Col, Row, Carousel} from 'react-bootstrap';
 
-
 class NaviWhenLoggedIn extends Component {
 
     logout = () => {
@@ -28,17 +27,18 @@ class NaviWhenLoggedIn extends Component {
 
         return (
             <div>
+
+
                 <Navbar inverse>
                 <Navbar.Form className="nav-bar nav" width="25%" pullLeft>
 
-                    <a href="#"><Image src={paino} width={"15%"}/></a>
-                    <a href="#"><Image src={uinti} width={"15%"}/></a>
-                    <a href="#"><Image src={juoksu}width={"15%"}/></a>
-                    <a href="#"><Image src={pyora}width={"15%"}/></a>
+                    <a href="/PainoData"><Image src={paino} width={"15%"}/></a>
+                    <a href="/UintiData"><Image src={uinti} width={"15%"}/></a>
+                    <a href="/JuoksuData"><Image src={juoksu}width={"15%"}/></a>
+                    <a href="/PyorailyData"><Image src={pyora}width={"15%"}/></a>
 
 
                     <a href="#" onClick={this.logout}><Image src={logout}width={"15%"}/></a>
-
 
                 </Navbar.Form>
 
