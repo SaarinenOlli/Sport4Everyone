@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import UintiForm from './UintiForm';
 import UintiTietoLista from "./UintiTietoLista";
-import Profiledata from "../Profiledata";
 import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
 import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
 import firebase from 'firebase';
+import KestavyysGraafi from "../KestavyysGraafi";
 
 let kayttajanTunnus;
 
@@ -15,7 +15,7 @@ class UintiData extends Component {
         this.user = firebase.auth().currentUser;//auth.currentUser;
     }
 
-    state = {data: []}
+    state = {uintidata: []}
 
     componentDidMount() {
         if (!this.user)
@@ -48,7 +48,7 @@ class UintiData extends Component {
             })
             .then(function (json) {
                 console.dir(json);
-                this.setState({data: json})
+                this.setState({uintidata: json})
 
             }.bind(this));
     }
@@ -109,13 +109,13 @@ class UintiData extends Component {
                         <NaviWhenLoggedIn {...this.props}/>
                     </div>
                     <UintiForm uintiTiedotSyotetty={this.tiedotSyotetty}/>
-                    <UintiTietoLista uintiTiedot={this.state.data} poista={this.poistaUinti}/>
-                    <Profiledata uintiData={this.state.data}/>
+                    <UintiTietoLista uintiTiedot={this.state.uintidata} poista={this.poistaUinti}/>
+                    <KestavyysGraafi uintiData={this.state.uintidata}/>
+
                 </div>
             );
         }
     }
-
 }
 
 export default UintiData;

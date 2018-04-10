@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {Image} from 'react-bootstrap';
-import chart from '../chart.png';
-import GrafiikkaTieto from './GrafiikkaTieto';
-import PainoData from './paino/PainoData';
+import chart from '../../chart.png';
+import GrafiikkaTieto from '../GrafiikkaTieto';
+import PainoData from './PainoData';
 
-import NaviWhenLoggedIn from "../NaviWhenLoggedIn";
+import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
 import { LineChart, PieChart, AreaChart, DoughnutChart } from 'react-chartkick';
-import Chart from '../../node_modules/chart.js/src/chart'
-window.Chart = require('../../node_modules/chart.js/src/chart');
+import Chart from '../../../node_modules/chart.js/src/chart'
+window.Chart = require('../../../node_modules/chart.js/src/chart');
 
 //alustetaan Dataa graafia varten, tämä on RAAKADATAA ja korvataan myöhemmin tietokantadatalla @Renne
 /*var data = [
@@ -18,14 +18,9 @@ var uintikerrat;
 var uintilevel;
 var uintilevelup
 
-class Profiledata extends Component {
+class PainoGraafi extends Component {
     render() {
        // const graafidata = this.props.data.reduce((acc, datum) => { acc[datum.pvm] = datum.painoKiloina; return acc; }, {});
-
-        // KOMMENTIT POISTETTAVA, KUN UINTIDATAA HALUTAAN GRAAFIIN
-        //uintiDataa kuvaava graafi alustetaan tässä. Ei vielä valmis, mutta muuttujien nimet täsmäävät nyt
-        //uintiData.js kanssa @Heidi
-        //const graafiUintiData = this.props.uintiData.reduce(/*varsinainen metodi tulee tänne*/);
 
         /*        var uusiLista = this.props.tiedot.map(function(tieto) {
             return (<GrafiikkaTieto tieto={tieto} key={tieto.painoId}/>);
@@ -39,7 +34,7 @@ class Profiledata extends Component {
             <div>
                     {/*@Renne TÄssä luodaan Chart.js:n avulla kivoja graafeja!*/}
                     <div style={{display: 'flex', justifyContent: 'center'}}>
-                        <LineChart width="60%" xtitle="Time" ytitle="Weight" /*data={graafidata}*/  />
+                        <LineChart width="60%" xtitle="Time" ytitle="Weight" /*data={graafidata} */ />
                     </div>
                         <div style={{display: 'flex', justifyContent: 'center'}}>
                         <PieChart donut={true} max={100} data={[["Exercises", 9], ["Level Up", 1]]}  />
@@ -50,4 +45,4 @@ class Profiledata extends Component {
     }
 }
 
-export default Profiledata;
+export default PainoGraafi;

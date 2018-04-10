@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Form from "./Form";
 import TietoLista from "./TietoLista";
-import Profiledata from "../Profiledata";
+import PainoGraafi from "./PainoGraafi";
 import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
 import firebase from 'firebase';
 import pelihahmo from '../../Resources/pelihahmo.png';
@@ -122,7 +122,7 @@ class PainoData extends Component {
                             <Image src={pelihahmo} circle className={"pull-right"}/>
                         </Col>
                         <Col xs={0} md={4}>
-                            <Profiledata data={this.state.data}/>
+                            <PainoGraafi data={this.state.data}/>
                         </Col>
                     </Row>
                     <br/>
@@ -140,7 +140,6 @@ class PainoData extends Component {
                             </Row>
                         </Panel.Body>
                     </Panel>
-
                 </div>
             );
         }
