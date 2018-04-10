@@ -3,7 +3,7 @@ import './App.css';
 import Home from './Home';
 import Profile from './components/Profile';
 import Form from './components/paino/Form';
-import Profiledata from './components/Profiledata';
+import Profiledata from './components/paino/PainoGraafi';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import PainoData from "./components/paino/PainoData";
 import ErrorBoundary from "./components/error/ErrorBoundary";

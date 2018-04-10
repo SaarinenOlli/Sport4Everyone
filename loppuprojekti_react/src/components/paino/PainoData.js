@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Form from "./Form";
 import TietoLista from "./TietoLista";
 import ProfileNavi from "../../ProfileNavi";
-import Profiledata from "../Profiledata";
+import Profiledata from "./PainoGraafi";
 import ErrorButton from "../error/ErrorButton";
 import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
 //import {auth} from '../FireBase';
