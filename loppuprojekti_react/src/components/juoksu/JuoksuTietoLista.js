@@ -7,6 +7,7 @@ import JuoksuTieto from './JuoksuTieto';
 class JuoksuTietoLista extends Component {
     render() {
         var juoksuTiedotListana = this.props.juoksuTiedot
+            .sort((a, b) => a.pvm > b.pvm)
             .map(function(tieto) {
                 return (
                     <JuoksuTieto juoksuTieto={tieto} poistaJuoksu={this.props.poista}

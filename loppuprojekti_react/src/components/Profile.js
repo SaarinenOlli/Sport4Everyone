@@ -32,17 +32,19 @@ class Profile extends Component {
                     </Row>
                     <br/>
                     <Row>
-                        <Col xs={0} md={2}/>
-                        <Col xs={12} md={4}>
-                            <Image src={pelihahmo} circle className={"pull-right"}/>
+                        <Col xs={0} md={3}/>
+                        <Col xs={12} md={3}>
+                            <Image src={pelihahmo} circle/>
                         </Col>
-                        <Col xs={0} md={4}>
-                            <div>
-                                <Image responsive="true" src={kuvaaja} rounded/>
-                            </div>
+
+                        <Col xs={0} md={3}>
+                        <div>
+                            <Image responsive="true" src={kuvaaja} rounded/>
+                        </div>
+
 
                         </Col>
-                        <Col xs={0} md={2}/>
+                        <Col xs={0} md={3}/>
                     </Row>
 
 
