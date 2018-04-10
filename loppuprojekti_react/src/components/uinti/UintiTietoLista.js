@@ -6,6 +6,7 @@ import UintiTieto from './UintiTieto';
 class UintiTietoLista extends Component {
     render() {
         var uintiTiedotListana = this.props.uintiTiedot
+            .sort((a, b) => a.pvm > b.pvm)
             .map(function(tieto) {
                 return (
                     <UintiTieto uintiTieto={tieto} poistaUinti={this.props.poista}

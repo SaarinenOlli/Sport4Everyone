@@ -1,11 +1,10 @@
 import React, {Component} from "react";
 import {Nav} from 'react-bootstrap';
 import {Navbar} from 'react-bootstrap';
-import {NavDropdown} from 'react-bootstrap';
-import {MenuItem} from 'react-bootstrap';
+import {NavItem} from 'react-bootstrap';
 import {Glyphicon} from 'react-bootstrap';
 import Dialog from 'react-bootstrap-dialog';
-import {Modal, Button, FormGroup, FormControl, ButtonToolbar} from 'react-bootstrap';
+import {Modal, Button, FormGroup, ControlLabel, FormControl, ButtonToolbar} from 'react-bootstrap';
 import {auth, googleProvider} from './FireBase';
 
 class Navi extends Component {
@@ -16,7 +15,8 @@ class Navi extends Component {
 
         this.handleHide = this.handleHide.bind(this);
         this.handleForgottenPassword = this.handleForgottenPassword.bind(this);
-
+        this.handleLogIn = this.handleLogIn.bind(this);
+        this.handleRegister = this.handleRegister.bind(this);
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
 
@@ -33,7 +33,16 @@ class Navi extends Component {
         };
     }
 
-    //Alla käsitellään formiin syötetty email ja salasana ja otetaan talteen @Tiina
+    //Modaaliboksien näyttö sen mukaan onko klikattu log in vai register @Tiina
+    handleLogIn() {
+        this.setState({showlogin: true});
+    }
+
+    handleRegister() {
+        this.setState({showregister: true});
+    }
+
+    //Alla käsitellään mihin tahansa sivun formiin syötetty email ja salasana ja otetaan talteen @Tiina
     handleEmailChange(event) {
         this.setState({email: event.target.value});
     }
@@ -54,17 +63,6 @@ class Navi extends Component {
         this.setState({showForgottenPassword: false});
         this.setState({email: ''});
         this.setState({password: ''});
-    }
-
-    //Modaaliboksien näyttö sen mukaan onko klikattu log in vai register @Tiina
-    handleSelect(selectedKey) {
-
-        if (selectedKey === 3.1) {
-            this.setState({showlogin: true});
-        } else if (selectedKey === 3.2) {
-            this.setState({showregister: true});
-        }
-
     }
 
     //Kun kirjaudutaan sisälle, status muuttuu useriksi, modaaliboksi menee kiinni ja
@@ -161,17 +159,19 @@ class Navi extends Component {
                     <Navbar.Header>
                         <Navbar.Brand>
                             Sport4Everyone
-
                         </Navbar.Brand>
                     </Navbar.Header>
-                    <Nav pullRight activeKey={3} onSelect={key => this.handleSelect(key)}>
-                        <NavDropdown title="Tähän hampurilainen" eventKey={3} id="basic-nav-dropdown">
-                            <MenuItem eventKey={3.1}><Glyphicon glyph="user"/> Log in
-                            </MenuItem>
-                            <MenuItem divider/>
-                            <MenuItem eventKey={3.2}><Glyphicon glyph="user"/> Register</MenuItem>
-                        </NavDropdown>
-                    </Nav>
+                    <Navbar.Form pullRight>
+                        <Button onClick={this.handleLogIn}>
+                            <Glyphicon glyph="user"/>
+
+                            Login</Button>
+                        <FormGroup></FormGroup>{' '}
+                        <Button onClick={this.handleRegister}>
+                            <Glyphicon glyph="user"/>
+
+                            Register</Button>
+                    </Navbar.Form>
                 </Navbar>
 
 
