@@ -7,6 +7,7 @@ import firebase from 'firebase';
 import KestavyysGraafi from "../KestavyysGraafi";
 
 let kayttajanTunnus;
+let uintiLaskuri;
 
 class UintiData extends Component {
 
@@ -48,6 +49,7 @@ class UintiData extends Component {
             })
             .then(function (json) {
                 console.dir(json);
+                uintiLaskuri = Object.keys(json).length;
                 this.setState({uintidata: json})
 
             }.bind(this));

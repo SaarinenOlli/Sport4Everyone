@@ -9,6 +9,7 @@ import KestavyysGraafi from "../KestavyysGraafi";
 // Juoksudatan käsittely, metodit poistamiseen ja lomakkeen käsittelyyn @Elina
 
 let kayttajanTunnus;
+let juoksuLaskuri = 0;
 
 class JuoksuData extends Component {
 
@@ -50,6 +51,8 @@ class JuoksuData extends Component {
             })
             .then(function (json) {
                 console.dir(json);
+                console.log(Object.keys(json).length );
+                juoksuLaskuri = Object.keys(json).length;
                 this.setState({juoksudata: json})
 
             }.bind(this));

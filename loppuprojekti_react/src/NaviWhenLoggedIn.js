@@ -35,7 +35,7 @@ class NaviWhenLoggedIn extends Component {
                     <a href="/profile"><Image src={paino} width={"15%"}/></a>
                     <a href="/swimming"><Image src={uinti} width={"15%"}/></a>
                     <a href="/running"><Image src={juoksu}width={"15%"}/></a>
-                    <a href="/cyckling"><Image src={pyora}width={"15%"}/></a>
+                    <a href="/cycling"><Image src={pyora}width={"15%"}/></a>
 
 
                     <a href="#" onClick={this.logout}><Image src={logout}width={"15%"}/></a>
