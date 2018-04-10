@@ -7,6 +7,7 @@ import paino from './Resources/scale.png';
 import uinti from './Resources/swim.png';
 import juoksu from './Resources/run.png';
 import pyora from './Resources/bicycle.png';
+import logout from './Resources/logout.png';
 import {Image, Col, Row, Carousel} from 'react-bootstrap';
 
 
@@ -27,17 +28,21 @@ class NaviWhenLoggedIn extends Component {
 
         return (
             <div>
-                <Navbar inverse className="nav-bar" width="25%">
-                    <ul class="nav navbar-nav">
-                    <li><a href="#"><Image src={paino} width={"25%"}/></a></li>
-                    <li><a href="#"><Image src={uinti} width={"25%"}/></a></li>
-                    <li><a href="#"><Image src={juoksu}width={"25%"}/></a></li>
-                    <li><a href="#"><Image src={pyora}width={"25%"}/></a></li>
-                    </ul>
-                    <Navbar.Form pullRight>
-                        <Button onClick={this.logout}>Logout</Button>
-                    </Navbar.Form>
+                <Navbar inverse>
+                <Navbar.Form className="nav-bar nav" width="25%" pullLeft>
+
+                    <a href="#"><Image src={paino} width={"15%"}/></a>
+                    <a href="#"><Image src={uinti} width={"15%"}/></a>
+                    <a href="#"><Image src={juoksu}width={"15%"}/></a>
+                    <a href="#"><Image src={pyora}width={"15%"}/></a>
+
+
+                    <a href="#" onClick={this.logout}><Image src={logout}width={"15%"}/></a>
+
+
+                </Navbar.Form>
                 </Navbar>
+
             </div>
 
         );
