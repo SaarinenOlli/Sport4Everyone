@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Image} from 'react-bootstrap';
 import chart from '../chart.png';
 import GrafiikkaTieto from './GrafiikkaTieto';
-import PainoData from './PainoData';
+import PainoData from './paino/PainoData';
 
 import NaviWhenLoggedIn from "../NaviWhenLoggedIn";
 import { LineChart, PieChart, AreaChart, DoughnutChart } from 'react-chartkick';
@@ -20,7 +20,7 @@ var uintilevelup
 
 class Profiledata extends Component {
     render() {
-        const graafidata = this.props.data.reduce((acc, datum) => { acc[datum.pvm] = datum.painoKiloina; return acc; }, {});
+       // const graafidata = this.props.data.reduce((acc, datum) => { acc[datum.pvm] = datum.painoKiloina; return acc; }, {});
 
         // KOMMENTIT POISTETTAVA, KUN UINTIDATAA HALUTAAN GRAAFIIN
         //uintiDataa kuvaava graafi alustetaan tässä. Ei vielä valmis, mutta muuttujien nimet täsmäävät nyt
@@ -39,7 +39,7 @@ class Profiledata extends Component {
             <div>
                     {/*@Renne TÄssä luodaan Chart.js:n avulla kivoja graafeja!*/}
                     <div style={{display: 'flex', justifyContent: 'center'}}>
-                        <LineChart width="60%" xtitle="Time" ytitle="Weight" data={graafidata}  />
+                        <LineChart width="60%" xtitle="Time" ytitle="Weight" /*data={graafidata}*/  />
                     </div>
                         <div style={{display: 'flex', justifyContent: 'center'}}>
                         <PieChart donut={true} max={100} data={[["Exercises", 9], ["Level Up", 1]]}  />

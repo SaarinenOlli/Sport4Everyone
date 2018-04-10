@@ -1,6 +1,5 @@
 package fi.academy.kestavyysHarjoittelu;
 
-import fi.academy.kestavyysHarjoittelu.KestavyysHarjoittelu;
 import org.springframework.data.repository.CrudRepository;
 
 // by Heidi Ja Elina

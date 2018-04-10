@@ -1,20 +1,42 @@
 import React, {Component} from 'react';
-import KestavyysTietoLista from "./UintiTietoLista";
-import ErrorPageIfNotLoggedIn from "./ErrorPageIfNotLoggedIn";
+import UintiForm from './UintiForm';
+import UintiTietoLista from "./UintiTietoLista";
+import ProfileNavi from "../../ProfileNavi";
+import Profiledata from "../Profiledata";
+import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
+import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
+import firebase from 'firebase';
 
+let kayttajanTunnus;
 
 class UintiData extends Component {
+
+    constructor(props) {
+        super(props);
+        this.user = firebase.auth().currentUser;//auth.currentUser;
+    }
 
     state = {data: []}
 
     componentDidMount() {
-        this.haeUinnitJaPaivita();
+        if (!this.user)
+            firebase.auth().onAuthStateChanged(function (user) {
+                if(user) {
+                    this.user = user;
+                    this.haeUinnitJaPaivita();
+                } else {
+                    console.log("EI USERIA")
+                }
+            }.bind(this));
     }
 
-    //Haetaan painodata tietokannasta @Heidi
+    //Haetaan uintidata tietokannasta @Heidi
 
     haeUinnitJaPaivita() {
-        fetch('/laji/uinti')
+        let kayttajanTunnus =  this.user.uid;
+        console.dir(kayttajanTunnus);
+
+        fetch('/laji/uinti/' + kayttajanTunnus)
             .then(function (response) {
                 if (response.status === 200 || response.status === 304)
                     return response.json();
@@ -34,10 +56,12 @@ class UintiData extends Component {
 
     //Otetaan talteen käyttäjän syöttämä uintidata @Heidi
 
-    tiedotSyötetty = (tiedot) => {
-        //MATKAN, KESTON, PVM:n JA KAYTTAJAID:n TIEDOT TULEVAT FORMISTA JA NIMETTÄVÄ SEN MUKAAN
-        let uinti = {uituMatka: matkan.tiedot.tahan, uinninKesto: keston.tiedot.tahan,
-            pvm: tiedot.paivamaarasta.tahan, kayttajaId: auth.currentUser.uid};
+    tiedotSyotetty = (tiedot) => {
+        kayttajanTunnus = this.user.uid;
+
+        let uinti = {matkaKm: tiedot.matka, kestoMin: tiedot.kesto,
+            pvm: tiedot.pvm, laji: 'uinti', kayttajaId: this.user.uid};
+
         fetch('/laji/uinti', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -59,11 +83,11 @@ class UintiData extends Component {
     //Uintitiedon poistaminen poista-nappulasta @Heidi
 
     poistaUinti = (poistettavanId) => {
-        fetch('/laji/uinti' + poistettavanId,
+        fetch('/laji/uinti/' + poistettavanId,
             {method: 'DELETE'})
             .then(function (response) {
                 if (response.status === 204)
-                    this.haePainotJaPaivita();
+                    this.haeUinnitJaPaivita();
                 else
                     throw new Error(response.statusText);
             }.bind(this))
@@ -74,9 +98,8 @@ class UintiData extends Component {
     }
 
     render() {
-        const user = auth.currentUser;
 
-        if (user === null) {
+        if (this.user === null) {
             return (
                 <ErrorPageIfNotLoggedIn/>
             )
@@ -88,6 +111,7 @@ class UintiData extends Component {
                     </div>
                     <UintiForm uintiTiedotSyotetty={this.tiedotSyotetty}/>
                     <UintiTietoLista uintiTiedot={this.state.data} poista={this.poistaUinti}/>
+                    <ProfileNavi/>
                     <Profiledata uintiData={this.state.data}/>
                 </div>
             );

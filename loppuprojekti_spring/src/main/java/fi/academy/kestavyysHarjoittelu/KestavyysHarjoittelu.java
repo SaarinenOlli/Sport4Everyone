@@ -16,8 +16,7 @@ public class KestavyysHarjoittelu {
     private int kestavyysHarjoitusId;
     @NotNull
     private String kayttajaId;
-    // ei ole aivan varmaa vielä, onko LocalDate sopiva formaatti
-    private LocalDate pvm;
+    private LocalDate pvm; // halutaanko kellonaika?
     private Integer kestoMin;
     private String laji;
     private Double matkaKm;
