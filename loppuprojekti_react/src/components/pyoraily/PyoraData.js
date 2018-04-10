@@ -7,7 +7,7 @@ import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
 import firebase from 'firebase';
 import KestavyysGraafi from "../KestavyysGraafi";
 
-let kayttajaTunnus;
+let kayttajanTunnus;
 
 class PyoraData extends Component {
 
@@ -64,11 +64,11 @@ class PyoraData extends Component {
         fetch('/laji/pyoraily', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(uinti)
+            body: JSON.stringify(pyora)
         })
             .then(function (response) {
                 if (response.status < 300)
-                    this.haeUinnitJaPaivita();
+                    this.haePyorailytJaPaivita();
                 else
                     throw new Error(response.statusText);
 

@@ -6,9 +6,10 @@ import PyoraTieto from './PyoraTieto';
 class PyoraTietoLista extends Component {
     render() {
         var pyoraTiedotListana = this.props.pyoraTiedot
+            .sort((a, b) => a.pvm > b.pvm)
             .map(function(tieto) {
                 return (
-                    <PyoraTieto uintiTieto={tieto} poistaUinti={this.props.poista}
+                    <PyoraTieto pyoraTieto={tieto} poistaPyora={this.props.poista}
                                 key={tieto.kestavyysHarjoitusId}/>);
             }.bind(this));
 
