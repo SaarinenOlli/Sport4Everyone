@@ -17,13 +17,10 @@ const App = appProps => (
         <Router>
             <Switch>
                 <Route exact name="index" path="/" component={Home}/>
-                <Route exact path="/profile" component={Profile}/>
-                <Route exact path="/form" component={Form}/>
-                <Route exact path="/profiledata" component={Profiledata}/>
-                <Route exact path="/painodata" component={PainoData}/>
-                <Route exact path="/uintidata" component={UintiData}/>
+                <Route exact path="/profile" component={PainoData}/>
+                <Route exact path="/swimming" component={UintiData}/>
                 {/*<Route exact path="/pyoradata" component={PyoraData}/>*/}
-                <Route exact path="/juoksudata" component={JuoksuData}/>
+                <Route exact path="/running" component={JuoksuData}/>
                 <Route exact path="/error" component={ErrorPageSomethingWentWrong}/>
             </Switch>
         </Router>

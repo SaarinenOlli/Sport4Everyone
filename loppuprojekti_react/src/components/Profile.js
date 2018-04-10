@@ -6,50 +6,37 @@ import {Image, Col, Row, Carousel} from 'react-bootstrap';
 import NaviWhenLoggedIn from "../NaviWhenLoggedIn";
 import {auth} from '../FireBase';
 import ErrorPageIfNotLoggedIn from "./error/ErrorPageIfNotLoggedIn";
+import PainoData from "./paino/PainoData";
+import firebase from "firebase/index";
 
 class Profile extends Component {
+    constructor(props) {
+        super(props);
+        this.user = firebase.auth().currentUser;//auth.currentUser;
+    }
+
+    state = {data: []}
+
+    componentDidMount() {
+        if (!this.user)
+            firebase.auth().onAuthStateChanged(function (user) {
+                if(user) {
+                    this.user = user;
+                    this.haeUinnitJaPaivita();
+                } else {
+                    console.log("EI USERIA")
+                }
+            }.bind(this));
+    }
 
     render() {
-        const user = auth.currentUser;
-
-        if (user === null) {
+        if (this.user === null) {
             return (
                 <ErrorPageIfNotLoggedIn/>
             )
         } else {
             return (
-                <div>
-                    <nav className="Navi">
-                        <NaviWhenLoggedIn {...this.props}/>
-                    </nav>
-                    <Row>
-                        <Col xs={0} md={4}/>
-                        <Col xs={12} md={4}>
-                            <h1 align="middle">Welcome!</h1>
-                        </Col>
-                        <Col xs={0} md={4}/>
-
-                    </Row>
-                    <br/>
-                    <Row>
-                        <Col xs={0} md={3}/>
-                        <Col xs={12} md={3}>
-                            <Image src={pelihahmo} circle/>
-                        </Col>
-
-                        <Col xs={0} md={3}>
-                        <div>
-                            <Image responsive="true" src={kuvaaja} rounded/>
-                        </div>
-
-
-                        </Col>
-                        <Col xs={0} md={3}/>
-                    </Row>
-
-
-                </div>
-
+               <h1>Pöö</h1>
 
             );
         }

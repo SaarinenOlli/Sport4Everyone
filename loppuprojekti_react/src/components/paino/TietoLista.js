@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Tieto from './Tieto';
-import {Panel} from 'react-bootstrap';
+import {Panel, Row, Col} from 'react-bootstrap';
 
 
 //listaa jsonista painotiedot tietoelementeiksi -Olli

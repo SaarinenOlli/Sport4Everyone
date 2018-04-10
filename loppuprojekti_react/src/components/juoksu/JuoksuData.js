@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import JuoksuForm from './JuoksuForm';
 import JuoksuTietoLista from "./JuoksuTietoLista";
-import ProfileNavi from "../../ProfileNavi";
 import Profiledata from "../Profiledata";
 import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
 import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
@@ -113,7 +112,6 @@ class JuoksuData extends Component {
                     </div>
                     <JuoksuForm juoksuTiedotSyotetty={this.tiedotSyotetty}/>
                     <JuoksuTietoLista juoksuTiedot={this.state.juoksudata} poista={this.poistaJuoksu}/>
-                    <ProfileNavi/>
                     <Profiledata juoksuData={this.state.juoksudata}/>
                 </div>
             );

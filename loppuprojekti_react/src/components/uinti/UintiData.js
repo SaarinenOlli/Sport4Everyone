@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import UintiForm from './UintiForm';
 import UintiTietoLista from "./UintiTietoLista";
-import ProfileNavi from "../../ProfileNavi";
 import Profiledata from "../Profiledata";
 import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
 import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
@@ -111,7 +110,6 @@ class UintiData extends Component {
                     </div>
                     <UintiForm uintiTiedotSyotetty={this.tiedotSyotetty}/>
                     <UintiTietoLista uintiTiedot={this.state.data} poista={this.poistaUinti}/>
-                    <ProfileNavi/>
                     <Profiledata uintiData={this.state.data}/>
                 </div>
             );

@@ -6,7 +6,7 @@ import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
 import firebase from 'firebase';
 import pelihahmo from '../../Resources/pelihahmo.png';
 import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
-import {Col, Row, Image} from 'react-bootstrap';
+import {Col, Row, Image, Panel} from 'react-bootstrap';
 
 let kayttajanTunnus;
 
@@ -64,7 +64,7 @@ class PainoData extends Component {
 
     tiedotSyotetty = (tiedot) => {
         kayttajanTunnus = this.user.uid;
-        let paino = {painoKiloina: tiedot.pysty, pvm: tiedot.vaaka, kayttajaId: this.user.uid};
+        let paino = {painoKiloina: tiedot.paino, pvm: tiedot.pvm, kayttajaId: this.user.uid};
         fetch('/painot', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -99,15 +99,14 @@ class PainoData extends Component {
     }
 
     render() {
-
         if (this.user === null) {
             return (
-                    <ErrorPageIfNotLoggedIn/>
+                <ErrorPageIfNotLoggedIn/>
             )
         } else {
             return (
                 <div>
-                    <nav>
+                    <nav className="Navi">
                         <NaviWhenLoggedIn {...this.props}/>
                     </nav>
                     <Row>
@@ -116,7 +115,6 @@ class PainoData extends Component {
                             <h1 align="middle"></h1>
                         </Col>
                         <Col xs={0} md={4}/>
-
                     </Row>
                     <Row>
                         <Col xs={0} md={2}/>
@@ -127,15 +125,21 @@ class PainoData extends Component {
                             <Profiledata data={this.state.data}/>
                         </Col>
                     </Row>
-                    <Row>
-                        <Col xs={0} md={4}/>
-                        <Col xs={12} md={4}>
-                            <Form tiedotSyotetty={this.tiedotSyotetty}/>
-                            <TietoLista tiedot={this.state.data} poista={this.poistaPaino}/>
-                        </Col>
-                        <Col xs={0} md={4}/>
-
-                    </Row>
+                    <br/>
+                    <Panel>
+                        <Panel.Body>
+                            <Row>
+                                <Col xs={0} md={1}/>
+                                <Col xs={5} md={5}>
+                                    <Form tiedotSyotetty={this.tiedotSyotetty}/>
+                                </Col>
+                                <Col xs={5} md={5}>
+                                    <TietoLista tiedot={this.state.data} poista={this.poistaPaino}/>
+                                </Col>
+                                <Col xs={0} md={1}/>
+                            </Row>
+                        </Panel.Body>
+                    </Panel>
 
                 </div>
             );
