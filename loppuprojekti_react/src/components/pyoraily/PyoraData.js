@@ -5,14 +5,23 @@ import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
 import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
 import firebase from 'firebase';
 import KestavyysGraafi from "../KestavyysGraafi";
+import LevelGraafi from '../LevelGraafi';
+import Kuva from '../Kuva';
+
+// Pyöräilydatan käsittely, poistaminen ja listaaminen @Heidi @Elina
 
 let kayttajanTunnus;
+let laskuri = 0; // Kirjautuneen käyttäjän pyöräilykertojen määrä
+
+// Apumuuttujat käyttäjän levelien träkkäämiseen
+var levelup;
+var level;
 
 class PyoraData extends Component {
 
     constructor(props) {
         super(props);
-        this.user = firebase.auth().currentUser;//auth.currentUser;
+        this.user = firebase.auth().currentUser;
     }
 
     state = {pyoradata: []}
@@ -47,6 +56,8 @@ class PyoraData extends Component {
             })
             .then(function (json) {
                 console.dir(json);
+                // Haetaan JSON-datan pituuden perusteella käyttäjän pyöräilykertojen lukumäärä
+                laskuri = Object.keys(json).length;
                 this.setState({pyoradata: json})
 
             }.bind(this));
@@ -78,7 +89,7 @@ class PyoraData extends Component {
             });
     }
 
-    //Pyötäilytiedon poistaminen poista-nappulasta @Heidi
+    //Pyöräilytiedon poistaminen poista-nappulasta @Heidi
 
     poistaPyora = (poistettavanId) => {
         fetch('/laji/pyoraily/' + poistettavanId,
@@ -97,6 +108,21 @@ class PyoraData extends Component {
 
     render() {
 
+        // Määritetään käyttäjän nykyinen level sekä askeleet seuraavalle levelille
+        // laskurin arvon perusteella
+
+        if (laskuri < 3) {
+            levelup = (3 - laskuri);
+            level = 1;
+        } else if (laskuri > 2 && laskuri < 10) {
+            levelup = (10 - laskuri);
+            level = 2;
+        } else {
+            levelup = (20 - laskuri);
+            level = 3;
+        }
+
+        // Sivulle pääsee ainoastaan kirjautuneena
         if (this.user === null) {
             return (
                 <ErrorPageIfNotLoggedIn/>
@@ -110,12 +136,11 @@ class PyoraData extends Component {
                     <PyoraForm pyoraTiedotSyotetty={this.tiedotSyotetty}/>
                     <PyoraTietoLista pyoraTiedot={this.state.pyoradata} poista={this.poistaPyora}/>
                     <KestavyysGraafi data={this.state.pyoradata}/>
+                    <Kuva laji={'pyoraily'} level={level}/>
+                    <LevelGraafi laskuri={laskuri} levelup={levelup} level={level}/>
                 </div>
             );
         }
-
     }
 }
-
-
 export default PyoraData;
