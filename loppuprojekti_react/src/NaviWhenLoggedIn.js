@@ -32,6 +32,7 @@ class NaviWhenLoggedIn extends Component {
                         <Navbar.Text>
                             Sport4Everyone
                         </Navbar.Text>
+
                     </Navbar.Header>
                     <ul class="nav navbar-nav">
                     <li><a href="#"><Image src={paino} width={"25%"}/></a></li>
