@@ -5,13 +5,14 @@ import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
 import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
 import firebase from 'firebase';
 import KestavyysGraafi from "../KestavyysGraafi";
-import { LineChart, PieChart, AreaChart, DoughnutChart } from 'react-chartkick';
+import Kuva from '../Kuva';
+import LevelGraafi from '../LevelGraafi';
 
 let kayttajanTunnus;
-let uintiLaskuri;
-var uintilevelup;
-var uintilevel;
-
+let laskuri;
+var levelup;
+var level;
+var laji;
 
 class UintiData extends Component {
 
@@ -56,7 +57,7 @@ constructor(props) {
             })
             .then(function (json) {
                 console.dir(json);
-                uintiLaskuri = Object.keys(json).length;
+                laskuri = Object.keys(json).length;
                 this.setState({uintidata: json})
 
             }.bind(this));
@@ -107,13 +108,15 @@ constructor(props) {
 
     render() {
 
-        if (uintiLaskuri < 3) {
-            uintilevelup = (3-uintiLaskuri);
-            uintilevel = 1;} else if (uintiLaskuri >2 && uintiLaskuri <10) {
-            uintilevelup = (10-uintiLaskuri);
-            uintilevel = 2; } else {
-            uintilevelup = (20-uintiLaskuri);
-            uintilevel = 3;}
+
+
+        if (laskuri < 3) {
+            levelup = (3-laskuri);
+            level = 1;} else if (laskuri >2 && laskuri <10) {
+            levelup = (10-laskuri);
+            level = 2; } else {
+            levelup = (20-laskuri);
+            level = 3;}
 
         if (this.user === null) {
             return (
@@ -127,9 +130,12 @@ constructor(props) {
                     </div>
                     <UintiForm uintiTiedotSyotetty={this.tiedotSyotetty}/>
                     <UintiTietoLista uintiTiedot={this.state.uintidata} poista={this.poistaUinti}/>
-                    <KestavyysGraafi uintiData={this.state.uintidata}/>
-                    <div style={{display: 'flex', justifyContent: 'center'}}>
-                        <PieChart donut={true} max={100} data={[["Exercises", uintiLaskuri], ["Level Up", uintilevelup]]}  />
+                    <KestavyysGraafi data={this.state.uintidata}/>
+                    <div>
+                        <Kuva laji={1} level={level}/>
+                    </div>
+                    <div>
+                        <LevelGraafi laskuri={laskuri} levelup={levelup} level={level} />
                     </div>
                 </div>
             );

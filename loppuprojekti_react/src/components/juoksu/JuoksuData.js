@@ -115,7 +115,7 @@ class JuoksuData extends Component {
                     </div>
                     <JuoksuForm juoksuTiedotSyotetty={this.tiedotSyotetty}/>
                     <JuoksuTietoLista juoksuTiedot={this.state.juoksudata} poista={this.poistaJuoksu}/>
-                    <KestavyysGraafi juoksuData={this.state.juoksudata}/>
+                    <KestavyysGraafi data={this.state.juoksudata}/>
                 </div>
             );
         }

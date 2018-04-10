@@ -109,7 +109,7 @@ class PyoraData extends Component {
                     </div>
                     <PyoraForm pyoraTiedotSyotetty={this.tiedotSyotetty}/>
                     <PyoraTietoLista pyoraTiedot={this.state.pyoradata} poista={this.poistaPyora}/>
-                    <KestavyysGraafi pyoraData={this.state.pyoradata}/>
+                    <KestavyysGraafi data={this.state.pyoradata}/>
                 </div>
             );
         }
