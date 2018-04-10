@@ -5,12 +5,21 @@ import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
 import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
 import firebase from 'firebase';
 import KestavyysGraafi from "../KestavyysGraafi";
+import Kuva from '../Kuva';
+import LevelGraafi from '../LevelGraafi';
 
 let kayttajanTunnus;
+let laskuri;
+var levelup;
+var level;
+var laji;
 
 class UintiData extends Component {
 
-    constructor(props) {
+
+
+
+constructor(props) {
         super(props);
         this.user = firebase.auth().currentUser;//auth.currentUser;
     }
@@ -48,6 +57,7 @@ class UintiData extends Component {
             })
             .then(function (json) {
                 console.dir(json);
+                laskuri = Object.keys(json).length;
                 this.setState({uintidata: json})
 
             }.bind(this));
@@ -98,6 +108,16 @@ class UintiData extends Component {
 
     render() {
 
+
+
+        if (laskuri < 3) {
+            levelup = (3-laskuri);
+            level = 1;} else if (laskuri >2 && laskuri <10) {
+            levelup = (10-laskuri);
+            level = 2; } else {
+            levelup = (20-laskuri);
+            level = 3;}
+
         if (this.user === null) {
             return (
                 <ErrorPageIfNotLoggedIn/>
@@ -110,8 +130,13 @@ class UintiData extends Component {
                     </div>
                     <UintiForm uintiTiedotSyotetty={this.tiedotSyotetty}/>
                     <UintiTietoLista uintiTiedot={this.state.uintidata} poista={this.poistaUinti}/>
-                    <KestavyysGraafi uintiData={this.state.uintidata}/>
-
+                    <KestavyysGraafi data={this.state.uintidata}/>
+                    <div>
+                        <Kuva laji={1} level={level}/>
+                    </div>
+                    <div>
+                        <LevelGraafi laskuri={laskuri} levelup={levelup} level={level} />
+                    </div>
                 </div>
             );
         }
