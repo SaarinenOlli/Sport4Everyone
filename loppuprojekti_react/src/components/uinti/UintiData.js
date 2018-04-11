@@ -7,6 +7,7 @@ import firebase from 'firebase';
 import KestavyysGraafi from "../KestavyysGraafi";
 import Kuva from '../Kuva';
 import LevelGraafi from '../LevelGraafi';
+import Dialog from 'react-bootstrap-dialog';
 
 // Uintidatan käsittely, poistaminen, listaaminen @Heidi @Elina @Olli
 
@@ -21,6 +22,7 @@ class UintiData extends Component {
 
     constructor(props) {
         super(props);
+        super();
         this.user = firebase.auth().currentUser;
     }
 
@@ -59,9 +61,8 @@ class UintiData extends Component {
                 console.dir(json);
                 // Haetaan JSON-datan pituuden perusteella käyttäjän uintikertojen lukumäärä
                 laskuri = Object.keys(json).length;
-                this.setState({uintidata: json})
-
-            }.bind(this));
+                this.setState({uintidata: json});
+            }.bind(this))
     }
 
     //Otetaan talteen käyttäjän syöttämä uintidata @Heidi
@@ -84,9 +85,19 @@ class UintiData extends Component {
                     throw new Error(response.statusText);
 
             }.bind(this))
+
+            .then(function () {
+                if (laskuri == 2) {
+                this.dialog.showAlert("Congratulations, you reached level 2! Check out your new gear. You need 7 practices for your next level up. ");}
+                if (laskuri == 9) {
+                    this.dialog.showAlert("Congratulations, you reached level 3! Check out your new gear. You need 10 practices for your next level up. ");}
+            }.bind(this))
+
             .catch(function (error) {
                 // virheilmoitus, uusi sivu tai dialogi tähän (vinkki Tommilta)
                 console.log(error.message)
+
+
             });
     }
 
@@ -123,6 +134,8 @@ class UintiData extends Component {
             level = 3;
         }
 
+
+
         // Sivulle pääsee ainoastaan kirjautuneena
         if (this.user === null) {
             return (
@@ -131,6 +144,12 @@ class UintiData extends Component {
         } else {
             return (
                 <div>
+                    <div>
+                    <Dialog ref={(el) => {
+                        this.dialog = el
+                    }}>
+                    </Dialog>
+                    </div>
                     <div>
                         <NaviWhenLoggedIn {...this.props}/>
                     </div>
