@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Panel, Button, ButtonToolbar, ButtonGroup} from 'react-bootstrap';
+import {Panel, Button, ButtonToolbar, ButtonGroup, Col} from 'react-bootstrap';
+import '../../App.css';
 
 class Tieto extends Component {
 
@@ -21,18 +22,20 @@ class Tieto extends Component {
         return (
 
             <Panel bsStyle="primary">
-            <Panel.Body>
-                Date: {this.props.tieto.pvm}<br/>
-                Weight: {this.props.tieto.painoKiloina} kg
-            </Panel.Body>
+            <Panel.Body className="font">
+                <Col md={6} mdPush={10}>
+                    <ButtonToolbar pullRight>
+                        <Button className="font" onClick={this.poista}>Delete</Button>
+                    </ButtonToolbar>
                 {/*Ao. kommentoitu pois, jotta ei tule näkyviin käyttäjälle!*/}
                 {/*kirjauksen id: {this.props.tieto.painoId}*/}
-                <Panel.Body>
-                <ButtonToolbar>
-                    <ButtonGroup>
-                    <Button active onClick={this.poista}>Delete</Button>
-                    </ButtonGroup>
-                </ButtonToolbar>
+                </Col>
+                <Col md={6} mdPull={6}>
+                    <p>
+                        Date: {this.props.tieto.pvm}</p>
+                    <p>
+                        Weight: {this.props.tieto.painoKiloina} kg</p>
+                </Col>
                 </Panel.Body>
             </Panel>
         );

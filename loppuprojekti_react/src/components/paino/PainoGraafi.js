@@ -54,7 +54,7 @@ class PainoGraafi extends Component {
                         <LineChart download={true} title="Weight" width="100%" ytitle="Weight" data={graafidatax} />
                     </div>
                         <div style={{display: 'flex', justifyContent: 'center'}}>
-                        <PieChart donut={true} max={100} data={[["Exercises", 9], ["Level Up", 1]]}  />
+                        {/*<PieChart donut={true} max={100} data={[["Exercises", 9], ["Level Up", 1]]}  />*/}
 
                     </div>
                 </Row>
