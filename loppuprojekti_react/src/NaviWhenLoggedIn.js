@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Navbar} from 'react-bootstrap';
 import {Nav, NavItem, FormGroup, BreadcrumbItem} from 'react-bootstrap';
 import {auth} from './FireBase';
-import './App.css';
+import './components/App.css';
 import paino from './Resources/scale.png';
 import uinti from './Resources/swim.png';
 import juoksu from './Resources/run.png';
@@ -29,7 +29,7 @@ class NaviWhenLoggedIn extends Component {
         bootstrapUtils.addStyle(Navbar, 'custom');
 
         var styles={
-            "backgroundColor" : "black",
+            "backgroundColor" : "#4d576b",
             "color"           : "white",
             "padding-top"     : "5px",
             "padding-bottom"  : "-20px"

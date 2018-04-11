@@ -20,7 +20,7 @@ class KestavyysGraafi extends Component {
             <div>
 
                 {/*@Renne TÄssä luodaan Chart.js:n avulla kivoja graafeja!*/}
-                <div style={{display: 'flex', justifyContent: 'center'}}>
+                <div className="graafi">
 
                     <ColumnChart title="Duration" download={true} width="100%" ytitle="Excercise duration (minutes)" data={graafiKestavyysAika}  messages={{empty: "No data yet! (You can do it!)"}}/>
                 </div>
@@ -28,8 +28,9 @@ class KestavyysGraafi extends Component {
                     {/*<PieChart donut={true} max={100} data={[["Steps", 8544], ["Steps from goal", 1456]]}  />*/}
                 {/*</div>*/}
 
-                <div style={{display: 'flex', justifyContent: 'center'}}>
+                <div className="graafi">
                     <ColumnChart title="Distance" download={true} width="100%" ytitle="Excercise distance (km)" data={graafiKestavyysMatka} messages={{empty: "No data yet! (You can do it!)"}}/>
+
                 </div>
                 {/*<div style={{display: 'flex', justifyContent: 'center'}}>*/}
                     {/*<PieChart donut={true} max={100} data={[["Steps", 8544], ["Steps from goal", 1456]]}  />*/}

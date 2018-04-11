@@ -1,6 +1,6 @@
 import {Jumbotron, Navbar, Col, FormGroup} from 'react-bootstrap';
 import React, {Component} from "react";
-import '../../App.css';
+import '../App.css';
 import { bootstrapUtils } from 'react-bootstrap/lib/utils';
 
 class ErrorPageIfNotLoggedIn extends Component {
@@ -12,7 +12,7 @@ class ErrorPageIfNotLoggedIn extends Component {
         bootstrapUtils.addStyle(Navbar, 'custom');
 
         var styles={
-            "backgroundColor" : "black",
+            "backgroundColor" : "#4d576b",
             "color"           : "white",
             "padding-top"     : "5px",
             "padding-bottom"  : "-20px"

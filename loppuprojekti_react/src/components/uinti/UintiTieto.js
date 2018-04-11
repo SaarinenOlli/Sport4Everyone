@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Panel, Button, ButtonToolbar, ButtonGroup, Col} from 'react-bootstrap';
 
 // Yksittäisen tiedon tulostusmuoto ja poistonappula. Haetaan UintiTietoListasta @Heidi
 
@@ -10,17 +11,25 @@ class UintiTieto extends Component {
 
     render() {
         return (
-            <div className="Tieto">
-                päiväys: {this.props.uintiTieto.pvm}<br/>
-                kesto: {this.props.uintiTieto.kestoMin} min<br/>
-                matka: {this.props.uintiTieto.matkaKm} km<br/>
-                kirjauksen id: {this.props.uintiTieto.kestavyysHarjoitusId}
-                <form>
-                    <button onClick={this.poistaUinti}>Poista</button>
-                </form>
-
-
-            </div>
+            <Panel bsStyle="primary">
+                <Panel.Body className="font">
+                    <Col md={6} mdPush={10}>
+                        <ButtonToolbar pullRight>
+                            <Button className="font" onClick={this.poistaUinti}>Delete</Button>
+                        </ButtonToolbar>
+                        {/*Ao. kommentoitu pois, jotta ei tule näkyviin käyttäjälle!*/}
+                        {/*kirjauksen id: {this.props.tieto.painoId}*/}
+                    </Col>
+                    <Col md={6} mdPull={6}>
+                        <p>
+                            Date: {this.props.uintiTieto.pvm}</p>
+                        <p>
+                            Duration: {this.props.uintiTieto.kestoMin} min</p>
+                        <p>
+                            Distance: {this.props.uintiTieto.matkaKm} km</p>
+                    </Col>
+                </Panel.Body>
+            </Panel>
         );
     }
 }

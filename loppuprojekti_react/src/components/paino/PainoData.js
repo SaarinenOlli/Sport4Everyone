@@ -7,7 +7,7 @@ import firebase from 'firebase';
 import pelihahmo from '../../Resources/pelihahmo.png';
 import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
 import {Col, Row, Image, Panel, Well} from 'react-bootstrap';
-import '../../App.css';
+import '../App.css';
 
 let kayttajanTunnus;
 
@@ -102,16 +102,16 @@ class PainoData extends Component {
     render() {
         if (this.user) {
             return (
-                <div>
+                <div className="sivunpohja">
                     <nav className="Navi">
                         <NaviWhenLoggedIn {...this.props}/>
                     </nav>
                     <Row>
                         <Col xs={6} md={4}>
                             <Panel className="paneelivasen">
-                                <Panel.Heading>
-                                    <h4 className="font">Profile</h4>
-                                </Panel.Heading>
+                                {/*<Panel.Heading>*/}
+                                    {/*<h4 className="font">Profile</h4>*/}
+                                {/*</Panel.Heading>*/}
                                 <Panel.Body>
                                     <img className="kuva" src={pelihahmo}/>
                                 </Panel.Body>
@@ -121,9 +121,6 @@ class PainoData extends Component {
                         <Panel className="paneelioikea">
                             <Panel.Body>
                                     <PainoGraafi data={this.state.data}/>
-                                <br/>
-                                <br/>
-                                <br/>
                                 <Form tiedotSyotetty={this.tiedotSyotetty}/>
                                 <TietoLista tiedot={this.state.data} poista={this.poistaPaino}/>
                             </Panel.Body>

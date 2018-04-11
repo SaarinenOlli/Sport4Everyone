@@ -155,7 +155,7 @@ class Navi extends Component {
         bootstrapUtils.addStyle(Navbar, 'custom');
 
         var styles={
-            "backgroundColor" : "black",
+            "backgroundColor" : "#4d576b",
             "color"           : "white",
             "padding-top"     : "5px",
             "padding-bottom"  : "-20px"

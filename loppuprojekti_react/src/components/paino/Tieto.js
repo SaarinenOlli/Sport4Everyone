@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Panel, Button, ButtonToolbar, ButtonGroup, Col} from 'react-bootstrap';
-import '../../App.css';
+import '../App.css';
 
 class Tieto extends Component {
 
