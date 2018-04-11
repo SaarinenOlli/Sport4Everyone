@@ -167,7 +167,7 @@ class Navi extends Component {
                 <Navbar style={styles}>
                     <Navbar.Header>
                             <FormGroup>
-                                <h2 className="font">->-> Triathlon4Everyone ->-></h2>
+                                <h2 className="font">->-> Sport4Everyone ->-></h2>
                             </FormGroup>
                     </Navbar.Header>
                     <Navbar.Collapse>

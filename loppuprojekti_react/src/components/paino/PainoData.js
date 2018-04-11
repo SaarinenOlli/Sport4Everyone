@@ -100,53 +100,41 @@ class PainoData extends Component {
     }
 
     render() {
-        if (this.user === null) {
-            return (
-                <ErrorPageIfNotLoggedIn/>
-            )
-        } else {
+        if (this.user) {
             return (
                 <div>
                     <nav className="Navi">
                         <NaviWhenLoggedIn {...this.props}/>
                     </nav>
                     <Row>
-                        <Col xs={0} md={4}/>
-                        <Col xs={12} md={4}>
-                            <h1 align="middle"></h1>
+                        <Col xs={6} md={4}>
+                            <Panel className="paneelivasen">
+                                <Panel.Heading>
+                                    <h4 className="font">Profile</h4>
+                                </Panel.Heading>
+                                <Panel.Body>
+                                    <img className="kuva" src={pelihahmo}/>
+                                </Panel.Body>
+                            </Panel>
                         </Col>
-                        <Col xs={0} md={4}/>
-                    </Row>
-                    <Row fluid>
-                        <Col xs={5} md={5}>
-                            <Image src={pelihahmo} circle className={"pull-right"}/>
-                        </Col>
-                        <Col xs={0} md={2}/>
-                        <Panel>
+                        <Col xs={12} md={8}>
+                        <Panel className="paneelioikea">
                             <Panel.Body>
-                                {/*ao. on nopea tee-se-itse ratkaisu, korjataan nätimmäksi jos ehtii @Tiina*/}
-                                <br/> <br/> <br/> <br/>
-                        <Col xs={5} md={5}>
-                            <PainoGraafi data={this.state.data}/>
-                        </Col>
+                                    <PainoGraafi data={this.state.data}/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <Form tiedotSyotetty={this.tiedotSyotetty}/>
+                                <TietoLista tiedot={this.state.data} poista={this.poistaPaino}/>
                             </Panel.Body>
                         </Panel>
+                        </Col>
                     </Row>
-                    <br/>
-                    <Panel>
-                        <Panel.Body>
-                            <Row>
-                                <Col xs={0} md={1}/>
-                                <Col xs={5} md={5}>
-                                    <Form tiedotSyotetty={this.tiedotSyotetty}/>
-                                </Col>
-                                <Col xs={5} md={5}>
-                                    <TietoLista tiedot={this.state.data} poista={this.poistaPaino}/>
-                                </Col>
-                            </Row>
-                        </Panel.Body>
-                    </Panel>
                 </div>
+            )
+        } else {
+            return (
+            <ErrorPageIfNotLoggedIn/>
             );
         }
     }

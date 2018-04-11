@@ -25,7 +25,7 @@ class Tieto extends Component {
             <Panel.Body className="font">
                 <Col md={6} mdPush={10}>
                     <ButtonToolbar pullRight>
-                        <Button className="font" bsSize="large" onClick={this.poista}>Delete</Button>
+                        <Button className="font" onClick={this.poista}>Delete</Button>
                     </ButtonToolbar>
                 {/*Ao. kommentoitu pois, jotta ei tule näkyviin käyttäjälle!*/}
                 {/*kirjauksen id: {this.props.tieto.painoId}*/}

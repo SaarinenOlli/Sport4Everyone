@@ -27,7 +27,16 @@
   font-family: 'Coustard', serif;
 }
 
-.navbuttons {
-  margin-top: 10%;
-  padding: 10%;
+.kuva {
+  margin-left: 15%;
+}
+
+.paneelivasen {
+  margin-left: 5%;
+}
+
+.paneelioikea {
+  margin-right: 3%;
+  padding: 2%;
+  margin-bottom: 3%;
 }
