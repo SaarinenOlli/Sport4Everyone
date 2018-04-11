@@ -29,10 +29,14 @@ class NaviWhenLoggedIn extends Component {
         bootstrapUtils.addStyle(Navbar, 'custom');
 
         var styles={
-            "backgroundColor" : "#4d576b",
+            "backgroundColor" : "#3D3E46",
             "color"           : "white",
             "padding-top"     : "5px",
-            "padding-bottom"  : "-20px"
+            "padding-bottom"  : "-20px",
+            "position" : "fixed",
+            "z-index": "1",
+            "width" : "100%",
+            "top" : "0",
         };
 
         return (

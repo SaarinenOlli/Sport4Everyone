@@ -11,6 +11,7 @@ import ErrorPageSomethingWentWrong from "./components/error/ErrorPageSomethingWe
 import UintiData from "./components/uinti/UintiData";
 import JuoksuData from "./components/juoksu/JuoksuData";
 import PyoraData from "./components/pyoraily/PyoraData";
+import ErrorPageIfNotLoggedIn from "./components/error/ErrorPageIfNotLoggedIn";
 
 const App = appProps => (
     <ErrorBoundary>
