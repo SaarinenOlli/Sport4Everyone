@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../../App.css';
+import '../App.css';
 import {Panel, ButtonToolbar, ButtonGroup, Button, FormGroup, FormControl, PanelGroup} from 'react-bootstrap';
 
 

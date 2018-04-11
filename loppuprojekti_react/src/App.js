@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './components/App.css';
 import Home from './Home';
 import Profile from './components/Profile';
 import Form from './components/paino/Form';

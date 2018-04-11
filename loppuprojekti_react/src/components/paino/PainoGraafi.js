@@ -1,12 +1,7 @@
 import React, {Component} from 'react';
-import {Row, Col} from 'react-bootstrap';
-import chart from '../../chart.png';
-import GrafiikkaTieto from '../GrafiikkaTieto';
-import PainoData from './PainoData';
-
-import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
+import {Row, Col, Panel} from 'react-bootstrap';
 import { LineChart, PieChart, AreaChart, DoughnutChart } from 'react-chartkick';
-import Chart from '../../../node_modules/chart.js/src/chart'
+import '../App.css';
 window.Chart = require('../../../node_modules/chart.js/src/chart');
 
 //alustetaan Dataa graafia varten, tämä on RAAKADATAA ja korvataan myöhemmin tietokantadatalla @Renne
@@ -50,13 +45,13 @@ class PainoGraafi extends Component {
                 <Row>
                     {/*@Renne TÄssä luodaan Chart.js:n avulla kivoja graafeja!*/}
 
-                    <div style={{display: 'flex', justifyContent: 'center'}}>
+                    <div className="graafi">
                         <LineChart width="60%" xtitle="Time" ytitle="Weight" data={graafidatax} />
                     </div>
-                        <div style={{display: 'flex', justifyContent: 'center'}}>
+                        {/*<div style={{display: 'flex', justifyContent: 'center'}}>*/}
                         {/*<PieChart donut={true} max={100} data={[["Exercises", 9], ["Level Up", 1]]}  />*/}
 
-                    </div>
+                    {/*</div>*/}
                 </Row>
             </div>
 

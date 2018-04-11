@@ -7,6 +7,8 @@ import firebase from 'firebase';
 import KestavyysGraafi from "../KestavyysGraafi";
 import Kuva from '../Kuva';
 import LevelGraafi from '../LevelGraafi';
+import '../App.css';
+import {Col, Row, Image, Panel, Well} from 'react-bootstrap';
 
 // Uintidatan käsittely, poistaminen, listaaminen @Heidi @Elina @Olli
 
@@ -130,16 +132,32 @@ class UintiData extends Component {
             )
         } else {
             return (
-                <div>
-                    <div>
+                <div className="sivunpohja">
+                <nav className="Navi">
                         <NaviWhenLoggedIn {...this.props}/>
-                    </div>
-                    <UintiForm uintiTiedotSyotetty={this.tiedotSyotetty}/>
-                    <UintiTietoLista uintiTiedot={this.state.uintidata} poista={this.poistaUinti}/>
-                    <KestavyysGraafi data={this.state.uintidata}/>
-                    <Kuva laji={'uinti'} level={level}/>
-                    <LevelGraafi laskuri={laskuri} levelup={levelup} level={level} />
-
+                    </nav>
+                    <Row>
+                        <Col xs={6} md={4}>
+                            <Panel className="paneelivasen">
+                                {/*<Panel.Heading>*/}
+                                {/*<h4 className="font">Profile</h4>*/}
+                                {/*</Panel.Heading>*/}
+                                <Panel.Body className="kuva">
+                                    <Kuva laji={'uinti'} level={level}/>
+                                </Panel.Body>
+                            </Panel>
+                        </Col>
+                        <Col xs={12} md={8}>
+                            <Panel className="paneelioikea">
+                                <Panel.Body>
+                                    <KestavyysGraafi data={this.state.uintidata}/>
+                                    <LevelGraafi laskuri={laskuri} levelup={levelup} level={level} />
+                                    <UintiForm uintiTiedotSyotetty={this.tiedotSyotetty}/>
+                                    <UintiTietoLista uintiTiedot={this.state.uintidata} poista={this.poistaUinti}/>
+                                </Panel.Body>
+                            </Panel>
+                        </Col>
+                    </Row>
                 </div>
             );
         }
