@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Coustard');
+
 .App {
   text-align: center;
 }
@@ -19,4 +21,22 @@
 .navbar-inverse .navbar-nav {
   hover: none;
   background-color: grey;
+}
+
+.font {
+  font-family: 'Coustard', serif;
+}
+
+.kuva {
+  margin-left: 15%;
+}
+
+.paneelivasen {
+  margin-left: 5%;
+}
+
+.paneelioikea {
+  margin-right: 3%;
+  padding: 2%;
+  margin-bottom: 3%;
 }

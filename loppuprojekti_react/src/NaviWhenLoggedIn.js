@@ -40,7 +40,7 @@ class NaviWhenLoggedIn extends Component {
                     <Navbar.Header>
                         <Col xs={6} md={4}>
                             <FormGroup>
-                            <h3>Thriathlon4Everyone</h3>
+                                <h2 className="font">Sport4Everyone</h2>
                             </FormGroup>
                         </Col>
                     </Navbar.Header>

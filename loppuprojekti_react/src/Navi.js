@@ -167,19 +167,19 @@ class Navi extends Component {
                 <Navbar style={styles}>
                     <Navbar.Header>
                             <FormGroup>
-                                <h4>Thriathlon4Everyone</h4>
+                                <h2 className="font">->-> Sport4Everyone ->-></h2>
                             </FormGroup>
                     </Navbar.Header>
                     <Navbar.Collapse>
                     <Navbar.Form justified className="nav-bar nav" pullRight>
                         <FormGroup>
                         <ButtonToolbar>
-                        <Button bsStyle="primary" onClick={this.handleLogIn}>
+                        <Button bsSize="large" className="font" bsStyle="primary" onClick={this.handleLogIn}>
                             <Glyphicon glyph="user"/>
                             {' '}
                             Login</Button>
                         {' '}
-                        <Button bsStyle="danger" onClick={this.handleRegister}>
+                        <Button bsSize="large" className="font" bsStyle="danger" onClick={this.handleRegister}>
                             <Glyphicon glyph="user"/>
                             {' '}
                             Register</Button>

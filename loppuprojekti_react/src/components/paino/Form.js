@@ -1,11 +1,23 @@
 import React, {Component} from 'react';
-import Navi from "../../Navi";
-import './Form.css';
-import {Panel, ButtonToolbar, ButtonGroup, Button, FormGroup, FormControl} from 'react-bootstrap';
+import '../../App.css';
+import {Panel, ButtonToolbar, ButtonGroup, Button, FormGroup, FormControl, PanelGroup} from 'react-bootstrap';
 
 
 //Formi painotietojen syöttämistä varten -Olli
 class Form extends Component {
+    constructor(props, context) {
+        super(props, context);
+
+        this.handleSelect = this.handleSelect.bind(this);
+
+        this.state = {
+            activeKey: '1'
+        };
+    }
+
+    handleSelect(activeKey) {
+        this.setState({ activeKey });
+    }
 
     state = {pvm: '', paino: ''}
 
@@ -25,39 +37,45 @@ class Form extends Component {
     /* Tässä versiossa on placeholderit ja päivämääräpalikat paikallaan*/
     render() {
         return (
-            <Panel bsStyle="primary">
-                <Panel.Heading>
-                    <Panel.Title componentClass="h3">Add new weight</Panel.Title>
-                </Panel.Heading>
-                <Panel.Body>
-                    <form>
-                        <FormGroup
-                            controlId="form"
-                        >
-                        <FormControl
-                            id="formControlsDate"
-                            type="date"
-                            placeholder=""yyyy-mm-dd
-                            value={this.state.pvm}
-                            onChange={this.syotaPvmTieto}
-                        />
+            <PanelGroup
+                accordion
+                id="accordion-controlled-example"
+                defaultActiveKey="2"
+                activeKey={this.state.activeKey}
+                onSelect={this.handleSelect}
+            >
+                <Panel eventKey="2">
+                    <Panel.Heading>
+                        <Panel.Title toggle className="font">Add new weight</Panel.Title>
+                    </Panel.Heading>
+                    <Panel.Body collapsible>
+                        <form>
+                            <FormGroup
+                                controlId="form"
+                            >
+                                <FormControl className="font"
+                                             id="formControlsDate"
+                                             type="date"
+                                             placeholder="yyyy-mm-dd"
+                                             value={this.state.pvm}
+                                             onChange={this.syotaPvmTieto}
+                                />
+                                <br/>
+                                <FormControl className="font"
+                                             id="formControlsNumber"
+                                             type="number"
+                                             placeholder="Enter weight"
+                                             value={this.state.paino}
+                                             min={0} max={200} step={0.01}
+                                             onChange={this.syotaPainoTieto}
+                                />
+                            </FormGroup>
                             <br/>
-                        <FormControl
-                            id="formControlsNumber"
-                            type="number"
-                            placeholder="Enter weight"
-                            value={this.state.paino}
-                            min={0} max={200} step={0.01}
-                            onChange={this.syotaPainoTieto}
-                        />
-                        </FormGroup>
-                            <br/>
-                        <Button onClick={this.ready}>Submit</Button>
-                    </form>
-                </Panel.Body>
-                <Panel.Body>
-                </Panel.Body>
-            </Panel>
+                            <Button className="font" onClick={this.ready}>Submit</Button>
+                        </form>
+                    </Panel.Body>
+                </Panel>
+            </PanelGroup>
         )
     }
 }
