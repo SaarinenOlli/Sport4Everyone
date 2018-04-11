@@ -46,7 +46,7 @@ class PainoGraafi extends Component {
                     {/*@Renne TÄssä luodaan Chart.js:n avulla kivoja graafeja!*/}
 
                     <div className="graafi">
-                        <LineChart width="60%" xtitle="Time" ytitle="Weight" data={graafidatax} />
+                        <LineChart download={true} title="Weight" width="100%" ytitle="Weight" data={graafidatax} />
                     </div>
                         {/*<div style={{display: 'flex', justifyContent: 'center'}}>*/}
                         {/*<PieChart donut={true} max={100} data={[["Exercises", 9], ["Level Up", 1]]}  />*/}
