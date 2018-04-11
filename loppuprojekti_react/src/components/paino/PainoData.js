@@ -7,6 +7,7 @@ import firebase from 'firebase';
 import pelihahmo from '../../Resources/pelihahmo.png';
 import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
 import {Col, Row, Image, Panel, Well} from 'react-bootstrap';
+import '../../App.css';
 
 let kayttajanTunnus;
 
@@ -116,7 +117,7 @@ class PainoData extends Component {
                         </Col>
                         <Col xs={0} md={4}/>
                     </Row>
-                    <Row>
+                    <Row fluid>
                         <Col xs={5} md={5}>
                             <Image src={pelihahmo} circle className={"pull-right"}/>
                         </Col>

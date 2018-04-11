@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Tieto from './Tieto';
 import {Panel, Row, Col} from 'react-bootstrap';
+import '../../App.css';
 
 
 //listaa jsonista painotiedot tietoelementeiksi -Olli
@@ -17,7 +18,7 @@ class TietoLista extends Component {
         return(
             <Panel bsStyle="primary">
                 <Panel.Heading>
-                    <Panel.Title componentClass="h3">Weight data</Panel.Title>
+                    <h4 className="font">Weight data</h4>
                 </Panel.Heading>
                 <Panel.Body>
                 {tiedotListana}

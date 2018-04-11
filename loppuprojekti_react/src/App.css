@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Coustard');
+
 .App {
   text-align: center;
 }
@@ -19,4 +21,13 @@
 .navbar-inverse .navbar-nav {
   hover: none;
   background-color: grey;
+}
+
+.font {
+  font-family: 'Coustard', serif;
+}
+
+.navbuttons {
+  margin-top: 10%;
+  padding: 10%;
 }
