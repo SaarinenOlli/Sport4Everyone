@@ -148,7 +148,7 @@ class UintiData extends Component {
             )
         } else {
             return (
-                <div>
+                <div className="sivunpohja">
                     <Dialog ref={(el) => {
                         this.dialog = el
                     }}>
@@ -164,16 +164,19 @@ class UintiData extends Component {
                                 {/*<Panel.Heading>*/}
                                 {/*<h4 className="font">Profile</h4>*/}
                                 {/*</Panel.Heading>*/}
-                                <Panel.Body className="kuva">
+                                <Panel.Body className="kuvapaneeli">
                                     <Kuva laji={'uinti'} level={level}/>
+                                    <br/>
+                                    <LevelGraafi laskuri={laskuri} levelup={levelup} level={level}/>
+                                    <br/>
                                 </Panel.Body>
+                                <br/>
                             </Panel>
                         </Col>
                         <Col xs={12} md={8}>
                             <Panel className="paneelioikea">
                                 <Panel.Body>
                                     <KestavyysGraafi data={this.state.uintidata}/>
-                                    <LevelGraafi laskuri={laskuri} levelup={levelup} level={level}/>
                                     <UintiForm uintiTiedotSyotetty={this.tiedotSyotetty}/>
                                     <UintiTietoLista uintiTiedot={this.state.uintidata} poista={this.poistaUinti}/>
                                 </Panel.Body>

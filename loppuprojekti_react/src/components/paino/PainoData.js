@@ -103,9 +103,10 @@ class PainoData extends Component {
         if (this.user) {
             return (
                 <div className="sivunpohja">
-                    <nav className="Navi">
+                    <nav>
                         <NaviWhenLoggedIn {...this.props}/>
                     </nav>
+                    <div>
                     <Row>
                         <Col xs={6} md={4}>
                             <Panel className="paneelivasen">
@@ -113,7 +114,7 @@ class PainoData extends Component {
                                     {/*<h4 className="font">Profile</h4>*/}
                                 {/*</Panel.Heading>*/}
                                 <Panel.Body>
-                                    <img className="kuva" src={pelihahmo}/>
+                                    <img className="pelkkakuva" src={pelihahmo}/>
                                 </Panel.Body>
                             </Panel>
                         </Col>
@@ -127,8 +128,9 @@ class PainoData extends Component {
                         </Panel>
                         </Col>
                     </Row>
+                    </div>
                 </div>
-            )
+            );
         } else {
             return (
             <ErrorPageIfNotLoggedIn/>

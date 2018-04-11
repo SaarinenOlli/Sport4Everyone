@@ -6,6 +6,7 @@ import uinti3 from '../Resources/pelihahmouintilvl4.png';
 import juoksu1 from '../Resources/pelihahmojuoksijalvl1.png';
 import pyora1 from  '../Resources/pelihahmopyoralvl1.png';
 import {Image} from 'react-bootstrap';
+import './App.css';
 
 // Elementti lajin ja levelin mukaisen "profiilikuvan" näyttämiseen
 // Toimii kaikkien lajien kanssa, mutta uinti toistaiseksi ainoa laji, jossa hahmo kehittyy
@@ -39,7 +40,7 @@ class Kuva extends Component {
         }
 
         return (
-            <div>
+            <div id="levelkuva">
                 <Image src={profiilikuva}/>
             </div>
         )
