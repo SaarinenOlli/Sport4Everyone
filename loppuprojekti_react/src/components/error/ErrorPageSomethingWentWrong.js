@@ -18,7 +18,7 @@ class ErrorPageSomethingWentWrong extends Component {
                 <Jumbotron>
                     <p className="text-center">
                         We are sorry. Something went wrong.<br/>
-                        Please go to the home page and try again or something else:<br/>
+                        Please go to the home page and try something else.<br/>
                         <a href="/">Sport4Everyone</a>
                     </p>
                 </Jumbotron>
