@@ -1,8 +1,42 @@
 
-/* estää nuolinäppäimien ilmestymisen kenttään, johon syötetään paino */
-/* by Elina */
+/* Estää nuolinäppäimien ilmestymisen kenttään, johon syötetään numero: paino, kesto tai matka
+   @Elina */
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
 }
+
+/* Päivämääränsyöttökentissä "dropdown-kalenteri" ilmestyy kenttää klikkaamalla
+    Koodinpätkä lainattu StackOverFlowsta @Elina */
+
+input[type="date"] {position: relative;}
+
+/* Uusi ikoni oikeaan laitaan. Tähän voi hyvin vaihtaa kunnollisen kalenteri-ikonin*/
+input[type="date"]:after {
+    content: "\25A6";
+    color: black;
+    padding: 0 5px;
+}
+
+/* Ikonin väri vaihtuu punaiseksi, kun sitä osoittaa hiirellä*/
+input[type="date"]:hover:after {color: #bf1400;}
+
+/* Kentän alkuperäinen nuoli piilotetaan ja "venytetään" aktivoitumaan koko fieldin leveydeltä */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    color: transparent;
+    background: transparent;
+}
+
+/* Nuolet toimiviksi -> increase / decrease */
+input[type="date"]::-webkit-inner-spin-button {z-index: 1;}
+
+/* Clear-button */
+input[type="date"]::-webkit-clear-button {z-index: 1;}

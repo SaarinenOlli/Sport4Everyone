@@ -115,6 +115,9 @@ class PainoData extends Component {
                                     {/*<h4 className="font">Profile</h4>*/}
                                 {/*</Panel.Heading>*/}
                                 <Panel.Body className="kuvapaneeli">
+                                    <p align="center">Current user is:</p>
+                                    <p align="center">{this.user.displayName}</p>
+                                    <p align="center">{this.user.email}</p>
                                     <Kuva laji={'peruna'}/>
                                 </Panel.Body>
                             </Panel>
