@@ -189,7 +189,7 @@ class UintiData extends Component {
                             <Panel className="paneelioikea">
                                 <Panel.Body>
                                     <KestavyysGraafi data={this.state.uintidata}/>
-                                    <LevelGraafi laskuri={uintilaskuri} levelup={levelup} level={level} totalmatka={uintiTotalKm} totalkesto={uintiTotalMin}/>
+                                    <LevelGraafi laskuri={uintilaskuri} levelup={levelup} level={level} totalmatka={uintiTotalKm} totalkesto={uintiTotalMin} {...this.props}/>
                                     <UintiForm uintiTiedotSyotetty={this.tiedotSyotetty}/>
                                     <UintiTietoLista uintiTiedot={this.state.uintidata} poista={this.poistaUinti}/>
                                 </Panel.Body>
