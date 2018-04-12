@@ -115,7 +115,7 @@ class PainoData extends Component {
                                 {/*</Panel.Heading>*/}
                                 <Panel.Body>
                                     <p align="center">Current user is:</p>
-                                    <p align="center">{auth.currentUser.email}</p>
+                                    <p align="center">{this.user.email}</p>
                                     <img className="pelkkakuva" src={pelihahmo}/>
                                 </Panel.Body>
                             </Panel>
