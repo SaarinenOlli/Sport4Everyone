@@ -21,6 +21,8 @@ class LevelGraafi extends Component{
         levelup = this.props.levelup;
         laskuri = this.props.laskuri;
 
+        // Donitsin yläpuolella näytetään lajisivun mukaan kyseisen lajin suorituskerrat,
+        // kokonaisaika ja -matka @Olli @Heidi
         return (
             <div>
                 <div style={{display: 'flex', justifyContent: 'center'}}>
