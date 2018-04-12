@@ -107,7 +107,7 @@
   background: rgba(102, 122, 199, 0.13);
   padding: 2%;
   padding-top:2%;
-  margin-left: 2%;
+  margin-left: 3%;
   margin-right: 2%;
   margin-top: 1%;
   font-family: 'Gloria Hallelujah', cursive;
@@ -134,13 +134,10 @@
 
 .paneelioikea {
   padding: 2%;
-
   padding-bottom: 12%;
   padding-top:4%;
   background: rgba(102, 122, 199, 0.13);
-
-  background: rgba(102, 122, 199, 0.13);
-  margin: 1.5% 2% 2% 0 ;
+  margin: 1.5% 1% 2% 0 ;
 
 }
 
