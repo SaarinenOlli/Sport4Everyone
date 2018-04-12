@@ -48,7 +48,7 @@ class UintiForm extends Component {
             >
                 <Panel eventKey="2">
                     <Panel.Heading>
-                        <Panel.Title toggle className="font">Add new swim</Panel.Title>
+                        <Panel.Title toggle className="font">Add new swimming exercise</Panel.Title>
                     </Panel.Heading>
                     <Panel.Body collapsible>
                         <form>

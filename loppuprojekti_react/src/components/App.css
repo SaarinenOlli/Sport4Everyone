@@ -57,6 +57,7 @@
 }
 
 .kuvapaneeli {
+  padding-bottom: 22%;
 }
 
 .etusivukuva {
@@ -85,7 +86,6 @@
 .nimipaneeli {
     background: rgba(255, 255, 255, 0.8);
     padding: 2%;
-
     border-radius: 5px;
     margin: 2% auto 3% auto;
     font-family: 'Gloria Hallelujah', cursive;

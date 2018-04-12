@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Panel, Button, ButtonToolbar, ButtonGroup, Col} from 'react-bootstrap';
 
 // Yksittäisen tiedon tulostusmuoto ja poistonappula. Haetaan UintiTietoListasta @Heidi
 
@@ -10,17 +11,23 @@ class PyoraTieto extends Component {
 
     render() {
         return (
-            <div className="Tieto">
-                päiväys: {this.props.pyoraTieto.pvm}<br/>
-                kesto: {this.props.pyoraTieto.kestoMin} min<br/>
-                matka: {this.props.pyoraTieto.matkaKm} km<br/>
-                kirjauksen id: {this.props.pyoraTieto.kestavyysHarjoitusId}
-                <form>
-                    <button onClick={this.poistaPyora}>Poista</button>
-                </form>
-
-
-            </div>
+            <Panel bsStyle="primary">
+                <Panel.Body className="font">
+                    <Col md={6} mdPush={10}>
+                        <ButtonToolbar pullRight>
+                            <Button className="font" onClick={this.poistaPyora}>Delete</Button>
+                        </ButtonToolbar>
+                    </Col>
+                    <Col md={6} mdPull={6}>
+                        <p>
+                            Date: {this.props.pyoraTieto.pvm}</p>
+                        <p>
+                            Duration: {this.props.pyoraTieto.kestoMin} min</p>
+                        <p>
+                            Distance: {this.props.pyoraTieto.matkaKm} km</p>
+                    </Col>
+                </Panel.Body>
+            </Panel>
         );
     }
 }

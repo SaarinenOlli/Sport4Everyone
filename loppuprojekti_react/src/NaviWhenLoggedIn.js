@@ -29,7 +29,7 @@ class NaviWhenLoggedIn extends Component {
         bootstrapUtils.addStyle(Navbar, 'custom');
 
         var styles={
-            "backgroundColor" : "#FCFCFC",
+            "backgroundColor" : "#CFDDFA",
             "color"           : "black",
             "padding-top"     : "5px",
             "position" : "fixed",

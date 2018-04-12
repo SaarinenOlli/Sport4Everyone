@@ -17,8 +17,6 @@ class UintiTieto extends Component {
                         <ButtonToolbar pullRight>
                             <Button className="font" onClick={this.poistaUinti}>Delete</Button>
                         </ButtonToolbar>
-                        {/*Ao. kommentoitu pois, jotta ei tule näkyviin käyttäjälle!*/}
-                        {/*kirjauksen id: {this.props.tieto.painoId}*/}
                     </Col>
                     <Col md={6} mdPull={6}>
                         <p>

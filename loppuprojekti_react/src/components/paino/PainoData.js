@@ -101,7 +101,11 @@ class PainoData extends Component {
     }
 
     render() {
-        if (this.user) {
+        if (this.user === null) {
+            return (
+                <LoadingPage/>
+            )
+        } else {
             return (
                 <div className="sivunpohja">
                     <nav>
@@ -133,10 +137,6 @@ class PainoData extends Component {
                     </Row>
                     </div>
                 </div>
-            );
-        } else {
-            return (
-            <LoadingPage/>
             );
         }
     }

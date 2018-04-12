@@ -7,6 +7,8 @@ import firebase from 'firebase';
 import KestavyysGraafi from "../KestavyysGraafi";
 import LevelGraafi from '../LevelGraafi';
 import Kuva from '../Kuva';
+import {Col, Row, Image, Panel, Well} from 'react-bootstrap';
+import Dialog from 'react-bootstrap-dialog';
 
 // Pyöräilydatan käsittely, poistaminen ja listaaminen @Heidi @Elina
 
@@ -141,15 +143,42 @@ class PyoraData extends Component {
             )
         } else {
             return (
-                <div>
-                    <div>
+                <div className="sivunpohja">
+                    <Dialog ref={(el) => {
+                        this.dialog = el
+                    }}>
+                    </Dialog>
+
+                    <nav>
                         <NaviWhenLoggedIn {...this.props}/>
-                    </div>
-                    <PyoraForm pyoraTiedotSyotetty={this.tiedotSyotetty}/>
-                    <PyoraTietoLista pyoraTiedot={this.state.pyoradata} poista={this.poistaPyora}/>
-                    <KestavyysGraafi data={this.state.pyoradata}/>
-                    <Kuva laji={'pyoraily'} level={level}/>
-                    <LevelGraafi laskuri={pyoralaskuri} levelup={levelup} level={level} totalmatka={pyoraTotalKm} totalkesto={pyoraTotalMin}/>
+                    </nav>
+                    <Row>
+                        <Col xs={0} md={4}>
+                            <Panel className="paneelivasen">
+                                <Panel.Title align="center" className="nimipaneeli">You are logged in as: <br/>
+                                    {this.user.displayName} <br/>
+                                    {this.user.email}</Panel.Title>
+                            </Panel>
+                            <Panel className="paneelivasen">
+                                <Panel.Body className="kuvapaneeli">
+                                    <Kuva laji={'pyoraily'} level={level}/>
+                                    <br/>
+                                    <LevelGraafi laskuri={pyoralaskuri} levelup={levelup} level={level} totalmatka={pyoraTotalKm} totalkesto={pyoraTotalMin}/>
+                                    <br/>
+                                </Panel.Body>
+                                <br/>
+                            </Panel>
+                        </Col>
+                        <Col xs={12} md={8}>
+                            <Panel className="paneelioikea">
+                                <Panel.Body>
+                                    <KestavyysGraafi data={this.state.pyoradata}/>
+                                    <PyoraForm pyoraTiedotSyotetty={this.tiedotSyotetty}/>
+                                    <PyoraTietoLista pyoraTiedot={this.state.pyoradata} poista={this.poistaPyora}/>
+                                </Panel.Body>
+                            </Panel>
+                        </Col>
+                    </Row>
                 </div>
             );
         }
