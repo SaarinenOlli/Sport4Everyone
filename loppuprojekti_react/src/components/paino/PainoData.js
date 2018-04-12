@@ -110,12 +110,11 @@ class PainoData extends Component {
                     <Row>
                         <Col xs={6} md={4}>
                             <Panel className="paneelivasen">
-                                {/*<Panel.Heading>*/}
-                                    {/*<h4 className="font">Profile</h4>*/}
-                                {/*</Panel.Heading>*/}
+                                    <Panel.Heading>
+                                        <Panel.Title align="center" className="font">Current user is: <br/>
+                                            {this.user.email} </Panel.Title>
+                                    </Panel.Heading>
                                 <Panel.Body>
-                                    <p align="center">Current user is:</p>
-                                    <p align="center">{this.user.email}</p>
                                     <img className="pelkkakuva" src={pelihahmo}/>
                                 </Panel.Body>
                             </Panel>

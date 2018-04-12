@@ -73,15 +73,14 @@
   background: rgba(102, 122, 199, 0.13);
   padding-bottom: 14%;
   padding: 2%;
-  margin: 1%;
+  margin: 3% 0 2% 5% ;
   font-family: 'Coustard', serif;
 }
 
 .paneelioikea {
   padding: 2%;
-  padding-bottom: 12%;
   background: rgba(102, 122, 199, 0.13);
-  margin: 0.5%;
+  margin: 1.5% 2% 2% 0 ;
 }
 
 .sivunpohja {
