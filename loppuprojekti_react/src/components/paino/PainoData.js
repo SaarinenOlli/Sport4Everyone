@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Form from "./Form";
 import TietoLista from "./TietoLista";
+import LajiTiedot from "../LajiTiedot";
 import PainoGraafi from "./PainoGraafi";
 import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
 import firebase from 'firebase';
@@ -122,6 +123,8 @@ class PainoData extends Component {
                             <Panel className="paneelivasen">
                                 <Panel.Body className="kuvapaneeli">
                                     <Kuva laji={'peruna'}/>
+                                    <br/>
+                                    <LajiTiedot lajit={this.state.data}/>
                                 </Panel.Body>
                             </Panel>
                         </Col>
