@@ -12,8 +12,8 @@ import kokonaismatka from '../Resources/school-rule.png';
 
 var levelup;
 var laskuri;
-var totalmatka;
-var totalkesto;
+// var totalmatka;
+// var totalkesto;
 
 class LevelGraafi extends Component{
 

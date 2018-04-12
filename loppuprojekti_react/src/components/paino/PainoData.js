@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Form from "./Form";
 import TietoLista from "./TietoLista";
+import LajiTiedot from "../LajiTiedot";
 import PainoGraafi from "./PainoGraafi";
 import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
 import firebase from 'firebase';
@@ -113,8 +114,8 @@ class PainoData extends Component {
                     </nav>
                     <div>
                     <Row>
-                        <Col xs={6} md={4}>
-                            <Panel className="paneelivasen">
+                        <Col xs={12} md={4}>
+                            <Panel className="paneelivasen tietopaneeli">
                                         <Panel.Title align="center" className="nimipaneeli">You are logged in as: <br/>
                                             {this.user.displayName} <br/>
                                             {this.user.email}</Panel.Title>
@@ -122,6 +123,8 @@ class PainoData extends Component {
                             <Panel className="paneelivasen">
                                 <Panel.Body className="kuvapaneeli">
                                     <Kuva laji={'peruna'}/>
+                                    <br/>
+                                    <LajiTiedot lajit={this.state.data}/>
                                 </Panel.Body>
                             </Panel>
                         </Col>

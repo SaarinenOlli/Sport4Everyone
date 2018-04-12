@@ -113,7 +113,9 @@ class PyoraData extends Component {
     }
 
     render() {
-        // Mäpätään JSONista yhteenvetoja pyöräillystä matkasta ja ajasta -Olli ja Heidi
+
+        // Lasketaan JSONista yhteenvetoja pyöräillystä matkasta ja ajasta -Olli ja Heidi
+
         pyoraTotalKm = 0;
         pyoraTotalMin = 0;
         for (let i = 0 ; i < this.state.pyoradata.length;++i) {
@@ -154,7 +156,7 @@ class PyoraData extends Component {
                     </nav>
                     <Row>
                         <Col xs={0} md={4}>
-                            <Panel className="paneelivasen">
+                            <Panel className="paneelivasen tietopaneeli" >
                                 <Panel.Title align="center" className="nimipaneeli">You are logged in as: <br/>
                                     {this.user.displayName} <br/>
                                     {this.user.email}</Panel.Title>
@@ -163,7 +165,7 @@ class PyoraData extends Component {
                                 <Panel.Body className="kuvapaneeli">
                                     <Kuva laji={'pyoraily'} level={level}/>
                                     <br/>
-                                    <LevelGraafi laskuri={pyoralaskuri} levelup={levelup} level={level} totalmatka={pyoraTotalKm} totalkesto={pyoraTotalMin}/>
+                                    <LevelGraafi laskuri={pyoralaskuri} levelup={levelup} level={level} totalmatka={parseFloat(pyoraTotalKm).toFixed(2)} totalkesto={pyoraTotalMin}/>
                                     <br/>
                                 </Panel.Body>
                                 <br/>

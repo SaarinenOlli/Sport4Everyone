@@ -69,7 +69,7 @@ class UintiForm extends Component {
                                              type="number"
                                              placeholder="Enter duration (min)"
                                              value={this.state.kesto}
-                                             min={0} max={200} step={0.01}
+                                             min={0} step={1}
                                              onChange={this.syotaKesto}
                                              required="required"
                                 />
@@ -79,7 +79,7 @@ class UintiForm extends Component {
                                              type="number"
                                              placeholder="Enter distance (km)"
                                              value={this.state.matka}
-                                             min={0} max={200} step={0.01}
+                                             min={0}  step={0.01}
                                              onChange={this.syotaMatka}
                                              required="required"
                                 />

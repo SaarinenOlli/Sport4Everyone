@@ -39,41 +39,48 @@ class NaviWhenLoggedIn extends Component {
         };
 
         return (
-                <Navbar style={styles}>
-                    <Navbar.Header>
-                        <Col xs={0} sm={4} md={4} xsHidden>
-                            <FormGroup>
-                                <h2 className="font">Sport4Everyone</h2>
-                            </FormGroup>
+                <Navbar style={styles}  >
+                    <Navbar.Header className="logotekstibar">
+                        <Col xs={4} sm={5} md={4} xsHidden>
+                                <h2 className="font logoteksti">Sport4Everyone</h2>
                         </Col>
                     </Navbar.Header>
 
-                 <Col xs={12} sm={8} md={8} mdPush={1}>
+                    <Col xs={12} sm={7} md={8} mdPush={1}>
                 <Navbar.Form className="ikonirivi">
-
                     <FormGroup>
+                        <Col xs={1}></Col>
+                    <Col xs={2}>
+
                     <NavItem className="ikoni" href="/weight"><Image className="ikonikuva" src={paino}/></NavItem>
-                    </FormGroup>
-                    <FormGroup>
+
+                    </Col>
+                        <Col xs={2}>
+
                     <NavItem className="ikoni" href="/swimming"><Image className="ikonikuva" src={uinti}/></NavItem>
-                    </FormGroup>
 
-                    <FormGroup>
+                        </Col>
+                    <Col xs={2}>
+
                     <NavItem className="ikoni" href="/running"><Image className="ikonikuva" src={juoksu}/></NavItem>
-                    </FormGroup>
 
-                    <FormGroup>
+                    </Col>
+                    <Col xs={2}>
+
                     <NavItem className="ikoni" href="/cycling"><Image className="ikonikuva" src={pyora}/></NavItem>
-                    </FormGroup>
 
-                    <FormGroup>
+                    </Col>
+                    <Col xs={2}>
+
                     <NavItem className="ikoni" onClick={this.logout}><Image className="ikonikuva" src={logout}/></NavItem>
-                    </FormGroup>
 
+                    </Col>
+                        <Col xs={1}></Col>
+                    </FormGroup>
 
                 </Navbar.Form>
+                </Col>
 
-                 </Col>
                 </Navbar>
 
 
