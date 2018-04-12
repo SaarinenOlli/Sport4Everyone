@@ -1,12 +1,5 @@
 import React, {Component} from 'react';
-import trophy from '../Resources/trophy.png';
-import pelihahmo from '../Resources/pelihahmo.png';
-import kuvaaja from '../Resources/kuvaaja.png'
-import {Image, Col, Row, Carousel} from 'react-bootstrap';
-import NaviWhenLoggedIn from "../NaviWhenLoggedIn";
-import {auth} from '../FireBase';
-import ErrorPageIfNotLoggedIn from "./error/ErrorPageIfNotLoggedIn";
-import PainoData from "./paino/PainoData";
+import ErrorPageIfNotLoggedIn from "./error/LoadingPage";
 import firebase from "firebase/index";
 
 class Profile extends Component {

@@ -24,7 +24,7 @@ public class PainoKontrolleri {
 
         if (painot.equals(null)) {
             throw new RuntimeException("Painotietojen hakeminen epäonnistui! Palauttaa NULL");
-            // Poikkeuksen käsittely!
+            // Heitetyn poikkeuksen käsittely!
         }
         return painot;
     }
@@ -32,6 +32,7 @@ public class PainoKontrolleri {
     // Yhden painotiedon poistaminen painoid:n perusteella
     @DeleteMapping("/painot/{id}")
     public ResponseEntity<String> poistaPainoTieto(@PathVariable(name="id") int id) {
+
         // jos annettua id:tä ei löydy, palautetaan virheilmoitus
         if (!pr.findById(id).isPresent()) {
             return ResponseEntity.notFound().build();
@@ -44,6 +45,7 @@ public class PainoKontrolleri {
     // Uuden painotiedon lisääminen tietokantaan (lomake)
     @PostMapping("/painot")
     public ResponseEntity<?> uusiPainoTieto(@RequestBody Paino paino) throws URISyntaxException {
+
         // Tarkistetaan, että lomakkelta saadulla painotiedolla on tarvittavat arvot
         if (paino.getPvm() == null || paino.getPainoKiloina() == null || paino.getKayttajaId() == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -59,31 +61,4 @@ public class PainoKontrolleri {
                 .toUri();
         return ResponseEntity.created(location).build();
     }
-
-    // Hakee kaikki painotiedot
-    @GetMapping("/painot")
-    public Iterable<Paino> painot() {
-        Iterable<Paino> kaikki = pr.findAll();
-
-        if (kaikki.equals(null)) {
-            throw new RuntimeException("Painotietojen hakeminen epäonnistui! Palauttaa NULL");
-            // Poikkeuksen käsittely! Mutta missä?
-        }
-        return kaikki;
-    }
-
-    // Tietokannassa jo olevan painotiedon muokkaaminen painoid:n perusteella (lomake)
-//    @PutMapping("/painot/{id}")
-//    public ResponseEntity<Paino> muokkaaPainoTietoa(@PathVariable(name="id") int id, @RequestBody Paino paino) {
-//        Optional<Paino> optpaino = pr.findById(id);
-//        // Jos id:n perusteella ei löydy painotietoa, palautetaan virheilmoitus
-//        if (!optpaino.isPresent()) {
-//            return ResponseEntity.notFound().build();
-//        }
-//        // Optional.get() -> jos ei onnistu, heittää RunTimeExceptionin
-//        Paino paivitettava = optpaino.orElseThrow(RuntimeException::new);
-//        paivitettava.paivitaTiedot(paino); // Päivitetään paino(kg) ja pvm
-//        pr.save(paivitettava);
-//        return ResponseEntity.ok(paivitettava);
-//    }
 }

@@ -76,7 +76,7 @@ class Navi extends Component {
                     user,
                     showlogin: false
                 });
-                this.props.history.push('/profile');
+                this.props.history.push('/weight');
             })
             .catch(error => {
                 this.dialog.showAlert(error.message);
@@ -98,7 +98,7 @@ class Navi extends Component {
                     user,
                     showlogin: false
                 });
-                this.props.history.push('/profile');
+                this.props.history.push('/weight');
             })
             .catch(error => {
                 this.dialog.showAlert(error.message);
@@ -119,7 +119,7 @@ class Navi extends Component {
                     user,
                     showlogin: false
                 });
-                this.props.history.push('/profile');
+                this.props.history.push('/weight');
             })
             .catch(error => {
                 this.dialog.showAlert(error.message);
@@ -155,8 +155,8 @@ class Navi extends Component {
         bootstrapUtils.addStyle(Navbar, 'custom');
 
         var styles={
-            "backgroundColor" : "#3D3E46",
-            "color"           : "white",
+            "backgroundColor" : "#FCFCFC",
+            "color"           : "black",
             "padding-top"     : "5px",
             "padding-bottom"  : "-20px",
             "position" : "fixed",
