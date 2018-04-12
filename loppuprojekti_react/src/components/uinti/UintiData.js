@@ -15,7 +15,7 @@ import Dialog from 'react-bootstrap-dialog';
 
 let kayttajanTunnus;
 let uintilaskuri = 0; // Kirjautuneen kä;yttäjän uintikertojen määrä
-var uintiTotalKm;
+let uintiTotalKm;
 var uintiTotalMin;
 
 // Apumuuttujat käyttäjän levelien träkkäämiseen
