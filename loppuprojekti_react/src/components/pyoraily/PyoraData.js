@@ -113,7 +113,9 @@ class PyoraData extends Component {
     }
 
     render() {
-        // Mäpätään JSONista yhteenvetoja pyöräillystä matkasta ja ajasta -Olli ja Heidi
+
+        // Lasketaan JSONista yhteenvetoja pyöräillystä matkasta ja ajasta -Olli ja Heidi
+
         pyoraTotalKm = 0;
         pyoraTotalMin = 0;
         for (let i = 0 ; i < this.state.pyoradata.length;++i) {
