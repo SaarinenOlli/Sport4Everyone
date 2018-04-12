@@ -39,15 +39,17 @@
   font-family: 'Gloria Hallelujah', cursive;
 }
 
+
+
 .pelkkakuva {
   margin: 3% auto 0 10%;
   padding-bottom: 25%;
   border-radius: 5px;
+  width: 100%
+
 }
 
 .kuvapaneeli {
-  margin-left: 3%;
-  border-radius: 5px;
 }
 
 .etusivukuva {
@@ -61,21 +63,25 @@
 }
 
 #levelkuva {
-  margin-left: 5%;
+  width: 60%;
+  margin: auto;
+  display: block;
 }
 
 .paneelivasen {
-  margin-left: 5%;
+
   background: rgba(102, 122, 199, 0.13);
   padding-bottom: 14%;
   padding: 2%;
+  margin: 1%;
+  font-family: 'Coustard', serif;
 }
 
 .paneelioikea {
-  margin-right: 3%;
   padding: 2%;
   padding-bottom: 12%;
   background: rgba(102, 122, 199, 0.13);
+  margin: 0.5%;
 }
 
 .sivunpohja {

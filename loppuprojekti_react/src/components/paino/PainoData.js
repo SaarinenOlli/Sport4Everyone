@@ -114,6 +114,8 @@ class PainoData extends Component {
                                     {/*<h4 className="font">Profile</h4>*/}
                                 {/*</Panel.Heading>*/}
                                 <Panel.Body>
+                                    <p align="center">Current user is:</p>
+                                    <p align="center">{this.user.email}</p>
                                     <img className="pelkkakuva" src={pelihahmo}/>
                                 </Panel.Body>
                             </Panel>

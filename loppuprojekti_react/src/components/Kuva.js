@@ -40,8 +40,8 @@ class Kuva extends Component {
         }
 
         return (
-            <div id="levelkuva">
-                <Image src={profiilikuva}/>
+            <div>
+                <Image id="levelkuva" src={profiilikuva}/>
             </div>
         )
     }

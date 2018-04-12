@@ -158,7 +158,7 @@ class UintiData extends Component {
                         <NaviWhenLoggedIn {...this.props}/>
                     </nav>
                     <Row>
-                        <Col xs={6} md={4}>
+                        <Col xs={0} md={4}>
 
                             <Panel className="paneelivasen">
                                 {/*<Panel.Heading>*/}
