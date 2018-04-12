@@ -163,7 +163,7 @@ class PyoraData extends Component {
                                 <Panel.Body className="kuvapaneeli">
                                     <Kuva laji={'pyoraily'} level={level}/>
                                     <br/>
-                                    <LevelGraafi laskuri={pyoralaskuri} levelup={levelup} level={level} totalmatka={pyoraTotalKm} totalkesto={pyoraTotalMin}/>
+                                    <LevelGraafi laskuri={pyoralaskuri} levelup={levelup} level={level} totalmatka={parseFloat(pyoraTotalKm).toFixed(2)} totalkesto={pyoraTotalMin}/>
                                     <br/>
                                 </Panel.Body>
                                 <br/>

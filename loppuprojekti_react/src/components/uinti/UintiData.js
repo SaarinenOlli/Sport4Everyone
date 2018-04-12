@@ -178,7 +178,7 @@ class UintiData extends Component {
                                 <Panel.Body className="kuvapaneeli">
                                     <Kuva laji={'uinti'} level={level}/>
                                     <br/>
-                                    <LevelGraafi laskuri={uintilaskuri} levelup={levelup} level={level} totalmatka={uintiTotalKm} totalkesto={uintiTotalMin}/>
+                                    <LevelGraafi laskuri={uintilaskuri} levelup={levelup} level={level} totalmatka={parseFloat(uintiTotalKm).toFixed(2)} totalkesto={uintiTotalMin}/>
                                     <br/>
                                 </Panel.Body>
                                 <br/>

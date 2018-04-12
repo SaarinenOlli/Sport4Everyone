@@ -166,7 +166,7 @@ class JuoksuData extends Component {
                                 <Panel.Body className="kuvapaneeli">
                                     <Kuva laji={'juoksu'} level={level}/>
                                     <br/>
-                                    <LevelGraafi laskuri={juoksulaskuri} levelup={levelup} level={level} totalmatka={juoksuTotalKm} totalkesto={juoksuTotalMin}/>
+                                    <LevelGraafi laskuri={juoksulaskuri} levelup={levelup} level={level} totalmatka={parseFloat(juoksuTotalKm).toFixed(2)} totalkesto={juoksuTotalMin}/>
                                     <br/>
                                 </Panel.Body>
                                 <br/>
