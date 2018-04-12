@@ -39,7 +39,6 @@
 }
 
 .kuvapaneeli {
-  width: 100%;
 }
 
 .etusivukuva {
@@ -52,7 +51,7 @@
 }
 
 #levelkuva {
-  width: 50%;
+  width: 60%;
   margin: auto;
   display: block;
 }
@@ -62,14 +61,14 @@
   background: rgba(102, 122, 199, 0.13);
   padding-bottom: 14%;
   padding: 2%;
-  margin-top: 1%;
+  margin: 1%;
 }
 
 .paneelioikea {
   padding: 2%;
   padding-bottom: 12%;
   background: rgba(102, 122, 199, 0.13);
-  margin-top: 0.5%;
+  margin: 0.5%;
 }
 
 .sivunpohja {
