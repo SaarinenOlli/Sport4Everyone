@@ -151,6 +151,7 @@ class UintiData extends Component {
 
 
         // Sivulle pääsee ainoastaan kirjautuneena
+
         if (this.user === null) {
             return (
                 <LoadingPage/>

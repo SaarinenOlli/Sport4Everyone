@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { LineChart, PieChart, AreaChart, DoughnutChart } from 'react-chartkick';
 import './App.css';
+import {Image} from 'react-bootstrap';
 
 // Komponentti käyttäjän tämän hetkisen levelin näyttämiseen donitsina
 // Toimii kaikkien lajien kanssa
@@ -17,10 +18,14 @@ class LevelGraafi extends Component{
         levelup = this.props.levelup;
         laskuri = this.props.laskuri;
 
+        // Donitsin yläpuolella näytetään lajisivun mukaan kyseisen lajin suorituskerrat,
+        // kokonaisaika ja -matka @Olli @Heidi
         return (
             <div>
                 <div style={{display: 'flex', justifyContent: 'center'}}>
-                    <p>Number of exercises: {laskuri}, Total time(min): {this.props.totalkesto} , Total distance(km):{this.props.totalmatka} </p>
+                    {/*<Image src={blocks} width={"60%"}/> {laskuri} times*/}
+                    {/*<Image src={kokonaiskesto} width={"60%"}/> {this.props.totalkesto} min*/}
+                    {/*<Image src={kokonaismatka} width={"60%"}/> {this.props.totalmatka} km*/}
                 </div>
                 <div style={{display: 'flex', justifyContent: 'center'}}>
                     <PieChart donut={true} max={100} data={[["Exercises", laskuri], ["Level Up", levelup]]}/>

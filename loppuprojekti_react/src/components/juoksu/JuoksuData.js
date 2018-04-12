@@ -113,7 +113,8 @@ class JuoksuData extends Component {
 
     render() {
 
-        // Mäpätään JSONista yhteenvetoja juostusta matkasta ja ajasta -Olli ja Heidi
+        // Lasketaan JSONista yhteenvetoja juostusta matkasta ja ajasta -Olli ja Heidi
+
         juoksuTotalKm = 0;
         juoksuTotalMin = 0;
         for (let i = 0 ; i < this.state.juoksudata.length;++i) {
@@ -138,6 +139,7 @@ class JuoksuData extends Component {
         }
 
         // Sivulle pääsee ainoastaan kirjautuneena
+
         if (this.user === null) {
             return (
                 <LoadingPage/>
