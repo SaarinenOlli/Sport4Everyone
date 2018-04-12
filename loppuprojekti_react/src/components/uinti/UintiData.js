@@ -15,7 +15,7 @@ import Dialog from 'react-bootstrap-dialog';
 
 let kayttajanTunnus;
 let uintilaskuri = 0; // Kirjautuneen kä;yttäjän uintikertojen määrä
-var uintiTotalKm;
+let uintiTotalKm;
 var uintiTotalMin;
 
 // Apumuuttujat käyttäjän levelien träkkäämiseen
@@ -124,9 +124,11 @@ class UintiData extends Component {
                 console.log(error.message)
             });
     }
-
+    
     render() {
-        // Mäpätään JSONista yhteenvetoja uidusta matkasta ja ajasta -Olli ja Heidi
+
+        // Lasketaan JSONista yhteenvetoja uidusta matkasta ja ajasta -Olli ja Heidi
+
         uintiTotalKm = 0;
         uintiTotalMin = 0;
         for (let i = 0 ; i < this.state.uintidata.length;++i) {
@@ -151,6 +153,7 @@ class UintiData extends Component {
 
 
         // Sivulle pääsee ainoastaan kirjautuneena
+
         if (this.user === null) {
             return (
                 <LoadingPage/>
@@ -167,15 +170,14 @@ class UintiData extends Component {
                         <NaviWhenLoggedIn {...this.props}/>
                     </nav>
                     <Row>
-                        <Col xs={12} md={4}>
 
+                        <Col xs={12} md={4}>
+                                <Panel className="paneelivasen tietopaneeli">
+                                    <Panel.Title align="center" className="nimipaneeli">You are logged in as: <br/>
+                                        {this.user.displayName} <br/>
+                                        {this.user.email}</Panel.Title>
+                                </Panel>
                             <Panel className="paneelivasen">
-                                {/*<Panel.Heading>*/}
-                                {/*<h4 className="font">Profile</h4>*/}
-                                {/*</Panel.Heading>*/}
-                                <p align="center">Current user is:</p>
-                                <p align="center">{this.user.displayName}</p>
-                                <p align="center">{this.user.email}</p>
                                 <Panel.Body className="kuvapaneeli">
                                     <Kuva laji={'uinti'} level={level}/>
                                     <br/>
@@ -189,7 +191,6 @@ class UintiData extends Component {
                             <Panel className="paneelioikea">
                                 <Panel.Body>
                                     <KestavyysGraafi data={this.state.uintidata}/>
-                                    <LevelGraafi laskuri={uintilaskuri} levelup={levelup} level={level} totalmatka={uintiTotalKm} totalkesto={uintiTotalMin}/>
                                     <UintiForm uintiTiedotSyotetty={this.tiedotSyotetty}/>
                                     <UintiTietoLista uintiTiedot={this.state.uintidata} poista={this.poistaUinti}/>
                                 </Panel.Body>

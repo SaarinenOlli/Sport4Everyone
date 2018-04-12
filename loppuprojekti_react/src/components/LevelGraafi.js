@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import { LineChart, PieChart, AreaChart, DoughnutChart } from 'react-chartkick';
 import './App.css';
+import {Image} from 'react-bootstrap';
+import blocks from '../Resources/blocks.png';
+import kokonaiskesto from '../Resources/quarter-of-an-hour.png';
+import kokonaismatka from '../Resources/school-rule.png';
 
 // Komponentti käyttäjän tämän hetkisen levelin näyttämiseen donitsina
 // Toimii kaikkien lajien kanssa
@@ -8,8 +12,8 @@ import './App.css';
 
 var levelup;
 var laskuri;
-var totalmatka;
-var totalkesto;
+// var totalmatka;
+// var totalkesto;
 
 class LevelGraafi extends Component{
 
@@ -17,17 +21,18 @@ class LevelGraafi extends Component{
         levelup = this.props.levelup;
         laskuri = this.props.laskuri;
 
+        // Donitsin yläpuolella näytetään lajisivun mukaan kyseisen lajin suorituskerrat,
+        // kokonaisaika ja -matka @Olli @Heidi
         return (
             <div>
-                <div style={{display: 'flex', justifyContent: 'center'}}>
-                    <p>Number of exercises: {laskuri}, Total time(min): {this.props.totalkesto} , Total distance(km):{this.props.totalmatka} </p>
+                <div className="yhteenveto">
+                    <Image src={blocks} width={"10%"}/> {laskuri} times
+                    <Image src={kokonaiskesto} width={"10%"}/> {this.props.totalkesto} min
+                    <Image src={kokonaismatka} width={"10%"}/> {this.props.totalmatka} km
                 </div>
                 <div style={{display: 'flex', justifyContent: 'center'}}>
                     <PieChart donut={true} max={100} data={[["Exercises", laskuri], ["Level Up", levelup]]}/>
 
-                </div>
-                <div style={{display: 'flex', justifyContent: 'center'}}>
-                    <h1 className="font">Level {this.props.level}</h1>
                 </div>
             </div>
         )

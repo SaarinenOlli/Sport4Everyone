@@ -45,9 +45,11 @@ class Form extends Component {
                 onSelect={this.handleSelect}
             >
                 <Panel eventKey="2">
+                    <Panel>
                     <Panel.Heading>
                         <Panel.Title toggle className="font">Add new weight</Panel.Title>
                     </Panel.Heading>
+                    </Panel>
                     <Panel.Body collapsible>
                         <form>
                             <FormGroup

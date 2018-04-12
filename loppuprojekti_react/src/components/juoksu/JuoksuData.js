@@ -7,6 +7,8 @@ import firebase from 'firebase';
 import KestavyysGraafi from "../KestavyysGraafi";
 import LevelGraafi from '../LevelGraafi';
 import Kuva from '../Kuva';
+import {Col, Row, Image, Panel, Well} from 'react-bootstrap';
+import Dialog from 'react-bootstrap-dialog';
 
 // Juoksudatan käsittely, metodit poistamiseen ja lomakkeen käsittelyyn @Elina
 
@@ -111,7 +113,8 @@ class JuoksuData extends Component {
 
     render() {
 
-        // Mäpätään JSONista yhteenvetoja juostusta matkasta ja ajasta -Olli ja Heidi
+        // Lasketaan JSONista yhteenvetoja juostusta matkasta ja ajasta -Olli ja Heidi
+
         juoksuTotalKm = 0;
         juoksuTotalMin = 0;
         for (let i = 0 ; i < this.state.juoksudata.length;++i) {
@@ -136,22 +139,49 @@ class JuoksuData extends Component {
         }
 
         // Sivulle pääsee ainoastaan kirjautuneena
+
         if (this.user === null) {
             return (
                 <LoadingPage/>
             )
         } else {
             return (
-                <div>
-                    <div>
-                        <NaviWhenLoggedIn {...this.props}/>
-                    </div>
+                <div className="sivunpohja">
+                    <Dialog ref={(el) => {
+                        this.dialog = el
+                    }}>
+                    </Dialog>
 
-                    <JuoksuForm juoksuTiedotSyotetty={this.tiedotSyotetty}/>
-                    <JuoksuTietoLista juoksuTiedot={this.state.juoksudata} poista={this.poistaJuoksu}/>
-                    <KestavyysGraafi data={this.state.juoksudata}/>
-                    <Kuva laji={'juoksu'} level={level}/>
-                    <LevelGraafi laskuri={juoksulaskuri} levelup={levelup} level={level} totalmatka={juoksuTotalKm} totalkesto={juoksuTotalMin}/>
+                    <nav>
+                        <NaviWhenLoggedIn {...this.props}/>
+                    </nav>
+                    <Row>
+                        <Col xs={0} md={4}>
+                            <Panel className="paneelivasen">
+                                <Panel.Title align="center" className="nimipaneeli">You are logged in as: <br/>
+                                    {this.user.displayName} <br/>
+                                    {this.user.email}</Panel.Title>
+                            </Panel>
+                            <Panel className="paneelivasen">
+                                <Panel.Body className="kuvapaneeli">
+                                    <Kuva laji={'juoksu'} level={level}/>
+                                    <br/>
+                                    <LevelGraafi laskuri={juoksulaskuri} levelup={levelup} level={level} totalmatka={juoksuTotalKm} totalkesto={juoksuTotalMin}/>
+                                    <br/>
+                                </Panel.Body>
+                                <br/>
+                            </Panel>
+                        </Col>
+                        <Col xs={12} md={8}>
+                            <Panel className="paneelioikea">
+                                <Panel.Body>
+                                    <KestavyysGraafi data={this.state.juoksudata}/>
+                                    <JuoksuForm juoksuTiedotSyotetty={this.tiedotSyotetty}/>
+                                    <JuoksuTietoLista juoksuTiedot={this.state.juoksudata} poista={this.poistaJuoksu}/>
+                                </Panel.Body>
+                            </Panel>
+                        </Col>
+                    </Row>
                 </div>
             );
         }
