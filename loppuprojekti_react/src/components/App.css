@@ -112,12 +112,15 @@
   font-family: 'Gloria Hallelujah', cursive;
   /*margin: 3% 0 2% 5% ;*/
 }
-
+.tietopaneeli {
+  padding-top: 10%;
+}
 @media screen and (min-width:767px) and (max-width:991px){
   .tietopaneeli {
-    padding-top: 4% !important;
+    padding-top: 4%;
   }
 }
+
 
 .nimipaneeli {
     background: rgba(255, 255, 255, 0.8);
@@ -127,9 +130,7 @@
     font-family: 'Gloria Hallelujah', cursive;
 }
 
-.tietopaneeli {
-  padding-top: 10%;
-}
+
 .paneelioikea {
   padding: 2%;
 

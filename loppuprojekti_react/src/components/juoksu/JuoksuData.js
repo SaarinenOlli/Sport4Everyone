@@ -157,7 +157,7 @@ class JuoksuData extends Component {
                     </nav>
                     <Row>
                         <Col xs={0} md={4}>
-                            <Panel className="paneelivasen">
+                            <Panel className="paneelivasen tietopaneeli">
                                 <Panel.Title align="center" className="nimipaneeli">You are logged in as: <br/>
                                     {this.user.displayName} <br/>
                                     {this.user.email}</Panel.Title>
