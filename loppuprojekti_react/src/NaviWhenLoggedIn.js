@@ -29,10 +29,9 @@ class NaviWhenLoggedIn extends Component {
         bootstrapUtils.addStyle(Navbar, 'custom');
 
         var styles={
-            "backgroundColor" : "#3D3E46",
-            "color"           : "white",
+            "backgroundColor" : "#FCFCFC",
+            "color"           : "black",
             "padding-top"     : "5px",
-            "padding-bottom"  : "-20px",
             "position" : "fixed",
             "z-index": "1",
             "width" : "100%",
@@ -49,26 +48,25 @@ class NaviWhenLoggedIn extends Component {
                         </Col>
                     </Navbar.Header>
                     <Navbar.Collapse>
-                <Navbar.Form className="nav-bar nav">
+                <Navbar.Form className="ikonirivi">
                     <Col md={8} mdPush={1}>
                     <FormGroup>
-                    <BreadcrumbItem href="/profile"><Image src={paino} width={"35%"}/></BreadcrumbItem>
+                    <NavItem className="ikoni" href="/weight"><Image src={paino} width={"60%"}/></NavItem>
+                    </FormGroup>
+                    <FormGroup>
+                    <NavItem className="ikoni" href="/swimming"><Image src={uinti} width={"60%"}/></NavItem>
                     </FormGroup>
 
                     <FormGroup>
-                    <NavItem href="/swimming"><Image src={uinti} width={"35%"}/></NavItem>
+                    <NavItem className="ikoni" href="/running"><Image src={juoksu}width={"60%"}/></NavItem>
                     </FormGroup>
 
                     <FormGroup>
-                    <NavItem href="/running"><Image src={juoksu}width={"35%"}/></NavItem>
+                    <NavItem className="ikoni" href="/cycling"><Image src={pyora}width={"60%"}/></NavItem>
                     </FormGroup>
 
                     <FormGroup>
-                    <NavItem href="/cycling"><Image src={pyora}width={"35%"}/></NavItem>
-                    </FormGroup>
-
-                    <FormGroup>
-                    <NavItem onClick={this.logout}><Image src={logout}width={"35%"}/></NavItem>
+                    <NavItem className="ikoni" onClick={this.logout}><Image src={logout}width={"60%"}/></NavItem>
                     </FormGroup>
                     </Col>
 
