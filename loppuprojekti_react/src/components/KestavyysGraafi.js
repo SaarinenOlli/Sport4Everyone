@@ -6,9 +6,14 @@ window.Chart = require('../../node_modules/chart.js/src/chart');
 class KestavyysGraafi extends Component {
     render() {
 
-        const graafiKestavyysMatka = this.props.data.reduce((acc, datum) => { acc[datum.pvm] = datum.matkaKm; return acc; }, {});
+        const graafiKestavyysMatka = this.props.data
+        // Data pitää tässä vielä järjestää uudelleen, jotta graafi tulostuu halutulla tavalla @Elina
+            .sort((a, b) => a.pvm > b.pvm)
+            .reduce((acc, datum) => { acc[datum.pvm] = datum.matkaKm; return acc; }, {});
 
-        const graafiKestavyysAika = this.props.data.reduce((acc, datum) => { acc[datum.pvm] = datum.kestoMin; return acc; }, {});
+        const graafiKestavyysAika = this.props.data
+            .sort((a, b) => a.pvm > b.pvm)
+            .reduce((acc, datum) => { acc[datum.pvm] = datum.kestoMin; return acc; }, {});
 
 
         return (
