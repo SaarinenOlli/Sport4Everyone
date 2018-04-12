@@ -28,14 +28,12 @@
 }
 
 .ikonirivi {
-  margin-top: 1vw;
   list-style-type: none;
 }
 
 @media only screen and (max-width: 767px) {
   .ikonirivi {
     height: 12vw;
-    margin-top: 1vw;
     list-style-type: none;
   }
   .ikonikuva {
@@ -50,7 +48,8 @@
 .ikoni {
   padding-left: 3vw;
   padding-right: 2vw;
-  margin-top: 1vw;
+  margin-top: 0.5vw;
+  margin-bottom: 0.5vw;
   padding-bottom: auto;
   padding-top: auto;
   height: 5vw;
@@ -65,7 +64,7 @@
 }
 
 .logoteksti{
-  padding-left: 1vw;
+
   margin-top:1vw;
   padding-top: 1vw;
   padding-bottom: 1vw;
