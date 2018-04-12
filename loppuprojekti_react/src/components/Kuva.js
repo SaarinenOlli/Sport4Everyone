@@ -41,6 +41,9 @@ class Kuva extends Component {
 
         return (
             <div>
+                <div style={{display: 'flex', justifyContent: 'center'}}>
+                    <h1 className="font">Level {level}</h1>
+                </div>
                 <Image id="levelkuva" src={profiilikuva}/>
             </div>
         )
