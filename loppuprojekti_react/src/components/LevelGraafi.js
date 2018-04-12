@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { LineChart, PieChart, AreaChart, DoughnutChart } from 'react-chartkick';
+import './App.css';
 
 // Komponentti käyttäjän tämän hetkisen levelin näyttämiseen donitsina
 // Toimii kaikkien lajien kanssa
@@ -7,6 +8,8 @@ import { LineChart, PieChart, AreaChart, DoughnutChart } from 'react-chartkick';
 
 var levelup;
 var laskuri;
+var totalmatka;
+var totalkesto;
 
 class LevelGraafi extends Component{
 
@@ -17,10 +20,14 @@ class LevelGraafi extends Component{
         return (
             <div>
                 <div style={{display: 'flex', justifyContent: 'center'}}>
-                    <PieChart donut={true} max={100} data={[["Exercises", laskuri], ["Level Up", levelup]]}/>
+                    <p>Number of exercises: {laskuri}, Total time(min): {this.props.totalkesto} , Total distance(km):{this.props.totalmatka} </p>
                 </div>
                 <div style={{display: 'flex', justifyContent: 'center'}}>
-                    <h1>Level {this.props.level}</h1>
+                    <PieChart donut={true} max={100} data={[["Exercises", laskuri], ["Level Up", levelup]]}/>
+
+                </div>
+                <div style={{display: 'flex', justifyContent: 'center'}}>
+                    <h1 className="font">Level {this.props.level}</h1>
                 </div>
             </div>
         )

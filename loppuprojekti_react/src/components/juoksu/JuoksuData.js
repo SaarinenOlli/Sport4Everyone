@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import JuoksuForm from './JuoksuForm';
 import JuoksuTietoLista from "./JuoksuTietoLista";
 import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
-import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
+import LoadingPage from "../LoadingPage";
 import firebase from 'firebase';
 import KestavyysGraafi from "../KestavyysGraafi";
 import LevelGraafi from '../LevelGraafi';
@@ -11,7 +11,9 @@ import Kuva from '../Kuva';
 // Juoksudatan käsittely, metodit poistamiseen ja lomakkeen käsittelyyn @Elina
 
 let kayttajanTunnus;
-let juoksuLaskuri = 0; // Kuinka monta juoksukertaa kirjautuneella käyttäjällä on
+let juoksulaskuri = 0; // Kuinka monta juoksukertaa kirjautuneella käyttäjällä on
+var juoksuTotalKm;
+var juoksuTotalMin;
 
 // Apumuuttujat käyttäjän levelien träkkäämiseen
 var levelup;
@@ -58,7 +60,7 @@ class JuoksuData extends Component {
             .then(function (json) {
                 console.dir(json);
                 // Haetaan JSON-datan pituuden perusteella käyttäjän juoksukertojen määrä
-                juoksuLaskuri = Object.keys(json).length;
+                juoksulaskuri = Object.keys(json).length;
                 this.setState({juoksudata: json})
 
             }.bind(this));
@@ -109,24 +111,34 @@ class JuoksuData extends Component {
 
     render() {
 
+        // Mäpätään JSONista yhteenvetoja juostusta matkasta ja ajasta -Olli ja Heidi
+        juoksuTotalKm = 0;
+        juoksuTotalMin = 0;
+        for (let i = 0 ; i < this.state.juoksudata.length;++i) {
+            let tieto = this.state.juoksudata[i];
+            juoksuTotalKm = juoksuTotalKm + tieto.matkaKm;
+            juoksuTotalMin = juoksuTotalMin + tieto.kestoMin;
+        }
+
+
         // Määritetään käyttäjän nykyinen level sekä askeleet seuraavalle levelille
         // juoksulaskurin arvon perusteella
 
-        if (juoksuLaskuri < 3) {
-            levelup = (3 - juoksuLaskuri);
+        if (juoksulaskuri < 3) {
+            levelup = (3 - juoksulaskuri);
             level = 1;
-        } else if (juoksuLaskuri > 2 && juoksuLaskuri < 10) {
-            levelup = (10 - juoksuLaskuri);
+        } else if (juoksulaskuri > 2 && juoksulaskuri < 10) {
+            levelup = (10 - juoksulaskuri);
             level = 2;
         } else {
-            levelup = (20 - juoksuLaskuri);
+            levelup = (20 - juoksulaskuri);
             level = 3;
         }
 
         // Sivulle pääsee ainoastaan kirjautuneena
         if (this.user === null) {
             return (
-                <ErrorPageIfNotLoggedIn/>
+                <LoadingPage/>
             )
         } else {
             return (
@@ -139,7 +151,7 @@ class JuoksuData extends Component {
                     <JuoksuTietoLista juoksuTiedot={this.state.juoksudata} poista={this.poistaJuoksu}/>
                     <KestavyysGraafi data={this.state.juoksudata}/>
                     <Kuva laji={'juoksu'} level={level}/>
-                    <LevelGraafi laskuri={juoksuLaskuri} levelup={levelup} level={level}/>
+                    <LevelGraafi laskuri={juoksulaskuri} levelup={levelup} level={level} totalmatka={juoksuTotalKm} totalkesto={juoksuTotalMin}/>
                 </div>
             );
         }

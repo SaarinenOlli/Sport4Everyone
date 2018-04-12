@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PyoraForm from './PyoraForm';
 import PyoraTietoLista from './PyoraTietoLista';
 import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
-import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
+import LoadingPage from "../LoadingPage";
 import firebase from 'firebase';
 import KestavyysGraafi from "../KestavyysGraafi";
 import LevelGraafi from '../LevelGraafi';
@@ -11,11 +11,15 @@ import Kuva from '../Kuva';
 // Pyöräilydatan käsittely, poistaminen ja listaaminen @Heidi @Elina
 
 let kayttajanTunnus;
-let laskuri = 0; // Kirjautuneen käyttäjän pyöräilykertojen määrä
+let pyoralaskuri = 0; // Kirjautuneen käyttäjän pyöräilykertojen määrä
+var pyoraTotalKm;
+var pyoraTotalMin;
 
 // Apumuuttujat käyttäjän levelien träkkäämiseen
 var levelup;
 var level;
+
+
 
 class PyoraData extends Component {
 
@@ -24,7 +28,7 @@ class PyoraData extends Component {
         this.user = firebase.auth().currentUser;
     }
 
-    state = {data: []}
+    state = {pyoradata: []}
 
     componentDidMount() {
         if (!this.user)
@@ -57,7 +61,7 @@ class PyoraData extends Component {
             .then(function (json) {
                 console.dir(json);
                 // Haetaan JSON-datan pituuden perusteella käyttäjän pyöräilykertojen lukumäärä
-                laskuri = Object.keys(json).length;
+                pyoralaskuri = Object.keys(json).length;
                 this.setState({pyoradata: json})
 
             }.bind(this));
@@ -107,25 +111,33 @@ class PyoraData extends Component {
     }
 
     render() {
+        // Mäpätään JSONista yhteenvetoja pyöräillystä matkasta ja ajasta -Olli ja Heidi
+        pyoraTotalKm = 0;
+        pyoraTotalMin = 0;
+        for (let i = 0 ; i < this.state.pyoradata.length;++i) {
+            let tieto = this.state.pyoradata[i];
+            pyoraTotalKm = pyoraTotalKm + tieto.matkaKm;
+            pyoraTotalMin = pyoraTotalMin + tieto.kestoMin;
+        }
 
         // Määritetään käyttäjän nykyinen level sekä askeleet seuraavalle levelille
         // laskurin arvon perusteella
 
-        if (laskuri < 3) {
-            levelup = (3 - laskuri);
+        if (pyoralaskuri < 3) {
+            levelup = (3 - pyoralaskuri);
             level = 1;
-        } else if (laskuri > 2 && laskuri < 10) {
-            levelup = (10 - laskuri);
+        } else if (pyoralaskuri > 2 && pyoralaskuri < 10) {
+            levelup = (10 - pyoralaskuri);
             level = 2;
         } else {
-            levelup = (20 - laskuri);
+            levelup = (20 - pyoralaskuri);
             level = 3;
         }
 
         // Sivulle pääsee ainoastaan kirjautuneena
         if (this.user === null) {
             return (
-                <ErrorPageIfNotLoggedIn/>
+                <LoadingPage/>
             )
         } else {
             return (
@@ -137,7 +149,7 @@ class PyoraData extends Component {
                     <PyoraTietoLista pyoraTiedot={this.state.pyoradata} poista={this.poistaPyora}/>
                     <KestavyysGraafi data={this.state.pyoradata}/>
                     <Kuva laji={'pyoraily'} level={level}/>
-                    <LevelGraafi laskuri={laskuri} levelup={levelup} level={level}/>
+                    <LevelGraafi laskuri={pyoralaskuri} levelup={levelup} level={level} totalmatka={pyoraTotalKm} totalkesto={pyoraTotalMin}/>
                 </div>
             );
         }

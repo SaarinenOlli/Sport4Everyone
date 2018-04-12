@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import UintiForm from './UintiForm';
 import UintiTietoLista from "./UintiTietoLista";
 import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
-import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
+import LoadingPage from "../LoadingPage";
 import firebase from 'firebase';
 import KestavyysGraafi from "../KestavyysGraafi";
 import Kuva from '../Kuva';
@@ -14,7 +14,9 @@ import Dialog from 'react-bootstrap-dialog';
 // Uintidatan käsittely, poistaminen, listaaminen @Heidi @Elina @Olli
 
 let kayttajanTunnus;
-let laskuri = 0; // Kirjautuneen käyttäjän uintikertojen määrä
+let uintilaskuri = 0; // Kirjautuneen kä;yttäjän uintikertojen määrä
+var uintiTotalKm;
+var uintiTotalMin;
 
 // Apumuuttujat käyttäjän levelien träkkäämiseen
 var levelup;
@@ -24,11 +26,10 @@ class UintiData extends Component {
 
     constructor(props) {
         super(props);
-        super();
         this.user = firebase.auth().currentUser;
     }
 
-    state = {data: []}
+    state = {uintidata: []}
 
     componentDidMount() {
         if (!this.user)
@@ -62,7 +63,7 @@ class UintiData extends Component {
             .then(function (json) {
                 console.dir(json);
                 // Haetaan JSON-datan pituuden perusteella käyttäjän uintikertojen lukumäärä
-                laskuri = Object.keys(json).length;
+                uintilaskuri = Object.keys(json).length;
                 this.setState({uintidata: json});
             }.bind(this))
     }
@@ -91,10 +92,10 @@ class UintiData extends Component {
             }.bind(this))
 
             .then(function () {
-                if (laskuri == 2) {
+                if (uintilaskuri == 2) {
                     this.dialog.showAlert("Congratulations, you reached level 2! Check out your new gear. You need 7 practices for your next level up. ");
                 }
-                if (laskuri == 9) {
+                if (uintilaskuri == 9) {
                     this.dialog.showAlert("Congratulations, you reached level 3! Check out your new gear. You need 10 practices for your next level up. ");
                 }
             }.bind(this))
@@ -125,18 +126,26 @@ class UintiData extends Component {
     }
 
     render() {
+        // Mäpätään JSONista yhteenvetoja uidusta matkasta ja ajasta -Olli ja Heidi
+        uintiTotalKm = 0;
+        uintiTotalMin = 0;
+        for (let i = 0 ; i < this.state.uintidata.length;++i) {
+            let tieto = this.state.uintidata[i];
+            uintiTotalKm = uintiTotalKm + tieto.matkaKm;
+            uintiTotalMin = uintiTotalMin + tieto.kestoMin;
+        }
 
         // Määritetään käyttäjän nykyinen level sekä askeleet seuraavalle levelille
         // laskurin arvon perusteella
 
-        if (laskuri < 3) {
-            levelup = (3 - laskuri);
+        if (uintilaskuri < 3) {
+            levelup = (3 - uintilaskuri);
             level = 1;
-        } else if (laskuri > 2 && laskuri < 10) {
-            levelup = (10 - laskuri);
+        } else if (uintilaskuri > 2 && uintilaskuri < 10) {
+            levelup = (10 - uintilaskuri);
             level = 2;
         } else {
-            levelup = (20 - laskuri);
+            levelup = (20 - uintilaskuri);
             level = 3;
         }
 
@@ -144,7 +153,7 @@ class UintiData extends Component {
         // Sivulle pääsee ainoastaan kirjautuneena
         if (this.user === null) {
             return (
-                <ErrorPageIfNotLoggedIn/>
+                <LoadingPage/>
             )
         } else {
             return (
@@ -158,7 +167,7 @@ class UintiData extends Component {
                         <NaviWhenLoggedIn {...this.props}/>
                     </nav>
                     <Row>
-                        <Col xs={6} md={4}>
+                        <Col xs={0} md={4}>
 
                             <Panel className="paneelivasen">
                                 {/*<Panel.Heading>*/}
@@ -167,7 +176,7 @@ class UintiData extends Component {
                                 <Panel.Body className="kuvapaneeli">
                                     <Kuva laji={'uinti'} level={level}/>
                                     <br/>
-                                    <LevelGraafi laskuri={laskuri} levelup={levelup} level={level}/>
+                                    <LevelGraafi laskuri={uintilaskuri} levelup={levelup} level={level} totalmatka={uintiTotalKm} totalkesto={uintiTotalMin}/>
                                     <br/>
                                 </Panel.Body>
                                 <br/>
@@ -177,6 +186,7 @@ class UintiData extends Component {
                             <Panel className="paneelioikea">
                                 <Panel.Body>
                                     <KestavyysGraafi data={this.state.uintidata}/>
+                                    <LevelGraafi laskuri={uintilaskuri} levelup={levelup} level={level} totalmatka={uintiTotalKm} totalkesto={uintiTotalMin}/>
                                     <UintiForm uintiTiedotSyotetty={this.tiedotSyotetty}/>
                                     <UintiTietoLista uintiTiedot={this.state.uintidata} poista={this.poistaUinti}/>
                                 </Panel.Body>
