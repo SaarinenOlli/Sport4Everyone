@@ -119,6 +119,11 @@
   background-size: cover;
   padding-bottom: 50%;
 }
+.yhteenveto {
+  text-align: center;
+  margin-top: 1vw;
+  margin-bottom: 2vw;
+}
 
 #loading {
   text-align: center;

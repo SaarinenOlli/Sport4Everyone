@@ -25,17 +25,14 @@ class LevelGraafi extends Component{
         // kokonaisaika ja -matka @Olli @Heidi
         return (
             <div>
-                <div style={{display: 'flex', justifyContent: 'center'}}>
-                    <Image src={blocks} width={"60%"}/> {laskuri} times
-                    <Image src={kokonaiskesto} width={"60%"}/> {this.props.totalkesto} min
-                    <Image src={kokonaismatka} width={"60%"}/> {this.props.totalmatka} km
+                <div className="yhteenveto">
+                    <Image src={blocks} width={"10%"}/> {laskuri} times
+                    <Image src={kokonaiskesto} width={"10%"}/> {this.props.totalkesto} min
+                    <Image src={kokonaismatka} width={"10%"}/> {this.props.totalmatka} km
                 </div>
                 <div style={{display: 'flex', justifyContent: 'center'}}>
                     <PieChart donut={true} max={100} data={[["Exercises", laskuri], ["Level Up", levelup]]}/>
 
-                </div>
-                <div style={{display: 'flex', justifyContent: 'center'}}>
-                    <h1 className="font">Level {this.props.level}</h1>
                 </div>
             </div>
         )
