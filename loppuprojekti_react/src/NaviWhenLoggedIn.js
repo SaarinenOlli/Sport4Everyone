@@ -41,39 +41,41 @@ class NaviWhenLoggedIn extends Component {
         return (
                 <Navbar style={styles}>
                     <Navbar.Header>
-                        <Col xs={6} md={4}>
+                        <Col xs={0} sm={4} md={4} xsHidden>
                             <FormGroup>
                                 <h2 className="font">Sport4Everyone</h2>
                             </FormGroup>
                         </Col>
                     </Navbar.Header>
-                    <Navbar.Collapse>
+
+                 <Col xs={12} sm={8} md={8} mdPush={1}>
                 <Navbar.Form className="ikonirivi">
-                    <Col md={8} mdPush={1}>
+
                     <FormGroup>
-                    <NavItem className="ikoni" href="/weight"><Image src={paino} width={"60%"}/></NavItem>
+                    <NavItem className="ikoni" href="/weight"><Image className="ikonikuva" src={paino}/></NavItem>
                     </FormGroup>
                     <FormGroup>
-                    <NavItem className="ikoni" href="/swimming"><Image src={uinti} width={"60%"}/></NavItem>
+                    <NavItem className="ikoni" href="/swimming"><Image className="ikonikuva" src={uinti}/></NavItem>
                     </FormGroup>
 
                     <FormGroup>
-                    <NavItem className="ikoni" href="/running"><Image src={juoksu}width={"60%"}/></NavItem>
+                    <NavItem className="ikoni" href="/running"><Image className="ikonikuva" src={juoksu}/></NavItem>
                     </FormGroup>
 
                     <FormGroup>
-                    <NavItem className="ikoni" href="/cycling"><Image src={pyora}width={"60%"}/></NavItem>
+                    <NavItem className="ikoni" href="/cycling"><Image className="ikonikuva" src={pyora}/></NavItem>
                     </FormGroup>
 
                     <FormGroup>
-                    <NavItem className="ikoni" onClick={this.logout}><Image src={logout}width={"60%"}/></NavItem>
+                    <NavItem className="ikoni" onClick={this.logout}><Image className="ikonikuva" src={logout}/></NavItem>
                     </FormGroup>
-                    </Col>
+
 
                 </Navbar.Form>
-                    </Navbar.Collapse>
 
+                 </Col>
                 </Navbar>
+
 
         );
 
