@@ -18,6 +18,22 @@ public class KestavyysKontrolleri {
 
     @Autowired KestavyysRepo kr;
 
+    // Hakee yhden käyttäjän kaikki urheilusuoritukset
+    @GetMapping("/{id}")
+    public Iterable<KestavyysHarjoittelu> yhdenKayttajanLiikunnat(@PathVariable(name = "id") String id) {
+        Iterable<KestavyysHarjoittelu> kaikki = kr.findAllByKayttajaId(id);
+
+        if (kaikki.equals(null)) {
+            throw new RuntimeException("Tietojen hakeminen epäonnistui!");
+        }
+        return kaikki;
+    }
+
+//    @GetMapping("/{id}")
+//    public Integer yhdenKayttajanLiikunnat(@PathVariable(name = "id") String id) {
+//        return kr.haeMaara(id);
+//    }
+
     // UINTI:
 
     // Hakee yhden käyttäjän uinnit
