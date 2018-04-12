@@ -26,8 +26,8 @@ public class KestavyysKontrolleri {
         Iterable<KestavyysHarjoittelu> uinnit = kr.findAllByLajiAndKayttajaId("uinti", id);
 
         if (uinnit.equals(null)) {
-            throw new RuntimeException("Uintitietojen hakeminen epäonnistui! Palauttaa NULL");
-            // Poikkeuksen käsittely!
+            throw new RuntimeException("Uintitietojen hakeminen epäonnistui!");
+            // Heitetyn poikkeuksen käsittely!
         }
        return uinnit;
     }
@@ -71,8 +71,8 @@ public class KestavyysKontrolleri {
         Iterable<KestavyysHarjoittelu> pyorailyt =  kr.findAllByLajiAndKayttajaId("pyöräily", id);
 
         if (pyorailyt.equals(null)) {
-            throw new RuntimeException("Pyöräilytietojen hakeminen epäonnistui! Palauttaa NULL");
-            // Poikkeuksen käsittely!
+            throw new RuntimeException("Pyöräilytietojen hakeminen epäonnistui!");
+            // Heitetyn poikkeuksen käsittely!
         }
         return pyorailyt;
     }
@@ -116,8 +116,8 @@ public class KestavyysKontrolleri {
         Iterable<KestavyysHarjoittelu> juoksut =  kr.findAllByLajiAndKayttajaId("juoksu", id);
 
         if (juoksut.equals(null)) {
-            throw new RuntimeException("Juoksutietojen hakeminen epäonnistui! Palauttaa NULL");
-            // Poikkeuksen käsittely!
+            throw new RuntimeException("Juoksutietojen hakeminen epäonnistui!");
+            // Heitetyn poikkeuksen käsittely!
         }
         return juoksut;
     }
@@ -137,6 +137,7 @@ public class KestavyysKontrolleri {
     // Uuden juoksuharjoituksen lisääminen tietokantaan (lomake)
     @PostMapping("/juoksu")
     public ResponseEntity<?> uusiJuoksu(@RequestBody KestavyysHarjoittelu kest) throws URISyntaxException {
+
         // Tarkistetaan, että lomakkeelta saadulla harjoituksella on tarvittavat arvot
         if (kest.getPvm() == null || kest.getKestoMin() == null || kest.getMatkaKm() == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -152,50 +153,4 @@ public class KestavyysKontrolleri {
                 .toUri();
         return ResponseEntity.created(location).build();
     }
-
-    // Hakee kaikki uintiharjoitukset
-//    @GetMapping("/uinti")
-//    public Iterable<KestavyysHarjoittelu> uinnit() {
-//        Iterable<KestavyysHarjoittelu> kaikki = kr.findAllByLaji("uinti");
-//
-//        if (kaikki.equals(null)) {
-//            throw new RuntimeException("Uintitietojen hakeminen epäonnistui! Palauttaa NULL");
-//            // Poikkeuksen käsittely! Mutta missä?
-//        }
-//        return kaikki;
-//    }
-
-    // Hakee kaikki pyöräilyharjoitukset
-//    @GetMapping("/pyoraily")
-//    public Iterable<KestavyysHarjoittelu> pyorailyt() {
-//        Iterable<KestavyysHarjoittelu> kaikki = kr.findAllByLaji("pyöräily");
-//
-//        if (kaikki.equals(null)) {
-//            throw new RuntimeException("Pyöräilytietojen hakeminen epäonnistui! Palauttaa NULL");
-//            // Poikkeuksen käsittely!
-//        }
-//        return kaikki;
-//    }
-
-    // Hakee kaikki juoksuharjoitukset
-//    @GetMapping("/juoksu")
-//    public Iterable<KestavyysHarjoittelu> juoksut() {
-//        Iterable<KestavyysHarjoittelu> kaikki = kr.findAllByLaji("juoksu");
-//
-//        if (kaikki.equals(null)) {
-//            throw new RuntimeException("Juoksutietojen hakeminen epäonnistui! Palauttaa NULL");
-//            // Poikkeuksen käsittely!
-//        }
-//        return kaikki;
-//    }
-
-    // Hakee yhden kestavyysharjoittelun tiedot id:n perusteella
-//    @GetMapping("/kestavyys/{id}")
-//    public ResponseEntity<KestavyysHarjoittelu> etsiTiettyHarjoitus(@PathVariable(name="id") int id) {
-//        Optional<KestavyysHarjoittelu> optkest = kr.findById(id);
-//        if (!optkest.isPresent()) {
-//            return ResponseEntity.notFound().build();
-//        }
-//        return ResponseEntity.ok(optkest.get());
-//    }
 }

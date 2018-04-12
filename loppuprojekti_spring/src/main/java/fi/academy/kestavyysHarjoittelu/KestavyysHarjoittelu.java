@@ -16,20 +16,12 @@ public class KestavyysHarjoittelu {
     private int kestavyysHarjoitusId;
     @NotNull
     private String kayttajaId;
-    private LocalDate pvm; // halutaanko kellonaika?
+    private LocalDate pvm;
     private Integer kestoMin;
     private String laji;
     private Double matkaKm;
 
     public KestavyysHarjoittelu() {
-    }
-
-    public KestavyysHarjoittelu(@NotNull String kayttajaId, LocalDate pvm, Integer kestoMin, String laji, Double matkaKm) {
-        this.kayttajaId = kayttajaId;
-        this.pvm = pvm;
-        this.kestoMin = kestoMin;
-        this.laji = laji;
-        this.matkaKm = matkaKm;
     }
 
     public int getKestavyysHarjoitusId() {
