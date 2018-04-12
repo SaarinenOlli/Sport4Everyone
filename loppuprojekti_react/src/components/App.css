@@ -10,7 +10,9 @@
   text-align: center;
   margin-top: -10vw;
   margin-bottom: 3vw;
+  font-family: 'Gloria Hallelujah', cursive;
 }
+
 
 .modal-container {
   margin-top: 5%;
@@ -28,12 +30,18 @@
 .ikonirivi {
   margin-top: 1vw;
   list-style-type: none;
+
 }
 
 .ikoni {
   padding-right: 4vw;
-}
+  padding-bottom: 1vw;
 
+}
+.ikonikuva {
+
+  width: 3vw;
+}
 .font {
   font-family: 'Gloria Hallelujah', cursive;
 }
@@ -68,19 +76,25 @@
 }
 
 .paneelivasen {
-
   background: rgba(102, 122, 199, 0.13);
-  padding-bottom: 14%;
   padding: 2%;
-  margin: 1%;
-  font-family: 'Coustard', serif;
+  margin: 3% 0 2% 5% ;
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+.nimipaneeli {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 2%;
+
+    border-radius: 5px;
+    margin: 2% auto 3% auto;
+    font-family: 'Gloria Hallelujah', cursive;
 }
 
 .paneelioikea {
   padding: 2%;
-  padding-bottom: 12%;
   background: rgba(102, 122, 199, 0.13);
-  margin: 0.5%;
+  margin: 1.5% 2% 2% 0 ;
 }
 
 .sivunpohja {
@@ -89,8 +103,6 @@
   background-attachment: fixed;
   background-size: cover;
   margin-top: 5vw;
-;
-
 }
 
 .graafi {

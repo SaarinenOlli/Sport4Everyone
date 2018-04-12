@@ -8,6 +8,7 @@ import pelihahmo from '../../Resources/pelihahmo.png';
 import LoadingPage from "../LoadingPage";
 import {Col, Row, Image, Panel, Well} from 'react-bootstrap';
 import '../App.css';
+import Kuva from '../Kuva';
 
 let kayttajanTunnus;
 
@@ -110,14 +111,13 @@ class PainoData extends Component {
                     <Row>
                         <Col xs={6} md={4}>
                             <Panel className="paneelivasen">
-                                {/*<Panel.Heading>*/}
-                                    {/*<h4 className="font">Profile</h4>*/}
-                                {/*</Panel.Heading>*/}
-                                <Panel.Body>
-                                    <p align="center">Current user is:</p>
-                                    <p align="center">{this.user.displayName}</p>
-                                    <p align="center">{this.user.email}</p>
-                                    <img className="pelkkakuva" src={pelihahmo}/>
+                                        <Panel.Title align="center" className="nimipaneeli">You are logged in as: <br/>
+                                            {this.user.displayName} <br/>
+                                            {this.user.email}</Panel.Title>
+                            </Panel>
+                            <Panel className="paneelivasen">
+                                <Panel.Body className="kuvapaneeli">
+                                    <Kuva laji={'peruna'}/>
                                 </Panel.Body>
                             </Panel>
                         </Col>
