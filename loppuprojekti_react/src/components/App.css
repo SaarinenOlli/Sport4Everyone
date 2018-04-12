@@ -28,15 +28,18 @@
   font-family: 'Coustard', serif;
 }
 
+
+
 .pelkkakuva {
   margin: 3% auto 0 10%;
   padding-bottom: 25%;
   border-radius: 5px;
+  width: 100%
+
 }
 
 .kuvapaneeli {
-  margin-left: 3%;
-  border-radius: 5px;
+  width: 100%;
 }
 
 .etusivukuva {
@@ -49,21 +52,24 @@
 }
 
 #levelkuva {
-  margin-left: 5%;
+  width: 50%;
+  margin: auto;
+  display: block;
 }
 
 .paneelivasen {
-  margin-left: 5%;
+
   background: rgba(102, 122, 199, 0.13);
   padding-bottom: 14%;
   padding: 2%;
+  margin-top: 1%;
 }
 
 .paneelioikea {
-  margin-right: 3%;
   padding: 2%;
   padding-bottom: 12%;
   background: rgba(102, 122, 199, 0.13);
+  margin-top: 0.5%;
 }
 
 .sivunpohja {
