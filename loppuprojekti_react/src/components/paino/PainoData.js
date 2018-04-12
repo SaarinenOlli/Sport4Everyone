@@ -109,7 +109,7 @@ class PainoData extends Component {
                     </nav>
                     <div>
                     <Row>
-                        <Col xs={6} md={4}>
+                        <Col xs={12} md={4}>
                             <Panel className="paneelivasen">
                                 {/*<Panel.Heading>*/}
                                     {/*<h4 className="font">Profile</h4>*/}
