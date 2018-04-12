@@ -51,7 +51,7 @@ class Lajikoonti extends Component {
     render() {
         return (
             <div>
-                <LajiTiedot data={this.state.harjoituskertadata}/>
+                <LajiTiedot harjoituskertadata={this.state.harjoituskertadata}/>
             </div>
         )}
 
