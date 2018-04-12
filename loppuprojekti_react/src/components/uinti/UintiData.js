@@ -164,6 +164,9 @@ class UintiData extends Component {
                                 {/*<Panel.Heading>*/}
                                 {/*<h4 className="font">Profile</h4>*/}
                                 {/*</Panel.Heading>*/}
+                                <p align="center">Current user is:</p>
+                                <p align="center">{this.user.displayName}</p>
+                                <p align="center">{this.user.email}</p>
                                 <Panel.Body className="kuvapaneeli">
                                     <Kuva laji={'uinti'} level={level}/>
                                     <br/>
