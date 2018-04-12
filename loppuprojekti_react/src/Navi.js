@@ -157,12 +157,11 @@ class Navi extends Component {
         var styles={
             "backgroundColor" : "#CFDDFA",
             "color"           : "black",
-            "padding-top"     : "5px",
-            "padding-bottom"  : "-20px",
             "position" : "fixed",
-            "z-index": "1",
             "width" : "100%",
+            "z-index": "1",
             "top" : "0",
+            "display" : "block",
         };
 
         return (
@@ -170,24 +169,28 @@ class Navi extends Component {
             <div>
                 <Navbar style={styles}>
                     <Navbar.Header>
+                        <Col sm={0} xsHidden>
                             <FormGroup>
                                 <h2 className="font"> Sport4Everyone </h2>
                             </FormGroup>
+                        </Col>
                     </Navbar.Header>
                     <Navbar.Collapse>
                     <Navbar.Form justified className="nav-bar nav" pullRight>
                         <FormGroup>
+                            <Col sm={12}>
                         <ButtonToolbar>
-                        <Button bsSize="large" className="font" bsStyle="primary" onClick={this.handleLogIn}>
+                        <Button bsSize="large" className="btn-responsive" bsStyle="primary" onClick={this.handleLogIn}>
                             <Glyphicon glyph="user"/>
                             {' '}
                             Login</Button>
                         {' '}
-                        <Button bsSize="large" className="font" bsStyle="danger" onClick={this.handleRegister}>
+                        <Button bsSize="large" className="btn-responsive" bsStyle="danger" onClick={this.handleRegister}>
                             <Glyphicon glyph="user"/>
                             {' '}
                             Register</Button>
                         </ButtonToolbar>
+                            </Col>
                         </FormGroup>
                     </Navbar.Form>
                     </Navbar.Collapse>

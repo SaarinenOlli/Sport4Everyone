@@ -54,6 +54,7 @@ class JuoksuData extends Component {
                     return response.json();
                 else
                     throw new Error(response.statusText);
+
             }.bind(this))
             .catch(function (error) {
                 // virheilmoitus, uusi sivu tai dialogi tähän (vinkki Tommilta)

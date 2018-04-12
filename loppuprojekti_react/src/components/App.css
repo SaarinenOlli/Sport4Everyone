@@ -6,13 +6,15 @@
 }
 
 .App-introteksti {
-  font-size: large;
+  font-size: x-large;
   text-align: center;
-  margin-top: -10vw;
-  margin-bottom: 3vw;
+  margin-top: -12%;
   font-family: 'Gloria Hallelujah', cursive;
+  padding: 3%;
+  position: fixed;
+  width: 100%;
+    z-index: 1;
 }
-
 
 .modal-container {
   margin-top: 5%;
@@ -39,35 +41,35 @@
 
 }
 .ikonikuva {
-
   width: 3vw;
 }
 .font {
   font-family: 'Gloria Hallelujah', cursive;
 }
 
-
+.navbutton {
+    font-family: 'Gloria Hallelujah', cursive;
+}
 
 .pelkkakuva {
   margin: 3% auto 0 10%;
   padding-bottom: 25%;
   border-radius: 5px;
   width: 100%
-
 }
 
 .kuvapaneeli {
   padding-bottom: 22%;
 }
 
-.etusivukuva {
-  width: 50vw;
+.img-responsive {
+  border-radius: 10px;
 }
 
 .etusivunpohja {
   background-color: white;
-  margin-left: 10vw;
-  margin-top: 0;
+  margin-top: -1%;
+
 }
 
 #levelkuva {
@@ -128,5 +130,59 @@
 #loading {
   text-align: center;
   font-family: 'Gloria Hallelujah', cursive;
+}
+
+@media screen and (max-width: 1300px) and (min-width: 787px) {
+    .App-introteksti {
+        margin-top: -11%;
+        position: fixed;
+        width: 100%;
+        padding: 7vw;
+    }
+    .etusivunpohja {
+        margin-top: 10%;
+    }
+
+}
+
+@media screen and (max-width: 787px) and (min-width: 572px) {
+    .App-introteksti {
+        margin-top: -8%;
+        position: fixed;
+        width: 100%;
+        padding: 8vw;
+    }
+    .etusivunpohja {
+        margin-top: 27%;
+    }
+
+    .btn-responsive {
+
+    }
+
+}
+
+@media screen and (max-width: 573px) and (min-width: 456px) {
+    .App-introteksti {
+        margin-top: -5%;
+        position: fixed;
+        width: 100%;
+        padding: 10vw;
+    }
+    .etusivunpohja {
+        margin-top: 50vw;
+    }
+}
+
+@media screen and (max-width: 455px) and (min-width: 0px) {
+    .App-introteksti {
+        margin-top: -5%;
+        position: fixed;
+        width: 100%;
+        padding: 5vw;
+    }
+    .etusivunpohja {
+        margin-top: 50vw;
+    }
 }
 
