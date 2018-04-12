@@ -17,16 +17,10 @@ public class Paino {
     private int painoId;
     @NotNull
     private String kayttajaId;
-    private LocalDate pvm; // halutaanko kellonaika?
+    private LocalDate pvm;
     private Double painoKiloina;
 
     public Paino() { }
-
-    public Paino(String kayttajaId, LocalDate pvm, double paino) {
-        this.kayttajaId = kayttajaId;
-        this.pvm = pvm;
-        this.painoKiloina = paino;
-    }
 
     public int getPainoId() {
         return painoId;

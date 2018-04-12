@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PyoraForm from './PyoraForm';
 import PyoraTietoLista from './PyoraTietoLista';
 import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
-import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
+import LoadingPage from "../LoadingPage";
 import firebase from 'firebase';
 import KestavyysGraafi from "../KestavyysGraafi";
 import LevelGraafi from '../LevelGraafi';
@@ -137,7 +137,7 @@ class PyoraData extends Component {
         // Sivulle pääsee ainoastaan kirjautuneena
         if (this.user === null) {
             return (
-                <ErrorPageIfNotLoggedIn/>
+                <LoadingPage/>
             )
         } else {
             return (

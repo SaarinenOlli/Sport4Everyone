@@ -76,7 +76,7 @@ class Navi extends Component {
                     user,
                     showlogin: false
                 });
-                this.props.history.push('/profile');
+                this.props.history.push('/weight');
             })
             .catch(error => {
                 this.dialog.showAlert(error.message);
@@ -98,7 +98,7 @@ class Navi extends Component {
                     user,
                     showlogin: false
                 });
-                this.props.history.push('/profile');
+                this.props.history.push('/weight');
             })
             .catch(error => {
                 this.dialog.showAlert(error.message);
@@ -119,7 +119,7 @@ class Navi extends Component {
                     user,
                     showlogin: false
                 });
-                this.props.history.push('/profile');
+                this.props.history.push('/weight');
             })
             .catch(error => {
                 this.dialog.showAlert(error.message);
@@ -155,10 +155,14 @@ class Navi extends Component {
         bootstrapUtils.addStyle(Navbar, 'custom');
 
         var styles={
-            "backgroundColor" : "#4d576b",
-            "color"           : "white",
+            "backgroundColor" : "#FCFCFC",
+            "color"           : "black",
             "padding-top"     : "5px",
-            "padding-bottom"  : "-20px"
+            "padding-bottom"  : "-20px",
+            "position" : "fixed",
+            "z-index": "1",
+            "width" : "100%",
+            "top" : "0",
         };
 
         return (
@@ -167,7 +171,7 @@ class Navi extends Component {
                 <Navbar style={styles}>
                     <Navbar.Header>
                             <FormGroup>
-                                <h2 className="font">->-> Sport4Everyone ->-></h2>
+                                <h2 className="font"> Sport4Everyone </h2>
                             </FormGroup>
                     </Navbar.Header>
                     <Navbar.Collapse>

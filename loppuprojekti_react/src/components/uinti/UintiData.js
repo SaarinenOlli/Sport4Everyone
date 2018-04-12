@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import UintiForm from './UintiForm';
 import UintiTietoLista from "./UintiTietoLista";
 import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
-import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
+import LoadingPage from "../LoadingPage";
 import firebase from 'firebase';
 import KestavyysGraafi from "../KestavyysGraafi";
 import Kuva from '../Kuva';
@@ -153,11 +153,11 @@ class UintiData extends Component {
         // Sivulle pääsee ainoastaan kirjautuneena
         if (this.user === null) {
             return (
-                <ErrorPageIfNotLoggedIn/>
+                <LoadingPage/>
             )
         } else {
             return (
-                <div>
+                <div className="sivunpohja">
                     <Dialog ref={(el) => {
                         this.dialog = el
                     }}>
@@ -167,15 +167,19 @@ class UintiData extends Component {
                         <NaviWhenLoggedIn {...this.props}/>
                     </nav>
                     <Row>
-                        <Col xs={6} md={4}>
+                        <Col xs={0} md={4}>
 
                             <Panel className="paneelivasen">
                                 {/*<Panel.Heading>*/}
                                 {/*<h4 className="font">Profile</h4>*/}
                                 {/*</Panel.Heading>*/}
-                                <Panel.Body className="kuva">
+                                <Panel.Body className="kuvapaneeli">
                                     <Kuva laji={'uinti'} level={level}/>
+                                    <br/>
+                                    <LevelGraafi laskuri={uintilaskuri} levelup={levelup} level={level}/>
+                                    <br/>
                                 </Panel.Body>
+                                <br/>
                             </Panel>
                         </Col>
                         <Col xs={12} md={8}>

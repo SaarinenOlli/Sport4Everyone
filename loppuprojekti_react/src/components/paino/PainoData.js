@@ -5,7 +5,7 @@ import PainoGraafi from "./PainoGraafi";
 import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
 import firebase from 'firebase';
 import pelihahmo from '../../Resources/pelihahmo.png';
-import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
+import LoadingPage from "../LoadingPage";
 import {Col, Row, Image, Panel, Well} from 'react-bootstrap';
 import '../App.css';
 
@@ -103,9 +103,10 @@ class PainoData extends Component {
         if (this.user) {
             return (
                 <div className="sivunpohja">
-                    <nav className="Navi">
+                    <nav>
                         <NaviWhenLoggedIn {...this.props}/>
                     </nav>
+                    <div>
                     <Row>
                         <Col xs={6} md={4}>
                             <Panel className="paneelivasen">
@@ -113,7 +114,9 @@ class PainoData extends Component {
                                     {/*<h4 className="font">Profile</h4>*/}
                                 {/*</Panel.Heading>*/}
                                 <Panel.Body>
-                                    <img className="kuva" src={pelihahmo}/>
+                                    <p align="center">Current user is:</p>
+                                    <p align="center">{this.user.email}</p>
+                                    <img className="pelkkakuva" src={pelihahmo}/>
                                 </Panel.Body>
                             </Panel>
                         </Col>
@@ -127,11 +130,12 @@ class PainoData extends Component {
                         </Panel>
                         </Col>
                     </Row>
+                    </div>
                 </div>
-            )
+            );
         } else {
             return (
-            <ErrorPageIfNotLoggedIn/>
+            <LoadingPage/>
             );
         }
     }

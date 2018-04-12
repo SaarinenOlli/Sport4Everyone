@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Coustard');
+/*@import url('https://fonts.googleapis.com/css?family=Coustard');*/
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
 
 .App {
   text-align: center;
@@ -7,6 +8,8 @@
 .App-introteksti {
   font-size: large;
   text-align: center;
+  margin-top: -10vw;
+  margin-bottom: 3vw;
 }
 
 .modal-container {
@@ -19,36 +22,74 @@
 }
 
 .navbar-inverse .navbar-nav {
-  hover: none;
-  background-color: grey;
+  position: fixed;
+}
+
+.ikonirivi {
+  margin-top: 1vw;
+  list-style-type: none;
+}
+
+.ikoni {
+  padding-right: 4vw;
 }
 
 .font {
-  font-family: 'Coustard', serif;
+  font-family: 'Gloria Hallelujah', cursive;
 }
 
-.kuva {
-  margin-left: 15%;
-  margin-top: 5%;
+
+
+.pelkkakuva {
+  margin: 3% auto 0 10%;
+  padding-bottom: 25%;
   border-radius: 5px;
+  width: 100%
+
+}
+
+.kuvapaneeli {
+}
+
+.etusivukuva {
+  width: 50vw;
+}
+
+.etusivunpohja {
+  background-color: white;
+  margin-left: 10vw;
+  margin-top: 0;
+}
+
+#levelkuva {
+  width: 60%;
+  margin: auto;
+  display: block;
 }
 
 .paneelivasen {
-  margin-left: 5%;
+
   background: rgba(102, 122, 199, 0.13);
-  padding-bottom: 8%;
+  padding-bottom: 14%;
+  padding: 2%;
+  margin: 1%;
+  font-family: 'Coustard', serif;
 }
 
 .paneelioikea {
-  margin-right: 3%;
   padding: 2%;
-  padding-bottom: 6%;
+  padding-bottom: 12%;
   background: rgba(102, 122, 199, 0.13);
+  margin: 0.5%;
 }
 
 .sivunpohja {
-  background-image: url("../Resources/juoksurata.jpeg");
+  background-image: url("../Resources/legs.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
+  margin-top: 5vw;
+;
 
 }
 
@@ -59,3 +100,16 @@
   margin: 0 auto 3% auto;
   background: rgba(255, 255, 255, 0.8);
 }
+
+
+.loadingpage {
+  background-image: url("../Resources/legs.jpg");
+  background-size: cover;
+  padding-bottom: 50%;
+}
+
+#loading {
+  text-align: center;
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
