@@ -64,7 +64,7 @@ class Form extends Component {
                                 <FormControl className="font"
                                              id="formControlsNumber"
                                              type="number"
-                                             placeholder="Enter weight"
+                                             placeholder="Enter weight (kg)"
                                              value={this.state.paino}
                                              min={0} max={200} step={0.01}
                                              onChange={this.syotaPainoTieto}
