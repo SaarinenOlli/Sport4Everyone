@@ -5,7 +5,7 @@ import PainoGraafi from "./PainoGraafi";
 import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
 import firebase from 'firebase';
 import pelihahmo from '../../Resources/pelihahmo.png';
-import ErrorPageIfNotLoggedIn from "../error/ErrorPageIfNotLoggedIn";
+import LoadingPage from "../LoadingPage";
 import {Col, Row, Image, Panel, Well} from 'react-bootstrap';
 import '../App.css';
 
@@ -133,7 +133,7 @@ class PainoData extends Component {
             );
         } else {
             return (
-            <ErrorPageIfNotLoggedIn/>
+            <LoadingPage/>
             );
         }
     }
