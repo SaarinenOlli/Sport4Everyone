@@ -12,6 +12,7 @@
   margin-bottom: 3vw;
 }
 
+
 .modal-container {
   margin-top: 5%;
   position: relative;
@@ -28,12 +29,18 @@
 .ikonirivi {
   margin-top: 1vw;
   list-style-type: none;
+
 }
 
 .ikoni {
   padding-right: 4vw;
-}
+  padding-bottom: 1vw;
 
+}
+.ikonikuva {
+
+  width: 3vw;
+}
 .font {
   font-family: 'Gloria Hallelujah', cursive;
 }

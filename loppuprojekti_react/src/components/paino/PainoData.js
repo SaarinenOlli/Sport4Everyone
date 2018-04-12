@@ -8,6 +8,7 @@ import pelihahmo from '../../Resources/pelihahmo.png';
 import LoadingPage from "../LoadingPage";
 import {Col, Row, Image, Panel, Well} from 'react-bootstrap';
 import '../App.css';
+import Kuva from '../Kuva';
 
 let kayttajanTunnus;
 
@@ -113,8 +114,8 @@ class PainoData extends Component {
                                 {/*<Panel.Heading>*/}
                                     {/*<h4 className="font">Profile</h4>*/}
                                 {/*</Panel.Heading>*/}
-                                <Panel.Body>
-                                    <img className="pelkkakuva" src={pelihahmo}/>
+                                <Panel.Body className="kuvapaneeli">
+                                    <Kuva laji={'peruna'}/>
                                 </Panel.Body>
                             </Panel>
                         </Col>
