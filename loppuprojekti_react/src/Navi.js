@@ -203,7 +203,7 @@ class Navi extends Component {
                         aria-labelledby="contained-modal-title"
                     >
                         <Modal.Header closeButton>
-                            <Modal.Title id="contained-modal-title">
+                            <Modal.Title className="font" id="contained-modal-title">
                                 Log in
                             </Modal.Title>
                         </Modal.Header>
@@ -217,6 +217,7 @@ class Navi extends Component {
                                         label="Email"
                                         value={this.state.email}
                                         placeholder="Enter email"
+                                        className="font"
                                         onChange={this.handleEmailChange}
                                     />
                                     <br/>
@@ -225,15 +226,16 @@ class Navi extends Component {
                                         label="Password"
                                         value={this.state.password}
                                         placeholder="Enter password"
+                                        className="font"
                                         onChange={this.handlePasswordChange}
                                     />
                                 </FormGroup>
                                 <ButtonToolbar>
-                                    <Button bsStyle="primary" onClick={this.loginWithEmail}>Log in with email</Button>
+                                    <Button bsStyle="primary" className="font" onClick={this.loginWithEmail}>Log in with email</Button>
                                     <Dialog ref={(el) => {
                                         this.dialog = el
                                     }}/>
-                                    <Button bsStyle="danger" onClick={this.loginGoogle}>Login with Google</Button>
+                                    <Button bsStyle="danger" className="font" onClick={this.loginGoogle}>Login with Google</Button>
                                     <Dialog ref={(el) => {
                                         this.dialog = el
                                     }}/>
@@ -241,8 +243,8 @@ class Navi extends Component {
                             </div>
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button bsStyle="link" onClick={this.handleForgottenPassword}>Forgot your password?</Button>
-                            <Button onClick={this.handleHide}>Close</Button>
+                            <Button bsStyle="link" className="font" onClick={this.handleForgottenPassword}>Forgot your password?</Button>
+                            <Button className="font" onClick={this.handleHide}>Close</Button>
                         </Modal.Footer>
                     </Modal>
                 </div>
@@ -256,7 +258,7 @@ class Navi extends Component {
                         aria-labelledby="contained-modal-title"
                     >
                         <Modal.Header closeButton>
-                            <Modal.Title id="contained-modal-title">
+                            <Modal.Title className="font" id="contained-modal-title">
                                 Register
                             </Modal.Title>
                         </Modal.Header>
@@ -270,6 +272,7 @@ class Navi extends Component {
                                         label="Email"
                                         value={this.state.email}
                                         placeholder="Enter email"
+                                        className="font"
                                         onChange={this.handleEmailChange}
                                     />
                                     <br/>
@@ -278,11 +281,12 @@ class Navi extends Component {
                                         label="Password"
                                         value={this.state.password}
                                         placeholder="Enter password"
+                                        className="font"
                                         onChange={this.handlePasswordChange}
                                     />
                                 </FormGroup>
                                 <ButtonToolbar>
-                                    <Button bsStyle="primary" onClick={this.registerWithEmail}>Register with email</Button>
+                                    <Button bsStyle="primary" className="font" onClick={this.registerWithEmail}>Register with email</Button>
                                     <Dialog ref={(el) => {
                                         this.dialog = el
                                     }}/>
@@ -290,7 +294,7 @@ class Navi extends Component {
                             </div>
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button onClick={this.handleHide}>Close</Button>
+                            <Button className="font" onClick={this.handleHide}>Close</Button>
                         </Modal.Footer>
                     </Modal>
                 </div>
@@ -305,7 +309,7 @@ class Navi extends Component {
                         aria-labelledby="contained-modal-title"
                     >
                         <Modal.Header closeButton>
-                            <Modal.Title id="contained-modal-title">
+                            <Modal.Title className="font" id="contained-modal-title">
                                 Forgot your password?
                             </Modal.Title>
                         </Modal.Header>
@@ -314,17 +318,18 @@ class Navi extends Component {
                                 <FormGroup
                                     controlId="formBasicText"
                                 >
-                                    <p>Please enter your email, and we’ll send you a link
+                                    <p className="font">Please enter your email, and we’ll send you a link
                                         for resetting your password.</p>
                                     <FormControl
                                         type="text"
                                         value={this.state.email}
                                         placeholder="Enter email"
+                                        className="font"
                                         onChange={this.handleEmailChange}
                                     />
                                 </FormGroup>
                                 <ButtonToolbar>
-                                    <Button bsStyle="primary" onClick={this.resetPassword}>Send email</Button>
+                                    <Button bsStyle="primary" className="font" onClick={this.resetPassword}>Send email</Button>
                                     <Dialog ref={(el) => {
                                         this.dialog = el
                                     }}/>
@@ -332,7 +337,7 @@ class Navi extends Component {
                             </div>
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button onClick={this.handleHide}>Close</Button>
+                            <Button className="font" onClick={this.handleHide}>Close</Button>
                         </Modal.Footer>
                     </Modal>
                 </div>
