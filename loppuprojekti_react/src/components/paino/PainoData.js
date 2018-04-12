@@ -113,8 +113,8 @@ class PainoData extends Component {
                     </nav>
                     <div>
                     <Row>
-                        <Col xs={6} md={4}>
-                            <Panel className="paneelivasen">
+                        <Col xs={12} md={4}>
+                            <Panel className="paneelivasen tietopaneeli">
                                         <Panel.Title align="center" className="nimipaneeli">You are logged in as: <br/>
                                             {this.user.displayName} <br/>
                                             {this.user.email}</Panel.Title>

@@ -124,9 +124,11 @@ class UintiData extends Component {
                 console.log(error.message)
             });
     }
-
+    
     render() {
-        // Mäpätään JSONista yhteenvetoja uidusta matkasta ja ajasta -Olli ja Heidi
+
+        // Lasketaan JSONista yhteenvetoja uidusta matkasta ja ajasta -Olli ja Heidi
+
         uintiTotalKm = 0;
         uintiTotalMin = 0;
         for (let i = 0 ; i < this.state.uintidata.length;++i) {
@@ -168,8 +170,9 @@ class UintiData extends Component {
                         <NaviWhenLoggedIn {...this.props}/>
                     </nav>
                     <Row>
-                        <Col xs={0} md={4}>
-                                <Panel className="paneelivasen">
+
+                        <Col xs={12} md={4}>
+                                <Panel className="paneelivasen tietopaneeli">
                                     <Panel.Title align="center" className="nimipaneeli">You are logged in as: <br/>
                                         {this.user.displayName} <br/>
                                         {this.user.email}</Panel.Title>
