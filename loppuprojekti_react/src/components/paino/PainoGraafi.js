@@ -38,7 +38,7 @@ class PainoGraafi extends Component {
             acc[datum.pvm] = datum.movingAverage;
             return acc;
         }, {});
-        const graafidatax = [ {"name":"Paino", "data": graafidata}, {"name":"PainoKA", "data":graafidatakax}];
+        const graafidatax = [ {"name":"Weight", "data": graafidata}, {"name":"Weight (AVG)", "data":graafidatakax}];
 
         return (
             <div>
