@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './components/App.css';
 import Navi from './Navi';
-import {Col, Row, Image, Panel, Well, Jumbotron, Nav, Grid, Thumbnail} from 'react-bootstrap';
-import pelihahmo from './Resources/pelihahmo.png';
+import {Col, Row, Image, Well, Nav} from 'react-bootstrap';
 import graafiesimerkkietusivu from './Resources/graafiesimerkkietusivu.PNG';
 import dataesimerkkietusivu from './Resources/dataesimerkkietusivu.PNG';
 

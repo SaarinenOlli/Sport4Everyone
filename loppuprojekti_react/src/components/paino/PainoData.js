@@ -5,9 +5,8 @@ import LajiTiedot from "../LajiTiedot";
 import PainoGraafi from "./PainoGraafi";
 import NaviWhenLoggedIn from "../../NaviWhenLoggedIn";
 import firebase from 'firebase';
-import pelihahmo from '../../Resources/pelihahmo.png';
 import LoadingPage from "../LoadingPage";
-import {Col, Row, Image, Panel, Well} from 'react-bootstrap';
+import {Col, Row, Panel} from 'react-bootstrap';
 import '../App.css';
 import Kuva from '../Kuva';
 
@@ -143,7 +142,5 @@ class PainoData extends Component {
         }
     }
 }
-
-//Renderiin korjattu poistaPaino (ennen poistQuote) maanantai ap @Heidi
 
 export default PainoData;

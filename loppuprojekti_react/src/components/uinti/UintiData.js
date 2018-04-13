@@ -8,7 +8,7 @@ import KestavyysGraafi from "../KestavyysGraafi";
 import Kuva from '../Kuva';
 import LevelGraafi from '../LevelGraafi';
 import '../App.css';
-import {Col, Row, Image, Panel, Well} from 'react-bootstrap';
+import {Col, Row, Panel} from 'react-bootstrap';
 import Dialog from 'react-bootstrap-dialog';
 
 // Uintidatan käsittely, poistaminen, listaaminen @Heidi @Elina @Olli
@@ -57,7 +57,6 @@ class UintiData extends Component {
                     throw new Error(response.statusText);
             }.bind(this))
             .catch(function (error) {
-                // virheilmoitus, uusi sivu tai dialogi tähän (vinkki Tommilta)
                 console.log(error.message)
             })
             .then(function (json) {
@@ -101,7 +100,6 @@ class UintiData extends Component {
             }.bind(this))
 
             .catch(function (error) {
-                // virheilmoitus, uusi sivu tai dialogi tähän (vinkki Tommilta)
                 console.log(error.message)
 
 
@@ -120,7 +118,6 @@ class UintiData extends Component {
                     throw new Error(response.statusText);
             }.bind(this))
             .catch(function (error) {
-                // virheilmoitus, uusi sivu tai dialogi tähän (vinkki Tommilta)
                 console.log(error.message)
             });
     }

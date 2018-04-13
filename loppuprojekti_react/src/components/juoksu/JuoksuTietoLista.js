@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import JuoksuTieto from './JuoksuTieto';
-import {Col, Row, Image, Panel, Well, PanelGroup, FormGroup, FormControl, Button} from 'react-bootstrap';
+import {PanelGroup, Panel} from 'react-bootstrap';
 
 // Listataan juoksutiedot käyttäjälle @Elina
-// LISTAN JÄRJESTÄMINEN?!?!? MIELUUSTI ESIM PÄIVÄMÄÄRÄN MUKAAN
 
 class JuoksuTietoLista extends Component {
     constructor(props, context) {

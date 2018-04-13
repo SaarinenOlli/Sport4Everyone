@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import '../App.css';
-import {Panel, ButtonToolbar, ButtonGroup, Button, FormGroup, FormControl, PanelGroup} from 'react-bootstrap';
+import {Panel, Button, FormGroup, FormControl, PanelGroup} from 'react-bootstrap';
 
 
 //Formi painotietojen syöttämistä varten -Olli
@@ -34,7 +34,6 @@ class Form extends Component {
         this.setState({pvm: '', paino: ''});
     }
 
-    /* Tässä versiossa on placeholderit ja päivämääräpalikat paikallaan*/
     render() {
         return (
             <PanelGroup

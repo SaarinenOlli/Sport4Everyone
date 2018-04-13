@@ -1,10 +1,8 @@
 import React, {Component} from "react";
-import {Nav} from 'react-bootstrap';
 import {Navbar} from 'react-bootstrap';
-import {NavItem} from 'react-bootstrap';
 import {Glyphicon} from 'react-bootstrap';
 import Dialog from 'react-bootstrap-dialog';
-import {Modal, Button, FormGroup, ControlLabel, FormControl, ButtonToolbar, Col} from 'react-bootstrap';
+import {Modal, Button, FormGroup, FormControl, ButtonToolbar, Col} from 'react-bootstrap';
 import {auth, googleProvider} from './FireBase';
 import {bootstrapUtils} from "react-bootstrap/lib/utils/index";
 

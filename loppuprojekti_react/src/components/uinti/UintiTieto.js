@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Panel, Button, ButtonToolbar, ButtonGroup, Col} from 'react-bootstrap';
+import {Panel, Button, ButtonToolbar, Col} from 'react-bootstrap';
 
 // Yksittäisen tiedon tulostusmuoto ja poistonappula. Haetaan UintiTietoListasta @Heidi
 

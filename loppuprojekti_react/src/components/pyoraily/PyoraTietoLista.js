@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PyoraTieto from './PyoraTieto';
-import {Col, Row, Image, Panel, Well, PanelGroup, FormGroup, FormControl, Button} from 'react-bootstrap';
+import {Panel, PanelGroup} from 'react-bootstrap';
 
 // Uintitiedot listalle, joka voidaan tulostaa käyttäjälle @Heidi
 

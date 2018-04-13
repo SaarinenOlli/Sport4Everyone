@@ -7,7 +7,7 @@ import firebase from 'firebase';
 import KestavyysGraafi from "../KestavyysGraafi";
 import LevelGraafi from '../LevelGraafi';
 import Kuva from '../Kuva';
-import {Col, Row, Image, Panel, Well} from 'react-bootstrap';
+import {Col, Row, Panel} from 'react-bootstrap';
 import Dialog from 'react-bootstrap-dialog';
 
 // Pyöräilydatan käsittely, poistaminen ja listaaminen @Heidi @Elina

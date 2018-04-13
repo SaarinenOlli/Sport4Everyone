@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Tieto from './Tieto';
-import {Panel, Row, Col, PanelGroup} from 'react-bootstrap';
+import {Panel, PanelGroup} from 'react-bootstrap';
 import '../App.css';
 
 

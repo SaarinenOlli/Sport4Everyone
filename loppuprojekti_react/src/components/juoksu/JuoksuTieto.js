@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Panel, Button, ButtonToolbar, ButtonGroup, Col} from 'react-bootstrap';
+import {Button, ButtonToolbar, Col, Panel} from 'react-bootstrap';
 
 // Yksittäisen juoksutieto ja mahdollisuus sen poistamisen @Elina
 
@@ -17,8 +17,6 @@ class JuoksuTieto extends Component {
                         <ButtonToolbar pullRight>
                             <Button className="font" onClick={this.poistaJuoksu}>Delete</Button>
                         </ButtonToolbar>
-                        {/*Ao. kommentoitu pois, jotta ei tule näkyviin käyttäjälle!*/}
-                        {/*kirjauksen id: {this.props.tieto.painoId}*/}
                     </Col>
                     <Col md={6} mdPull={6}>
                         <p>

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Navbar} from 'react-bootstrap';
-import {Nav, NavItem, FormGroup, BreadcrumbItem} from 'react-bootstrap';
+import {NavItem, FormGroup} from 'react-bootstrap';
 import {auth} from './FireBase';
 import './components/App.css';
 import paino from './Resources/scale.png';
@@ -8,7 +8,7 @@ import uinti from './Resources/swim.png';
 import juoksu from './Resources/run.png';
 import pyora from './Resources/bicycle.png';
 import logout from './Resources/logout.png';
-import {Image, Col, Row, Carousel} from 'react-bootstrap';
+import {Image, Col} from 'react-bootstrap';
 import { bootstrapUtils } from 'react-bootstrap/lib/utils';
 
 

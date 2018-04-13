@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import '../paino/Form.css';
-import {Col, Row, Image, Panel, Well, PanelGroup, FormGroup, FormControl, Button} from 'react-bootstrap';
+import {Panel, PanelGroup, FormGroup, FormControl, Button} from 'react-bootstrap';
 
 // Lomake uuden juoksusuorituksen kirjaamiseen @Elina
 
