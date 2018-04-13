@@ -20,10 +20,10 @@ class KestavyysGraafi extends Component {
             <div>
                 {/*@Renne TÄssä luodaan Chart.js:n avulla kivoja graafeja!*/}
                 <div className="graafi">
-                    <ColumnChart title="Excercise duration" download={true} width="100%" ytitle="minutes" data={graafiKestavyysAika}  messages={{empty: "No data yet! (You can do it!)"}}/>
+                    <ColumnChart title="Exercise duration" download={true} width="100%" ytitle="minutes" data={graafiKestavyysAika}  messages={{empty: "No data yet! (You can do it!)"}}/>
                 </div>
                 <div className="graafi">
-                    <ColumnChart title="Excercise distance" download={true} width="100%" ytitle="Kilometers" data={graafiKestavyysMatka} messages={{empty: "No data yet! (You can do it!)"}}/>
+                    <ColumnChart title="Exercise distance" download={true} width="100%" ytitle="Kilometers" data={graafiKestavyysMatka} messages={{empty: "No data yet! (You can do it!)"}}/>
                 </div>
             </div>
 

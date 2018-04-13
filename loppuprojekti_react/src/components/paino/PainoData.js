@@ -123,7 +123,6 @@ class PainoData extends Component {
                             <Panel className="paneelivasen">
                                 <Panel.Body className="kuvapaneeli">
                                     <Kuva laji={'peruna'}/>
-                                    <br/>
                                     <LajiTiedot/>
                                 </Panel.Body>
                             </Panel>
