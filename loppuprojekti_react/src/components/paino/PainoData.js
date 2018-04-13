@@ -17,7 +17,7 @@ class PainoData extends Component {
 
     constructor(props) {
         super(props);
-        this.user = firebase.auth().currentUser;//auth.currentUser;
+        this.user = firebase.auth().currentUser;
     }
 
     state = {data: []}
@@ -124,7 +124,7 @@ class PainoData extends Component {
                                 <Panel.Body className="kuvapaneeli">
                                     <Kuva laji={'peruna'}/>
                                     <br/>
-                                    <LajiTiedot lajit={this.state.data}/>
+                                    <LajiTiedot/>
                                 </Panel.Body>
                             </Panel>
                         </Col>
