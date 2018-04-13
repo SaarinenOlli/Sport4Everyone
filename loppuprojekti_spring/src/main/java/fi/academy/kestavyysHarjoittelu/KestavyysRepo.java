@@ -9,8 +9,6 @@ public interface KestavyysRepo extends CrudRepository<KestavyysHarjoittelu, Inte
 
     Iterable<KestavyysHarjoittelu> findAllByLajiAndKayttajaId(String laji, String id);
 
-    Iterable<KestavyysHarjoittelu> findAllByKayttajaId(String id);
-
     @Query("SELECT COUNT(k) FROM KestavyysHarjoittelu k WHERE kayttajaId = :id")
     Integer haeMaara(@Param("id") String id);
 }
