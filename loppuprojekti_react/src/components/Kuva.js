@@ -15,11 +15,13 @@ import './App.css';
 var level;
 var laji;
 var profiilikuva;
+var otsikko;
 
 class Kuva extends Component {
 
     render() {
 
+otsikko = "Level";
         level = this.props.level;
         laji = this.props.laji;
 
@@ -37,12 +39,13 @@ class Kuva extends Component {
             profiilikuva = pyora1;
         } else {
             profiilikuva = perus;
+            otsikko = "";
         }
 
         return (
             <div>
                 <div style={{display: 'flex', justifyContent: 'center'}}>
-                    <h1 className="font">Level {level}</h1>
+                    <h1 className="font">{otsikko} {level}</h1>
                 </div>
                 <Image id="levelkuva" src={profiilikuva}/>
             </div>
